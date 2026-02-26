@@ -106,5 +106,121 @@
 
                 <div class="column">
                     <h3>📚 Education</h3>
+                    
+                    <div class="edu-card highlight">
+                        <h4>Diploma in Marketing Management</h4>
+                        <p>MIBA College (Current)</p>
+                    </div>
+                    
+                    <div class="edu-card">
+                        <h4>Graphics Design Course</h4>
+                        <p>Skill Plus Computer Training Center</p>
+                    </div>
+
+                    <div class="edu-card">
+                        <h4>Office Management Course</h4>
+                        <p>Global Key Capacity Development Center</p>
+                    </div>
+                    
+                    <div class="edu-card">
+                        <h4>Bartending School</h4>
+                        <p>MIHS Bartending School (Oct 2022 Class)</p>
+                    </div>
+                    
+                    <div class="edu-card">
+                        <h4>F&B Course</h4>
+                        <p>YGE Training Center (2023)</p>
+                    </div>
+                    
+                    <div class="edu-card">
+                        <h4>Grade-10 (Passed)</h4>
+                        <p>Basic Education High School, Danubyu (2016-17)</p>
+                    </div>
+                    
+                    <div class="edu-card">
+                        <h4>Software Skills</h4>
+                        <p>Advanced Microsoft Excel</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="container reveal">
+            <h2>Skills</h2>
+            
+            <div class="skills-grid">
+                
+                <div class="skill-category">
+                    <h3>🍸 Bartending & Management</h3>
+                    <ul class="skill-list">
+                        <li>Daily Inventory & Bar Cost Control</li>
+                        <li>Shisha & Fruit Decorations</li>
+                        <li>Smoothie & Mocktail Mixology</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🤝 Soft Skills</h3>
+                    <ul class="skill-list">
+                        <li>Multitasking: 98% Customer Satisfaction</li>
+                        <li>Attention to Detail: 20% Reduction in Downtime</li>
+                        <li>Teamwork: 15% Increase in Positive Feedback</li>
+                        <li>Strong Leadership & Communication</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🖥️ Design & Tech</h3>
+                    <ul class="skill-list">
+                        <li>Graphic Design (Marketing Materials)</li>
+                        <li>Strategic Marketing Planning</li>
+                        <li>Advanced Computer Literacy</li>
+                        <li>Excel (Inventory & Costing Analysis)</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="container reveal">
+            <h2>📲 Contact Me</h2>
+            <p class="contact-note">Feel free to reach out for professional Bartending and Design services.</p>
+            
+            <div class="contact-links">
+                <a href="tel:09764849398" class="contact-button phone-btn">📞 09764849398</a>
+                <a href="mailto:nyinyikyawthu79@gmail.com" class="contact-button email-btn">📧 nyinyikyawthu79@gmail.com</a>
+                <a href="https://www.facebook.com/share/1GHymT/EkT/" target="_blank" class="contact-button facebook-btn">📘 Facebook Profile</a>
+                <a href="https://www.tiktok.com/@nyinyi205763?_r=1&_t=ZS-91ducJ3vGwz" target="_blank" class="contact-button tiktok-btn">🎵 TikTok Profile</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MG NYI NYI KYAW THU. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150; 
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                } else {
+                    reveals[i].classList.remove("active");
+                }
+            }
+        }
+        
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+
+</body>
+</html>
 
 
