@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@300;600&display=swap');
 
 :root {
-    --primary-color: #3b82f6; /* Professional Blue (အဝါအစား အပြာပြောင်းထားသည်) */
+    --primary-color: #3b82f6; /* Professional Blue*/
     --primary-hover: #2563eb; /* Darker Blue */
     --bg-dark: #0f172a;      /* Deep Navy Black */
     --card-bg: #1e293b;      /* Slate Blue Black */
@@ -176,3 +176,4 @@ h2 {
     background: var(--card-bg);
     color: var(--primary-color);
 }
+
