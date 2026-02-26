@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@300;600&display=swap');
 
 :root {
-    --primary-color: #ffc107; /* Gold */
+    --primary-color: #3b82f6; /* Professional Blue (အဝါအစား အပြာပြောင်းထားသည်) */
+    --primary-hover: #2563eb; /* Darker Blue */
     --bg-dark: #0f172a;      /* Deep Navy Black */
     --card-bg: #1e293b;      /* Slate Blue Black */
     --text-light: #f8fafc;
@@ -74,21 +75,23 @@ nav ul li a:hover {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    border: 4px solid var(--primary-color);
+    border: 4px solid var(--primary-color); /* အပြာရောင်ဘောင် */
     object-fit: cover;
     margin-bottom: 20px;
-    box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); /* အပြာရောင် Glow */
 }
 
 .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 10px;
+    color: #ffffff;
 }
 
 .hero p {
     color: var(--primary-color);
     font-size: 1.2rem;
     letter-spacing: 2px;
+    font-weight: 500;
 }
 
 /* Buttons */
@@ -108,7 +111,7 @@ nav ul li a:hover {
 
 .button:first-child {
     background-color: var(--primary-color);
-    color: #000;
+    color: #ffffff;
 }
 
 .secondary-button {
@@ -118,14 +121,10 @@ nav ul li a:hover {
 
 .button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
 }
 
-/* Container & Sections */
-.container {
-    padding: 80px 10%;
-}
-
+/* Section Header */
 h2 {
     font-size: 2.5rem;
     color: var(--primary-color);
@@ -136,21 +135,22 @@ h2 {
 /* Experience Cards */
 .experience-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+    padding: 20px 0;
 }
 
 .job-card, .edu-card {
     background: var(--card-bg);
     padding: 25px;
     border-radius: 15px;
-    border-left: 4px solid var(--primary-color);
-    margin-bottom: 20px;
+    border-left: 5px solid var(--primary-color); /* အပြာရောင် ဘေးဘောင် */
     transition: 0.3s;
 }
 
 .job-card:hover {
     background: #2d3748;
+    transform: scale(1.02);
 }
 
 /* Contact Buttons */
@@ -162,13 +162,17 @@ h2 {
 }
 
 .contact-button {
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 12px 25px;
+    border-radius: 10px;
     text-decoration: none;
     color: white;
     background: #334155;
     transition: 0.3s;
+    border: 1px solid transparent;
 }
 
-.facebook-btn:hover { background: #1877F2; }
-.tiktok-btn:hover { background: #000000; }
+.contact-button:hover {
+    border-color: var(--primary-color);
+    background: var(--card-bg);
+    color: var(--primary-color);
+}
