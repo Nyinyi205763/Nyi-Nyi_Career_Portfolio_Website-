@@ -110,52 +110,80 @@ h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 40px; text-align: cente
 .skill-list { list-style: none; }
 .skill-list li { padding: 8px 0; color: var(--text-gray); border-bottom: 1px solid rgba(255,255,255,0.03); }
 
-/* Contact Section Enhancements */
-.contact-wrapper {
+/* Contact Section Clean Design */
+.contact-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.2));
+    padding: 60px 40px;
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
 }
 
-.contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 20px;
+.contact-desc {
+    color: var(--text-gray);
+    margin-bottom: 40px;
 }
 
-.contact-button {
-    background: var(--glass);
-    color: white;
-    padding: 18px 30px;
-    border-radius: 16px;
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.c-link {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 20px;
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    font-weight: 600;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s ease;
 }
 
-.contact-button:hover {
-    background: var(--brand-blue);
+.c-link:hover {
+    transform: translateY(-5px);
+    background: rgba(0, 122, 255, 0.1);
     border-color: var(--brand-blue);
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.3);
 }
 
-.fb-hover:hover {
-    background: #1877F2 !important; /* Facebook Blue */
-    border-color: #1877F2 !important;
+.c-icon {
+    font-size: 1.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
 }
 
-.tt-hover:hover {
-    background: #000000 !important; /* TikTok Black */
-    border-color: #fe2c55 !important;
+.c-info {
+    text-align: left;
 }
 
-.icon {
-    font-size: 1.2rem;
+.c-info span {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.c-info strong {
+    display: block;
+    font-size: 0.95rem;
+    color: #fff;
+    margin-top: 2px;
+}
+
+/* Hover Colors */
+.fb:hover { border-color: #1877F2; background: rgba(24, 119, 242, 0.1); }
+.tt:hover { border-color: #fe2c55; background: rgba(254, 44, 85, 0.1); }
+
+@media (max-width: 600px) {
+    .contact-card { padding: 40px 20px; }
 }
 /* Responsive */
 @media (max-width: 768px) {
@@ -163,4 +191,5 @@ h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 40px; text-align: cente
     .main-card { grid-column: span 1; }
     nav ul { display: none; } /* ဖုန်းမှာ menu ကို ခေတ္တဖျောက်ထားသည် */
 }
+
 
