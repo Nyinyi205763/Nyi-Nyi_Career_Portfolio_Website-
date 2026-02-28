@@ -123,6 +123,7 @@ footer { text-align: center; padding: 40px; color: var(--text-gray); font-size: 
     .main-card { grid-column: span 1; }
     nav ul { display: none; } /* ဖုန်းမှာ menu ကို ခေတ္တဖျောက်ထားသည် */
 }
+
 /* Contact Section Enhancements */
 .contact-wrapper {
     text-align: center;
@@ -170,4 +171,5 @@ footer { text-align: center; padding: 40px; color: var(--text-gray); font-size: 
 .icon {
     font-size: 1.2rem;
 }
+
 
