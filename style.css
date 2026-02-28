@@ -20,12 +20,73 @@ nav ul { display: flex; list-style: none; gap: 30px; }
 nav ul li a { color: var(--text-gray); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
 nav ul li a:hover { color: var(--text-white); }
 
-/* Hero */
-.hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at top right, rgba(0, 122, 255, 0.1), transparent 50%); }
-.profile-img { width: 160px; height: 160px; border-radius: 40px; border: 3px solid var(--brand-blue); object-fit: cover; margin-bottom: 25px; transform: rotate(-3deg); transition: 0.5s; box-shadow: 0 20px 40px rgba(0, 122, 255, 0.2); }
-.hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; margin-bottom: 10px; background: linear-gradient(to bottom, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero-tagline { color: var(--brand-blue); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; }
+/* Hero Section with Smooth Fade Effect */
+.hero { 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    
+    /* ပုံကို အောက်ခြေရောက်လေ မှောင်သွားလေဖြစ်အောင် gradient သုံးထားပါတယ် */
+    background: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0.4) 0%, 
+        rgba(0, 0, 0, 0.7) 70%, 
+        var(--brand-dark) 100%
+    ), 
+    url('profile.JPG');
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
 
+/* ပုံကို အောက်ဘက်မှာ တစ်ဖြည်းဖြည်း Blur ဖြစ်သွားစေတဲ့ Effect */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh; /* အောက်ခြေ 30% ကို blur & fade လုပ်မှာပါ */
+    background: linear-gradient(to bottom, transparent, var(--brand-dark));
+    backdrop-filter: blur(8px); /* မှုန်သွားစေတဲ့ blur effect */
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.hero h1 { 
+    font-size: clamp(2.5rem, 8vw, 4.5rem); 
+    font-weight: 800; 
+    margin-bottom: 15px; 
+    color: #fff;
+    z-index: 1; /* စာသားတွေကို blur ရဲ့အပေါ်မှာ ထားဖို့ပါ */
+    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.hero-tagline { 
+    z-index: 1;
+    color: var(--brand-blue); 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    letter-spacing: 2.5px; 
+    font-size: 0.9rem;
+    background: rgba(0,0,0,0.4);
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.hero-actions { 
+    z-index: 1; 
+    margin-top: 40px; 
+}
+
+/* အလယ်က ပုံအဟောင်းကို ဖျောက်ထားဆဲပါ */
+.profile-container { display: none; }
 /* Buttons */
 .hero-actions { margin-top: 35px; }
 .button { padding: 14px 30px; text-decoration: none; border-radius: 12px; font-weight: 700; margin: 5px; display: inline-block; transition: 0.3s; }
@@ -60,3 +121,4 @@ h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 40px; text-align: cente
 footer { text-align: center; padding: 40px; color: var(--text-gray); font-size: 0.8rem; }
 
 @media (max-width: 768px) { .main-card { grid-column: span 1; } nav ul { display: none; } }
+
