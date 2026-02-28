@@ -1,72 +1,86 @@
-/* Hero Section - အောက်ခြေကို တစ်ဖြည်းဖြည်းချင်း Blur & Dark ဖြစ်သွားစေမည့် Design */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+:root {
+    --primary: #007aff;
+    --dark: #050505;
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+html { scroll-behavior: smooth; }
+body { background-color: var(--dark); color: white; line-height: 1.6; }
+
+/* Navigation */
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 8%; background: rgba(0,0,0,0.7); backdrop-filter: blur(15px);
+    position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border);
+}
+.logo { font-size: 1.2rem; font-weight: 800; }
+.logo strong { color: var(--primary); }
+nav ul { display: flex; list-style: none; gap: 25px; }
+nav ul li a { color: #aaa; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
+nav ul li a:hover { color: white; }
+
+/* Hero Section with Smooth Fade */
 .hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    height: 100vh; width: 100%;
+    display: flex; align-items: center; justify-content: center;
     position: relative;
-    overflow: hidden;
-    
-    /* အောက်ခြေမှာ မျဉ်းကြောင်းမပေါ်အောင် အရောင်ကို ၅ ဆင့်ခွဲပြီး ဖျော်ထားပါတယ် */
-    background: 
-        linear-gradient(to bottom, 
-            rgba(5, 5, 5, 0.3) 0%, 
-            rgba(5, 5, 5, 0.5) 40%, 
-            rgba(5, 5, 5, 0.8) 75%, 
-            rgba(5, 5, 5, 0.95) 90%, 
-            var(--brand-dark) 100%), 
-        url('profile.JPG');
-        
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(5,5,5,0.5) 50%, rgba(5,5,5,0.8) 80%, var(--dark) 100%), 
+                url('profile.JPG');
+    background-size: cover; background-position: center; background-attachment: fixed;
+    text-align: center; overflow: hidden;
 }
 
-/* ပုံရဲ့ အောက်နားလေးတင် မှုန်သွားစေဖို့ (မျဉ်းကြောင်းမထွက်စေရန် height ကို လျှော့ထားသည်) */
+/* Blur transition at the bottom to remove line */
 .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -2px; /* မျဉ်းကြောင်းမထွက်အောင် အောက်ကို အနည်းငယ် ငေါက်ထုတ်ထားသည် */
-    left: 0;
-    width: 100%;
-    height: 25vh; 
-    background: linear-gradient(to bottom, transparent, var(--brand-dark) 95%);
-    backdrop-filter: blur(15px); /* ပိုမှုန်သွားအောင် blur တင်ထားသည် */
-    -webkit-backdrop-filter: blur(15px);
-    z-index: 1;
+    content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 20vh;
+    background: linear-gradient(to bottom, transparent, var(--dark));
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
 
-.hero h1, .hero-tagline, .hero-actions {
-    position: relative;
-    z-index: 5; /* စာသားတွေ အပေါ်ဆုံးမှာ ကြည်ကြည်လင်လင် ရှိနေစေရန် */
-}
+.hero-content { position: relative; z-index: 10; padding: 0 20px; }
+.hero-tagline { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 15px; }
+h1 { font-size: clamp(2rem, 8vw, 4.5rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 30px; }
 
-.hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 800;
-    margin-bottom: 15px;
-    color: #fff;
-    text-shadow: 0 10px 30px rgba(0,0,0,0.8);
-}
+/* Buttons */
+.button { padding: 15px 35px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; margin: 5px; }
+.button { background: var(--primary); color: white; }
+.button.secondary { background: white; color: black; }
+.button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,122,255,0.3); }
 
-.hero-tagline {
-    color: var(--brand-blue);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-size: 0.9rem;
-    background: rgba(0,0,0,0.5);
-    padding: 8px 25px;
-    border-radius: 50px;
-    border: 1px solid rgba(255,255,255,0.15);
-    display: inline-block;
-}
+/* Layout Containers */
+.container { padding: 100px 10%; }
+.section-title { font-size: 2rem; font-weight: 800; color: var(--primary); text-align: center; margin-bottom: 50px; }
 
-.hero-actions {
-    margin-top: 40px;
-}
+/* About Cards */
+.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.about-card { background: var(--card-bg); padding: 35px; border-radius: 24px; border: 1px solid var(--border); transition: 0.4s; }
+.about-card.main { grid-column: span 2; }
+.about-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+.icon { font-size: 2rem; display: block; margin-bottom: 15px; }
 
-.profile-container { display: none; }
+/* Experience Split Layout */
+.split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.card { background: var(--card-bg); padding: 25px; border-radius: 15px; margin-bottom: 15px; border: 1px solid var(--border); }
+.highlight { border-left: 4px solid var(--primary); }
+.sub { color: #888; font-size: 0.9rem; margin-top: 5px; }
+
+/* Contact Box */
+.contact-box { background: linear-gradient(rgba(255,255,255,0.02), transparent); padding: 60px 40px; border-radius: 35px; border: 1px solid var(--border); text-align: center; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 40px; }
+.c-item { background: var(--card-bg); padding: 20px; border-radius: 15px; text-decoration: none; color: white; font-weight: 600; border: 1px solid var(--border); transition: 0.3s; }
+.c-item:hover { background: var(--primary); transform: translateY(-3px); }
+.fb:hover { background: #1877F2; }
+.tt:hover { background: #000; border-color: #fe2c55; }
+
+footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; border-top: 1px solid var(--border); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .split-grid, .about-card.main { grid-template-columns: 1fr; grid-column: span 1; }
+    .split-grid { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+}
