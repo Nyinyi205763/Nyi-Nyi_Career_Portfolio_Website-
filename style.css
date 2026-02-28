@@ -21,31 +21,50 @@ nav {
 nav ul { display: flex; list-style: none; gap: 30px; }
 nav ul li a { color: var(--text-gray); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
 
-/* Hero Section with Full Background Image */
-.hero { 
-    height: 100vh; 
-    display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
+/* Hero Section - Smooth Transition Look */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
     
-    /* ပုံကို နောက်ခံအပြည့်ထားသည့်အပိုင်း */
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('profile.JPG');
+    /* ဒီ Gradient က မျဉ်းကြောင်းမထွက်အောင် အဓိက ထိန်းပေးတာပါ */
+    background-image: 
+        linear-gradient(to bottom, 
+            rgba(5, 5, 5, 0.3) 0%, 
+            rgba(5, 5, 5, 0.6) 50%, 
+            rgba(5, 5, 5, 0.9) 85%, 
+            rgba(5, 5, 5, 1) 100%), 
+        url('profile.JPG');
+        
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Scrolling လုပ်ရင် ပုံက ငြိမ်နေအောင် */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+/* Blur Effect ကို ပိုပီပြင်အောင် ထပ်ပေါင်းထားတာပါ */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px; /* Fade ဖြစ်သွားမယ့် အကွာအဝေး */
+    background: linear-gradient(to bottom, transparent, var(--brand-dark));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    pointer-events: none;
+}
+
+.hero h1, .hero-tagline, .hero-actions {
     position: relative;
+    z-index: 2; /* စာသားတွေ ပုံရဲ့ အပေါ်မှာ ရှိနေဖို့ */
 }
-
-.hero h1 { 
-    font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; margin-bottom: 10px; color: #fff;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-}
-
-.hero-tagline { 
-    color: var(--brand-blue); font-weight: 600; text-transform: uppercase; 
-    letter-spacing: 2px; font-size: 0.9rem; background: rgba(0,0,0,0.3); padding: 5px 15px; border-radius: 5px;
-}
-
-/* Hide the old profile image container since it's now background */
-.profile-container { display: none; }
 
 /* Buttons */
 .hero-actions { margin-top: 35px; }
@@ -65,3 +84,4 @@ h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 40px; text-align: cente
 .contact-card { background: rgba(255,255,255,0.03); padding: 50px; border-radius: 32px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 30px; }
 .c-link { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; text-decoration: none; display: flex; align-items: center; gap: 10px; color: #fff; justify-content: center; }
+
