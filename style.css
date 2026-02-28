@@ -1,67 +1,101 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
 
 :root {
-    --brand-blue: #007aff;
-    --brand-dark: #050505;
-    --text-white: #ffffff;
-    --text-gray: #a1a1a6;
+    --primary: #007aff;
+    --dark: #050505;
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --border: rgba(255, 255, 255, 0.08);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-body { background-color: var(--brand-dark); color: var(--text-white); line-height: 1.6; overflow-x: hidden; }
+html { scroll-behavior: smooth; }
+body { background-color: var(--dark); color: white; line-height: 1.6; overflow-x: hidden; }
 
-/* Navbar */
-nav { 
-    display: flex; justify-content: space-between; align-items: center; 
-    padding: 20px 8%; background: rgba(0, 0, 0, 0.6); 
-    backdrop-filter: blur(15px); position: fixed; width: 100%; top: 0; z-index: 1000; 
+/* Navigation */
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 8%; background: rgba(0,0,0,0.7); backdrop-filter: blur(20px);
+    position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border);
 }
-.logo { font-size: 1.4rem; font-weight: 800; }
-.logo strong { color: var(--brand-blue); }
-nav ul { display: flex; list-style: none; gap: 30px; }
-nav ul li a { color: var(--text-gray); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+.logo { font-size: 1.2rem; font-weight: 800; }
+.logo strong { color: var(--primary); }
+nav ul { display: flex; list-style: none; gap: 25px; }
+nav ul li a { color: #aaa; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
+nav ul li a:hover { color: white; }
 
-/* Hero Section with Full Background Image */
-.hero { 
-    height: 100vh; 
-    display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
-    
-    /* ပုံကို နောက်ခံအပြည့်ထားသည့်အပိုင်း */
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('profile.JPG');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Scrolling လုပ်ရင် ပုံက ငြိမ်နေအောင် */
+/* Hero Section with Smooth Fade & No Lines */
+.hero {
+    height: 100vh; width: 100%;
+    display: flex; align-items: center; justify-content: center;
     position: relative;
+    /* အောက်ခြေကို တစ်ဖြည်းဖြည်းချင်း အဆင့်ဆင့်ဖျော်ချထားတဲ့ Gradient ပါ */
+    background: linear-gradient(to bottom, 
+                rgba(5, 5, 5, 0.2) 0%, 
+                rgba(5, 5, 5, 0.4) 40%, 
+                rgba(5, 5, 5, 0.7) 70%, 
+                rgba(5, 5, 5, 0.9) 85%, 
+                var(--dark) 100%), 
+                url('profile.JPG');
+    background-size: cover; background-position: center; background-attachment: fixed;
+    text-align: center; overflow: hidden;
 }
 
-.hero h1 { 
-    font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; margin-bottom: 10px; color: #fff;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+/* အောက်ခြေမှာ မှုန်သွားစေတဲ့ Blur Transition */
+.hero::after {
+    content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 25vh;
+    background: linear-gradient(to bottom, transparent, var(--dark) 90%);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    z-index: 1;
 }
 
-.hero-tagline { 
-    color: var(--brand-blue); font-weight: 600; text-transform: uppercase; 
-    letter-spacing: 2px; font-size: 0.9rem; background: rgba(0,0,0,0.3); padding: 5px 15px; border-radius: 5px;
-}
-
-/* Hide the old profile image container since it's now background */
-.profile-container { display: none; }
+.hero-content { position: relative; z-index: 10; padding: 0 20px; }
+.hero-tagline { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; font-size: 0.8rem; margin-bottom: 15px; }
+h1 { font-size: clamp(2.2rem, 8vw, 4.5rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 30px; }
 
 /* Buttons */
-.hero-actions { margin-top: 35px; }
-.button { padding: 14px 30px; text-decoration: none; border-radius: 12px; font-weight: 700; margin: 5px; display: inline-block; transition: 0.3s; }
-.button:first-child { background: var(--brand-blue); color: white; }
-.secondary-button { background: white; color: black; }
-.button:hover { transform: translateY(-3px); }
+.button { padding: 15px 35px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; margin: 8px; }
+.button { background: var(--primary); color: white; }
+.button.secondary { background: white; color: black; }
+.button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,122,255,0.3); }
 
-/* About & Other Sections */
-.container { padding: 80px 10%; }
-h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 40px; text-align: center; color: var(--brand-blue); }
-.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-.about-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); }
-.main-card { grid-column: span 2; }
+/* Containers */
+.container { padding: 100px 10%; }
+.section-title { font-size: 1.8rem; font-weight: 800; color: var(--primary); text-align: center; margin-bottom: 50px; letter-spacing: 2px; }
 
-/* Contact Section Fix */
-.contact-card { background: rgba(255,255,255,0.03); padding: 50px; border-radius: 32px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
-.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 30px; }
-.c-link { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; text-decoration: none; display: flex; align-items: center; gap: 10px; color: #fff; justify-content: center; }
+/* About Section */
+.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.about-card { background: var(--card-bg); padding: 40px; border-radius: 28px; border: 1px solid var(--border); transition: 0.4s; }
+.about-card.main { grid-column: span 2; border-color: rgba(0,122,255,0.2); }
+.about-card:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(255,255,255,0.06); }
+.icon { font-size: 2.5rem; display: block; margin-bottom: 20px; }
+
+/* Experience Split */
+.split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.card { background: var(--card-bg); padding: 30px; border-radius: 20px; margin-bottom: 20px; border: 1px solid var(--border); transition: 0.3s; }
+.card:hover { background: rgba(255,255,255,0.06); }
+.highlight { border-left: 4px solid var(--primary); }
+.sub { color: #888; font-size: 0.9rem; margin-top: 8px; font-weight: 500; }
+
+/* Contact Section */
+.contact-box { 
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), transparent); 
+    padding: 80px 40px; border-radius: 40px; border: 1px solid var(--border); text-align: center; 
+}
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 50px; }
+.c-item { 
+    background: var(--card-bg); padding: 20px; border-radius: 18px; text-decoration: none; 
+    color: white; font-weight: 600; border: 1px solid var(--border); transition: 0.3s; 
+}
+.c-item:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-3px); }
+.fb:hover { background: #1877F2; }
+.tt:hover { background: #000; border-color: #fe2c55; }
+
+footer { text-align: center; padding: 60px; color: #444; font-size: 0.85rem; border-top: 1px solid var(--border); }
+
+/* Responsive Mobile Fixes */
+@media (max-width: 850px) {
+    .about-card.main { grid-column: span 1; }
+    .split-grid { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+    .container { padding: 80px 5%; }
+}
