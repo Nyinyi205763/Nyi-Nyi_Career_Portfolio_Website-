@@ -21,51 +21,73 @@ nav {
 nav ul { display: flex; list-style: none; gap: 30px; }
 nav ul li a { color: var(--text-gray); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
 
-/* Hero Section - Smooth Transition Look */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
+/* Hero Section with Smooth Fade Effect */
+.hero { 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
     
-    /* ဒီ Gradient က မျဉ်းကြောင်းမထွက်အောင် အဓိက ထိန်းပေးတာပါ */
-    background-image: 
-        linear-gradient(to bottom, 
-            rgba(5, 5, 5, 0.3) 0%, 
-            rgba(5, 5, 5, 0.6) 50%, 
-            rgba(5, 5, 5, 0.9) 85%, 
-            rgba(5, 5, 5, 1) 100%), 
-        url('profile.JPG');
-        
+    /* ပုံကို အောက်ခြေရောက်လေ မှောင်သွားလေဖြစ်အောင် gradient သုံးထားပါတယ် */
+    background: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0.4) 0%, 
+        rgba(0, 0, 0, 0.7) 70%, 
+        var(--brand-dark) 100%
+    ), 
+    url('profile.JPG');
+    
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     background-attachment: fixed;
+    position: relative;
     overflow: hidden;
 }
 
-/* Blur Effect ကို ပိုပီပြင်အောင် ထပ်ပေါင်းထားတာပါ */
+/* ပုံကို အောက်ဘက်မှာ တစ်ဖြည်းဖြည်း Blur ဖြစ်သွားစေတဲ့ Effect */
 .hero::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 250px; /* Fade ဖြစ်သွားမယ့် အကွာအဝေး */
+    height: 30vh; /* အောက်ခြေ 30% ကို blur & fade လုပ်မှာပါ */
     background: linear-gradient(to bottom, transparent, var(--brand-dark));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    pointer-events: none;
+    backdrop-filter: blur(8px); /* မှုန်သွားစေတဲ့ blur effect */
+    -webkit-backdrop-filter: blur(8px);
 }
 
-.hero h1, .hero-tagline, .hero-actions {
-    position: relative;
-    z-index: 2; /* စာသားတွေ ပုံရဲ့ အပေါ်မှာ ရှိနေဖို့ */
+.hero h1 { 
+    font-size: clamp(2.5rem, 8vw, 4.5rem); 
+    font-weight: 800; 
+    margin-bottom: 15px; 
+    color: #fff;
+    z-index: 1; /* စာသားတွေကို blur ရဲ့အပေါ်မှာ ထားဖို့ပါ */
+    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
+.hero-tagline { 
+    z-index: 1;
+    color: var(--brand-blue); 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    letter-spacing: 2.5px; 
+    font-size: 0.9rem;
+    background: rgba(0,0,0,0.4);
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.hero-actions { 
+    z-index: 1; 
+    margin-top: 40px; 
+}
+
+/* အလယ်က ပုံအဟောင်းကို ဖျောက်ထားဆဲပါ */
+.profile-container { display: none; }
 /* Buttons */
 .hero-actions { margin-top: 35px; }
 .button { padding: 14px 30px; text-decoration: none; border-radius: 12px; font-weight: 700; margin: 5px; display: inline-block; transition: 0.3s; }
@@ -84,4 +106,5 @@ h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 40px; text-align: cente
 .contact-card { background: rgba(255,255,255,0.03); padding: 50px; border-radius: 32px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 30px; }
 .c-link { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; text-decoration: none; display: flex; align-items: center; gap: 10px; color: #fff; justify-content: center; }
+
 
