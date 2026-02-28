@@ -3,193 +3,65 @@
 :root {
     --brand-blue: #007aff;
     --brand-dark: #050505;
-    --card-bg: #111111;
     --text-white: #ffffff;
     --text-gray: #a1a1a6;
-    --glass: rgba(255, 255, 255, 0.03);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+body { background-color: var(--brand-dark); color: var(--text-white); line-height: 1.6; overflow-x: hidden; }
 
-body {
-    background-color: var(--brand-dark);
-    color: var(--text-white);
-    line-height: 1.6;
-    overflow-x: hidden;
+/* Navbar */
+nav { 
+    display: flex; justify-content: space-between; align-items: center; 
+    padding: 20px 8%; background: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(15px); position: fixed; width: 100%; top: 0; z-index: 1000; 
 }
-
-/* Nav */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 8%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(20px);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
-}
-
 .logo { font-size: 1.4rem; font-weight: 800; }
 .logo strong { color: var(--brand-blue); }
-
 nav ul { display: flex; list-style: none; gap: 30px; }
-nav ul li a { color: var(--text-gray); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
-nav ul li a:hover { color: var(--text-white); }
+nav ul li a { color: var(--text-gray); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
 
-/* Hero */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: radial-gradient(circle at top right, rgba(0, 122, 255, 0.1), transparent 50%);
+/* Hero Section with Full Background Image */
+.hero { 
+    height: 100vh; 
+    display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
+    
+    /* ပုံကို နောက်ခံအပြည့်ထားသည့်အပိုင်း */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('profile.JPG');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Scrolling လုပ်ရင် ပုံက ငြိမ်နေအောင် */
+    position: relative;
 }
 
-.profile-img {
-    width: 160px;
-    height: 160px;
-    border-radius: 40px;
-    border: 3px solid var(--brand-blue);
-    object-fit: cover;
-    margin-bottom: 25px;
-    transform: rotate(-3deg);
-    transition: 0.5s;
-    box-shadow: 0 20px 40px rgba(0, 122, 255, 0.2);
+.hero h1 { 
+    font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; margin-bottom: 10px; color: #fff;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-.hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    font-weight: 800;
-    margin-bottom: 10px;
-    background: linear-gradient(to bottom, #fff, #888);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.hero-tagline { 
+    color: var(--brand-blue); font-weight: 600; text-transform: uppercase; 
+    letter-spacing: 2px; font-size: 0.9rem; background: rgba(0,0,0,0.3); padding: 5px 15px; border-radius: 5px;
 }
 
-.hero-tagline {
-    color: var(--brand-blue);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.85rem;
-}
+/* Hide the old profile image container since it's now background */
+.profile-container { display: none; }
 
 /* Buttons */
 .hero-actions { margin-top: 35px; }
 .button { padding: 14px 30px; text-decoration: none; border-radius: 12px; font-weight: 700; margin: 5px; display: inline-block; transition: 0.3s; }
 .button:first-child { background: var(--brand-blue); color: white; }
 .secondary-button { background: white; color: black; }
-.button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 122, 255, 0.3); }
+.button:hover { transform: translateY(-3px); }
 
-/* About Grid Design */
+/* About & Other Sections */
 .container { padding: 80px 10%; }
 h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 40px; text-align: center; color: var(--brand-blue); }
+.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.about-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); }
+.main-card { grid-column: span 2; }
 
-.about-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.about-card { background: var(--glass); padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
-.main-card { grid-column: span 2; background: linear-gradient(145deg, rgba(0, 122, 255, 0.05), transparent); }
-.about-card:hover { border-color: var(--brand-blue); transform: translateY(-5px); }
-.card-icon { font-size: 2rem; margin-bottom: 15px; }
-
-/* Experience & Skills Grid */
-.experience-grid, .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-.job-card, .edu-card, .skill-category { background: var(--glass); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; }
-.highlight { border: 1px solid var(--brand-blue); }
-
-.skill-list { list-style: none; }
-.skill-list li { padding: 8px 0; color: var(--text-gray); border-bottom: 1px solid rgba(255,255,255,0.03); }
-
-/* Contact Section Clean Design */
-.contact-card {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.2));
-    padding: 60px 40px;
-    border-radius: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-}
-
-.contact-desc {
-    color: var(--text-gray);
-    margin-bottom: 40px;
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-}
-
-.c-link {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 20px;
-    border-radius: 20px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: 0.3s ease;
-}
-
-.c-link:hover {
-    transform: translateY(-5px);
-    background: rgba(0, 122, 255, 0.1);
-    border-color: var(--brand-blue);
-}
-
-.c-icon {
-    font-size: 1.8rem;
-    background: rgba(255, 255, 255, 0.05);
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-}
-
-.c-info {
-    text-align: left;
-}
-
-.c-info span {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--text-gray);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.c-info strong {
-    display: block;
-    font-size: 0.95rem;
-    color: #fff;
-    margin-top: 2px;
-}
-
-/* Hover Colors */
-.fb:hover { border-color: #1877F2; background: rgba(24, 119, 242, 0.1); }
-.tt:hover { border-color: #fe2c55; background: rgba(254, 44, 85, 0.1); }
-
-@media (max-width: 600px) {
-    .contact-card { padding: 40px 20px; }
-}
-/* Responsive */
-@media (max-width: 768px) {
-    .about-grid { grid-template-columns: 1fr; }
-    .main-card { grid-column: span 1; }
-    nav ul { display: none; } /* ဖုန်းမှာ menu ကို ခေတ္တဖျောက်ထားသည် */
-}
-
-
+/* Contact Section Fix */
+.contact-card { background: rgba(255,255,255,0.03); padding: 50px; border-radius: 32px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 30px; }
+.c-link { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; text-decoration: none; display: flex; align-items: center; gap: 10px; color: #fff; justify-content: center; }
