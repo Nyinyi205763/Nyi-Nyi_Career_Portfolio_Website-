@@ -89,4 +89,97 @@
         .lightbox-modal img { max-width: 90%; max-height: 85%; border-radius: 10px; animation: zoomIn 0.3s ease; }
         .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
 
-        .contact-area { background: rgba(0, 31, 63, 0.3); padding: 80px 20px; text-align: center; border-radius: 30px; margin: 100px 0; border: 1px solid var(--primary-blue); backdrop-filter: blur
+        .contact-area { background: rgba(0, 31, 63, 0.3); padding: 80px 20px; text-align: center; border-radius: 30px; margin: 100px 0; border: 1px solid var(--primary-blue); backdrop-filter: blur(5px); }
+        .contact-btn { display: inline-block; background: var(--primary-blue); color: #fff; padding: 18px 40px; margin: 15px; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
+
+        footer { text-align: center; padding: 50px 0; color: #444; }
+        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div id="bg-canvas"></div>
+
+    <header>
+        <div class="header-content" data-aos="zoom-out" data-aos-duration="2000">
+            <h1>NYI NYI</h1>
+            <p>Creative Marketer | Graphic Designer | Operations Specialist</p>
+        </div>
+        <div style="font-size: 2em; color: white; position: absolute; bottom: 30px;"><i class="fas fa-chevron-down"></i></div>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <section id="about" data-aos="fade-right">
+                <h2>About Me</h2>
+                <div class="info-card">
+                    <p>I am <strong>Nyi Nyi</strong>, a multi-talented professional currently working as a Junior Graphic Designer and Marketing Assistant.</p>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2 data-aos="fade-up">Core Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-box" data-aos="flip-left"><i class="fas fa-robot"></i><h3>Multimedia & AI</h3></div>
+                    <div class="skill-box" data-aos="flip-left" data-aos-delay="200"><i class="fas fa-bullseye"></i><h3>Marketing</h3></div>
+                </div>
+            </section>
+
+            <section id="portfolio">
+                <h2 data-aos="fade-up">Creative Portfolio</h2>
+                <div class="portfolio-grid grid-sq">
+                    <img src="Design 1.jpg" alt="P1" class="img-sq" data-aos="fade-right">
+                    <img src="Design 2.png" alt="P2" class="img-sq" data-aos="fade-up">
+                    <img src="Design 3.jpg" alt="P3" class="img-sq" data-aos="fade-left">
+                </div>
+            </section>
+
+            <section class="contact-area" data-aos="fade-up">
+                <h2>Get In Touch</h2>
+                <a href="tel:09764849398" class="contact-btn">Call Me</a>
+            </section>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox-modal">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
+    <footer><p>&copy; 2024 Nyi Nyi Portfolio</p></footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true });
+
+        // ✨ Scroll Active Background Logic ✨
+        const bg = document.getElementById('bg-canvas');
+        window.addEventListener('scroll', () => {
+            const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+            
+            // Scroll ဆွဲတဲ့အပေါ်မူတည်ပြီး အရောင်ကွက်တွေရဲ့ Position ကို တွက်ချက်တာပါ
+            const x1 = 30 + (scrollPercent * 50); // 30% ကနေ 80% အထိ ပြေးမယ်
+            const y1 = 20 + (scrollPercent * 60);
+            
+            const x2 = 80 - (scrollPercent * 60);
+            const y2 = 80 - (scrollPercent * 40);
+
+            const x3 = 50 + (Math.sin(scrollPercent * 10) * 20); // Wave ပုံစံလေး ပြေးမယ်
+
+            bg.style.setProperty('--x1', `${x1}%`);
+            bg.style.setProperty('--y1', `${y1}%`);
+            bg.style.setProperty('--x2', `${x2}%`);
+            bg.style.setProperty('--y2', `${y2}%`);
+            bg.style.setProperty('--x3', `${x3}%`);
+        });
+
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        document.querySelectorAll('.portfolio-grid img').forEach(img => {
+            img.onclick = () => { lightbox.style.display = 'flex'; lightboxImg.src = img.src; };
+        });
+        document.querySelector('.close-btn').onclick = () => { lightbox.style.display = 'none'; };
+    </script>
+</body>
+</html>
