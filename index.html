@@ -3,43 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nyi Nyi | Creative Marketer & Ops Expert</title>
+    <title>Nyi Nyi | Creative Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-black: #050505;
             --card-gray: #111111;
             --primary-blue: #007bff;
-            --deep-blue: #0056b3;
             --glow-blue: rgba(0, 123, 255, 0.4);
             --text-white: #ffffff;
             --text-dim: #b0b0b0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; }
+        body { background-color: var(--bg-black); color: var(--text-white); font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+        .container { max-width: 1100px; margin: auto; padding: 0 20px; }
 
-        body {
-            background-color: var(--bg-black);
-            color: var(--text-white);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 0 20px;
-        }
-
-        /* Hero Header */
+        /* Header */
         header {
-            height: 100vh;
+            height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -48,301 +30,109 @@
             text-align: center;
             border-bottom: 3px solid var(--primary-blue);
         }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--primary-blue); margin-bottom: 20px; object-fit: cover; }
+        header h1 { font-size: 3.5em; letter-spacing: 5px; text-transform: uppercase; text-shadow: 0 0 15px var(--primary-blue); }
 
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 4px solid var(--primary-blue);
-            margin-bottom: 20px;
-            object-fit: cover;
-            box-shadow: 0 0 20px var(--glow-blue);
-        }
+        h2 { font-size: 2em; margin: 60px 0 30px; color: var(--primary-blue); text-transform: uppercase; border-left: 6px solid var(--primary-blue); padding-left: 15px; }
+        h3 { color: var(--text-dim); margin-bottom: 20px; letter-spacing: 1px; }
 
-        header h1 {
-            font-size: clamp(2.5em, 6vw, 4.5em);
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px var(--primary-blue);
-            margin-bottom: 10px;
-        }
+        /* Experience & Education Cards */
+        .info-card { background: var(--card-gray); padding: 30px; border-radius: 15px; border: 1px solid #222; margin-bottom: 20px; }
+        .timeline-item { position: relative; padding-left: 30px; border-left: 2px solid #333; margin-bottom: 25px; }
+        .timeline-item::before { content: ""; position: absolute; left: -9px; top: 5px; width: 15px; height: 15px; background: var(--primary-blue); border-radius: 50%; }
 
-        header p {
-            font-size: 1.1em;
-            color: var(--primary-blue);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: bold;
-        }
-
-        h2 {
-            font-size: 2.2em;
-            margin: 80px 0 40px;
-            color: var(--primary-blue);
-            text-transform: uppercase;
-            border-left: 8px solid var(--primary-blue);
-            padding-left: 20px;
-        }
-
-        /* Cards & Grids */
-        .about-card, .edu-card {
-            background: var(--card-gray);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid #222;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .skill-box {
-            background: var(--card-gray);
-            padding: 35px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid #222;
-        }
-
-        .skill-box:hover {
-            transform: translateY(-12px);
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 30px var(--glow-blue);
-        }
-
-        .skill-box i {
-            font-size: 3em;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-        }
-
-        /* Timeline Items */
-        .timeline {
-            border-left: 2px solid #333;
-            padding-left: 40px;
-            margin-left: 15px;
-        }
-
-        .timeline-item {
-            position: relative;
+        /* Portfolio Grids */
+        .grid-1-1 { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 15px; 
             margin-bottom: 50px;
         }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: -49px;
-            top: 5px;
-            width: 18px;
-            height: 18px;
-            background: var(--primary-blue);
-            border-radius: 50%;
-            box-shadow: 0 0 15px var(--primary-blue);
-        }
-
-        .timeline-title {
-            font-size: 1.4em;
-            font-weight: bold;
-            color: var(--text-white);
-        }
-
-        .timeline-sub {
-            color: var(--primary-blue);
-            font-size: 1em;
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        /* Portfolio */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .portfolio-grid img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 15px;
-            cursor: pointer;
-            filter: brightness(0.6) grayscale(20%);
+        .grid-1-1 img { 
+            width: 100%; 
+            aspect-ratio: 1 / 1; 
+            object-fit: cover; 
+            border-radius: 10px; 
             border: 1px solid #333;
         }
 
-        .portfolio-grid img:hover {
-            filter: brightness(1) grayscale(0%);
-            transform: scale(1.05);
-            border-color: var(--primary-blue);
+        .grid-a5 { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; 
         }
+        .grid-a5 img { 
+            width: 100%; 
+            aspect-ratio: 1 / 1.414; /* A5 Ratio */
+            object-fit: cover; 
+            border-radius: 10px; 
+            border: 1px solid #333;
+        }
+
+        img:hover { transform: scale(1.03); border-color: var(--primary-blue); filter: brightness(1.1); cursor: pointer; }
 
         /* Contact Section */
-        .contact-area {
-            background: linear-gradient(135deg, #001f3f 0%, #000 100%);
-            padding: 80px 20px;
-            text-align: center;
-            border-radius: 30px;
-            margin: 100px 0;
-            border: 1px solid var(--primary-blue);
-        }
+        .contact-area { background: linear-gradient(135deg, #001f3f 0%, #000 100%); padding: 60px 20px; text-align: center; border-radius: 20px; margin: 80px 0; border: 1px solid var(--primary-blue); }
+        .contact-btn { display: inline-block; background: var(--primary-blue); color: #fff; padding: 15px 35px; margin: 10px; text-decoration: none; border-radius: 50px; font-weight: bold; }
+        .contact-btn:hover { background: #fff; color: #000; box-shadow: 0 0 20px #fff; }
 
-        .contact-btn {
-            display: inline-block;
-            background: var(--primary-blue);
-            color: #fff;
-            padding: 18px 40px;
-            margin: 15px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1em;
-            box-shadow: 0 0 20px var(--glow-blue);
-        }
-
-        .contact-btn:hover {
-            background: #fff;
-            color: #000;
-            box-shadow: 0 0 40px #fff;
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px 0;
-            color: var(--text-dim);
-            font-size: 0.9em;
-            border-top: 1px solid #222;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        section { animation: fadeInUp 1s ease both; }
+        footer { text-align: center; padding: 40px 0; color: #555; font-size: 0.9em; border-top: 1px solid #222; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container">
-            <img src="profile.JPG" alt="Nyi Nyi" class="profile-img">
-            <h1>NYI NYI</h1>
-            <p>Creative Marketer | Graphic Designer | Operations Specialist</p>
-        </div>
+        <img src="profile.JPG" alt="Nyi Nyi" class="profile-img">
+        <h1>NYI NYI</h1>
+        <p>Creative Marketer | Graphic Designer | Ops Specialist</p>
     </header>
 
     <div class="container">
         
-        <section id="about">
-            <h2>ABOUT ME</h2>
-            <div class="about-card">
-                <p>Hello, I am <strong>Nyi Nyi</strong>. Currently serving as a Junior Graphic Designer and Marketing Assistant at <strong>360 Delight Lounge</strong>.</p>
-                <p>I have over 4 years of solid experience in the F&B industry, ranging from ground operations to pre-opening management. I specialize in bridging operational insights with creative marketing strategies to drive business growth.</p>
+        <section>
+            <h2>About Me</h2>
+            <div class="info-card">
+                <p>Professional Creative with 4+ years of experience in F&B operations and digital marketing. I bridge the gap between business operations and visual storytelling.</p>
             </div>
         </section>
 
-        <section id="education">
-            <h2>EDUCATION</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <p class="timeline-title">Diploma in Marketing Management</p>
-                    <span class="timeline-sub">MIBA University</span>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-title">Diploma in Digital Marketing</p>
-                    <span class="timeline-sub">MIBA University</span>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-title">Office Management</p>
-                    <span class="timeline-sub">Global Key Capacity Development Center</span>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-title">Graphic Design Certificate</p>
-                    <span class="timeline-sub">Skill Plus Computer Training Center</span>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-title">Bartending Certificate</p>
-                    <span class="timeline-sub">MIHS Bartending School</span>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-title">F&B Customer Service</p>
-                    <span class="timeline-sub">YGE Training Center</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>CORE SKILLS</h2>
-            <div class="skills-grid">
-                <div class="skill-box">
-                    <i class="fas fa-bullseye"></i>
-                    <h3>Marketing & Admin</h3>
-                    <p>Digital Strategy, Marketing Management, Office Operations.</p>
-                </div>
-                <div class="skill-box">
-                    <i class="fas fa-palette"></i>
-                    <h3>Creative Design</h3>
-                    <p>Social Media Visuals, Graphic Content, Brand Identity.</p>
-                </div>
-                <div class="skill-box">
-                    <i class="fas fa-glass-martini-alt"></i>
-                    <h3>Hospitality Ops</h3>
-                    <p>Professional Bartending, Pre-opening Operations, Customer Service.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2>WORK EXPERIENCE</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <p class="timeline-title">Junior Graphic Designer & Marketing Assistant</p>
-                    <span class="timeline-sub">360 Delight Lounge | 2023 - Present</span>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-title">Bartender (Pre-opening)</p>
-                    <span class="timeline-sub">The Prestige Bar | 2023 Dec - Present</span>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-title">Senior Bartender (Pre-opening)</p>
-                    <span class="timeline-sub">360 Delight Lounge | 2023 Feb - Aug</span>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-title">Senior Bartender (Pre-opening)</p>
-                    <span class="timeline-sub">Aung Chan Thar Hotel (Thanlyin) | 2022 - 2023</span>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-title">Bar Helper</p>
-                    <span class="timeline-sub">A-4 KTV & Club (North Dagon) | 2021 - 2022</span>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-title">Food Runner</p>
-                    <span class="timeline-sub">K-2 KTV (North Dagon) | 2020 - 2021</span>
-                </div>
+        <section>
+            <h2>Education</h2>
+            <div class="info-card">
+                <div class="timeline-item"><strong>MIBA University</strong> - Diploma in Marketing & Digital Marketing</div>
+                <div class="timeline-item"><strong>Global Key Center</strong> - Office Management</div>
+                <div class="timeline-item"><strong>Skill Plus</strong> - Graphic Design Certificate</div>
             </div>
         </section>
 
         <section id="portfolio">
-            <h2>FEATURED WORK</h2>
-            <div class="portfolio-grid">
-                <img src="Design 1.jpg" alt="Design 1">
-                <img src="Design 2.png" alt="Design 2">
-                <img src="Design 3.png" alt="Design 3">
-                <img src="Design 4.png" alt="Design 4">
-                <img src="Design 5.png" alt="Design 5">
+            <h2>Creative Portfolio</h2>
+            
+            <h3><i class="fas fa-th"></i> Social Media Posts (1:1)</h3>
+            <div class="grid-1-1">
+                <img src="Design 1.jpg" alt="Post 1">
+                <img src="Design 2.png" alt="Post 2">
+                <img src="Design 3.png" alt="Post 3">
+                <img src="Design 4.png" alt="Post 4">
+                <img src="Design 5.png" alt="Post 5">
+                <img src="Design 6.png" alt="Post 6">
+            </div>
+
+            <h3><i class="fas fa-file-invoice"></i> Marketing Flyers (A5 Size)</h3>
+            <div class="grid-a5">
+                <img src="flyer1.jpg" alt="Flyer 1">
+                <img src="flyer2.jpg" alt="Flyer 2">
+                <img src="flyer3.jpg" alt="Flyer 3">
+                <img src="flyer4.jpg" alt="Flyer 4">
+                <img src="flyer5.jpg" alt="Flyer 5">
+                <img src="flyer6.jpg" alt="Flyer 6">
             </div>
         </section>
 
         <section class="contact-area">
-            <h2>Get In Touch</h2>
-            <p>I'm available for full-time opportunities and creative collaborations.</p>
-            <a href="tel:09764849398" class="contact-btn"><i class="fas fa-phone-alt"></i> 09 764 849 398</a>
-            <a href="mailto:nyinyikyawthucareer@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> Email Me</a>
+            <h2>Work with Me</h2>
+            <a href="tel:09764849398" class="contact-btn">Call: 09 764 849 398</a>
+            <a href="mailto:nyinyikyawthucareer@gmail.com" class="contact-btn">Email Me</a>
         </section>
 
     </div>
@@ -353,5 +143,3 @@
 
 </body>
 </html>
-
-
