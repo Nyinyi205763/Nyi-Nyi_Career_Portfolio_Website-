@@ -3,124 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nyi Nyi | Creative Marketer & Ops</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Nyi Nyi | Creative Marketer & Ops Expert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS Style - အပြာနဲ့ အနက် Theme */
+        /* --- STYLE SECTION (Blue & Black Theme) --- */
         :root {
-            --bg-black: #121212;
-            --card-black: #1e1e1e;
+            --bg-black: #050505;
+            --card-gray: #111111;
             --primary-blue: #007bff;
             --deep-blue: #0056b3;
+            --glow-blue: rgba(0, 123, 255, 0.4);
             --text-white: #ffffff;
-            --text-gray: #b0b0b0;
+            --text-dim: #b0b0b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            margin: 0;
             background-color: var(--bg-black);
             color: var(--text-white);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: auto;
             padding: 0 20px;
         }
 
-        /* Header Area */
+        /* Hero Header */
         header {
-            background: linear-gradient(135deg, var(--bg-black) 0%, #001f3f 100%);
-            padding: 100px 20px;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #001f3f 0%, var(--bg-black) 100%);
             text-align: center;
-            border-bottom: 4px solid var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
         }
 
         header h1 {
-            font-size: 3.5em;
-            margin: 0;
+            font-size: clamp(3em, 8vw, 5em);
+            letter-spacing: 8px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            text-shadow: 0 0 20px var(--primary-blue);
+            margin-bottom: 10px;
         }
 
         header p {
             font-size: 1.2em;
             color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
             font-weight: bold;
         }
 
-        /* Sections */
+        /* Sections Title */
         h2 {
-            font-size: 2em;
+            font-size: 2.2em;
+            margin: 80px 0 40px;
             color: var(--primary-blue);
-            border-left: 5px solid var(--primary-blue);
-            padding-left: 15px;
-            margin-top: 60px;
+            text-transform: uppercase;
+            border-left: 8px solid var(--primary-blue);
+            padding-left: 20px;
         }
 
+        /* About Section */
         .about-card {
-            background: var(--card-black);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #333;
+            background: var(--card-gray);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #222;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* Skills Layout */
+        .about-card p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: var(--text-dim);
+        }
+
+        /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .skill-box {
-            background: var(--card-black);
-            padding: 25px;
-            border-radius: 12px;
-            transition: 0.3s;
-            border-bottom: 3px solid transparent;
+            background: var(--card-gray);
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #222;
         }
 
         .skill-box:hover {
-            border-bottom: 3px solid var(--primary-blue);
-            transform: translateY(-5px);
+            transform: translateY(-12px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 30px var(--glow-blue);
         }
 
         .skill-box i {
-            font-size: 2em;
+            font-size: 3em;
             color: var(--primary-blue);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         /* Experience Timeline */
-        .exp-item {
-            position: relative;
-            padding-left: 30px;
+        .timeline {
             border-left: 2px solid #333;
-            margin-bottom: 30px;
+            padding-left: 40px;
+            margin-left: 15px;
         }
 
-        .exp-item::before {
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item::before {
             content: "";
             position: absolute;
-            left: -9px;
+            left: -49px;
             top: 5px;
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             background: var(--primary-blue);
             border-radius: 50%;
+            box-shadow: 0 0 15px var(--primary-blue);
         }
 
-        .exp-title {
-            font-size: 1.3em;
+        .timeline-title {
+            font-size: 1.5em;
             font-weight: bold;
-            margin: 0;
+            color: var(--text-white);
         }
 
-        .exp-company {
+        .timeline-company {
             color: var(--primary-blue);
-            font-size: 0.95em;
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 8px;
         }
 
         /* Portfolio Grid */
@@ -132,51 +164,66 @@
 
         .portfolio-grid img {
             width: 100%;
-            height: 250px;
+            height: 280px;
             object-fit: cover;
-            border-radius: 10px;
-            filter: grayscale(30%);
-            transition: 0.5s;
+            border-radius: 15px;
             cursor: pointer;
+            filter: brightness(0.6) grayscale(20%);
+            border: 1px solid #333;
         }
 
         .portfolio-grid img:hover {
-            filter: grayscale(0%);
-            transform: scale(1.02);
+            filter: brightness(1) grayscale(0%);
+            transform: scale(1.05);
+            border-color: var(--primary-blue);
         }
 
         /* Contact Section */
-        .contact-section {
-            background: linear-gradient(to right, #001f3f, var(--bg-black));
-            padding: 60px;
+        .contact-area {
+            background: linear-gradient(135deg, #001f3f 0%, #000 100%);
+            padding: 80px 20px;
             text-align: center;
-            border-radius: 20px;
-            margin: 80px 0;
+            border-radius: 30px;
+            margin: 100px 0;
+            border: 1px solid var(--primary-blue);
         }
 
-        .btn-contact {
+        .contact-btn {
             display: inline-block;
             background: var(--primary-blue);
-            color: white;
-            padding: 15px 30px;
+            color: #fff;
+            padding: 18px 40px;
+            margin: 15px;
             text-decoration: none;
             border-radius: 50px;
-            margin: 10px;
             font-weight: bold;
-            transition: 0.3s;
+            font-size: 1.2em;
+            box-shadow: 0 0 20px var(--glow-blue);
         }
 
-        .btn-contact:hover {
-            background: var(--deep-blue);
-            box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+        .contact-btn:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 40px #fff;
+            transform: scale(1.1);
         }
 
         footer {
             text-align: center;
-            padding: 40px;
-            color: var(--text-gray);
+            padding: 50px 0;
+            color: var(--text-dim);
             font-size: 0.9em;
+            border-top: 1px solid #222;
         }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section { animation: fadeInUp 1s ease both; }
+
     </style>
 </head>
 <body>
@@ -184,7 +231,7 @@
     <header>
         <div class="container">
             <h1>NYI NYI</h1>
-            <p>MARKETING STRATEGIST | GRAPHIC DESIGNER | OPERATIONS EXPERT</p>
+            <p>Creative Marketer | Graphic Designer | Operations Specialist</p>
         </div>
     </header>
 
@@ -193,5 +240,77 @@
         <section id="about">
             <h2>ABOUT ME</h2>
             <div class="about-card">
-                <p>ကျွန်တော် <strong>ကိုနီနီ</strong> ပါ။ Hospitality နယ်ပယ်မှာ အောက်ခြေကနေ စတင်ပြီး ယခုအခါ **Graphic Design** နဲ့ **Digital Marketing** ကို ကျွမ်းကျင်စွာ ပေါင်းစပ်အသုံးချနေသူ ဖြစ်ပါတယ်။ </p>
-                <p>လုပ်ငန်းသစ်များ စတင်ဖွင့်လှစ်ခြင်း (Pre-opening) အတွေ့အကြုံများစွာ ရှိထားပြီး၊ ဝန်ဆောင်မှုပေးခြင်းမှသည် ဈေးကွက်မြှင့်တင်ရေး
+                <p>ကျွန်တော် <strong>ကိုနီနီ</strong> ပါ။ လက်ရှိ <strong>360 Delight Lounge</strong> မှာ Junior Graphic Designer နဲ့ Marketing Assistant အဖြစ် တာဝန်ယူနေပါတယ်။</p>
+                <p>ကျွန်တော့်မှာ F&B နယ်ပယ်ရဲ့ အောက်ခြေ Operation ပိုင်းကနေ ဆိုင်သစ်ဖွင့်လှစ်ခြင်း (Pre-opening) အထိ ခိုင်မာတဲ့ အတွေ့အကြုံ ၄ နှစ်ကျော် ရှိထားပါတယ်။ အဲဒီအတွေ့အကြုံတွေကို Marketing ဗျူဟာတွေ၊ Creative Design ဖန်တီးမှုတွေနဲ့ ပေါင်းစပ်ပြီး လုပ်ငန်းတိုးတက်အောင် လုပ်ဆောင်ပေးနေသူ ဖြစ်ပါတယ်။</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>CORE SKILLS</h2>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Marketing & Admin</h3>
+                    <p>Marketing Management, Digital Strategy, Office Management.</p>
+                </div>
+                <div class="skill-box">
+                    <i class="fas fa-bezier-curve"></i>
+                    <h3>Creative Design</h3>
+                    <p>Social Media Visuals, Graphic Content, Brand Identity Design.</p>
+                </div>
+                <div class="skill-box">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Hospitality Ops</h3>
+                    <p>Senior Bartending, F&B Service Excellence, Pre-opening Operations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>EXPERIENCE JOURNEY</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <p class="timeline-title">Junior Graphic Designer & Marketing Assistant</p>
+                    <span class="timeline-company">360 Delight Lounge | 2023 - Present</span>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-title">Bartender (Pre-opening)</p>
+                    <span class="timeline-company">The Prestige Bar | 2023 Dec - Present</span>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-title">Senior Bartender (Pre-opening)</p>
+                    <span class="timeline-company">360 Delight Lounge | 2023 Feb - Aug</span>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-title">Senior Bartender (Pre-opening)</p>
+                    <span class="timeline-company">Aung Chan Thar Hotel | 2022 - 2023</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <h2>FEATURED WORK</h2>
+            <div class="portfolio-grid">
+                <img src="design1.jpg" alt="Design 1">
+                <img src="design2.jpg" alt="Design 2">
+                <img src="design3.jpg" alt="Design 3">
+                <img src="design4.jpg" alt="Design 4">
+                <img src="design5.jpg" alt="Design 5">
+            </div>
+        </section>
+
+        <section class="contact-area">
+            <h2>Let's Work Together</h2>
+            <p>သင်ယူထားတဲ့ ပညာရပ်တွေနဲ့ လုပ်ငန်းအတွေ့အကြုံတွေကို အသုံးချပြီး သင့်လုပ်ငန်းအတွက် အကောင်းဆုံး ဝန်ဆောင်မှုပေးဖို့ အသင့်ရှိပါတယ်။</p>
+            <a href="tel:09764849398" class="contact-btn"><i class="fas fa-phone-alt"></i> 09 764 849 398</a>
+            <a href="mailto:nyinyikyawthucareer@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> Email Me</a>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Built by Nyi Nyi. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
