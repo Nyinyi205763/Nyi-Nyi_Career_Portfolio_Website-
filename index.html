@@ -10,10 +10,11 @@
     
     <style>
         :root {
-            --bg-black: #050505;
-            --card-gray: rgba(17, 17, 17, 0.8);
+            --bg-black: #000000;
+            --card-gray: rgba(10, 10, 10, 0.6);
             --primary-blue: #007bff;
-            --glow-blue: rgba(0, 123, 255, 0.4);
+            --neon-blue: #00f2fe;
+            --neon-purple: #4facfe;
             --text-white: #ffffff;
             --text-dim: #b0b0b0;
         }
@@ -29,21 +30,28 @@
             position: relative;
         }
 
-        /* --- Animated Gradient Background Spots --- */
+        /* --- ✨ Neon Animated Background (Video Effect) ✨ --- */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
+            /* Neon အရောင်စုံ Radial Gradient များ */
             background: 
-                radial-gradient(circle at 10% 20%, rgba(0, 123, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 123, 255, 0.1) 0%, transparent 40%);
+                radial-gradient(circle at 20% 30%, rgba(0, 242, 254, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(79, 172, 254, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(0, 123, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 10% 90%, rgba(79, 172, 254, 0.08) 0%, transparent 40%);
             z-index: -1;
-            animation: moveGradient 15s infinite alternate;
+            filter: blur(60px); /* ဝါးတားတားဖြစ်အောင်လုပ်ပြီး Neon Aura ရအောင် */
+            animation: neonFlow 20s infinite alternate linear;
         }
 
-        @keyframes moveGradient {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.2) translate(20px, 20px); }
+        /* Neon အရောင်များ လှုပ်ရှားစေမည့် Animation */
+        @keyframes neonFlow {
+            0% { transform: scale(1) translate(0, 0); }
+            33% { transform: scale(1.1) translate(30px, -50px); }
+            66% { transform: scale(1.05) translate(-20px, 30px); }
+            100% { transform: scale(1.1) translate(10px, -10px); }
         }
 
         /* --- Header --- */
@@ -56,7 +64,8 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('profile.JPG');
+            /* ပုံကို Background အဖြစ်သုံးထားပြီး Fixed လုပ်ထားသည် */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('profile.JPG');
             background-size: cover;
             background-position: center;
             background-attachment: fixed; 
@@ -67,16 +76,32 @@
             font-size: clamp(3em, 10vw, 6em); 
             letter-spacing: 10px; 
             text-transform: uppercase; 
-            text-shadow: 0 0 30px var(--primary-blue);
+            /* Neon Glow Effect */
+            color: #fff;
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 20px var(--neon-blue),
+                0 0 30px var(--neon-blue),
+                0 0 40px var(--neon-blue);
             margin-bottom: 15px;
         }
 
         header p { 
             font-size: 1.2em; 
-            color: var(--primary-blue); 
+            color: var(--neon-purple); 
             text-transform: uppercase; 
             letter-spacing: 3px; 
             font-weight: bold;
+            text-shadow: 0 0 10px var(--neon-purple);
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            font-size: 2em;
+            color: white;
+            animation: bounce 2s infinite;
+            text-shadow: 0 0 10px var(--neon-blue);
         }
 
         /* --- Main Content --- */
@@ -92,22 +117,24 @@
         h2 { 
             font-size: 2.2em; 
             margin: 60px 0 40px; 
-            color: var(--primary-blue); 
+            color: #fff; 
             text-transform: uppercase; 
-            border-left: 8px solid var(--primary-blue); 
+            border-left: 8px solid var(--neon-blue); 
             padding-left: 20px; 
+            text-shadow: 0 0 15px var(--neon-blue);
         }
 
         .info-card { 
             background: var(--card-gray); 
             padding: 40px; 
             border-radius: 20px; 
-            border: 1px solid rgba(255,255,255,0.05); 
+            border: 1px solid rgba(0, 242, 254, 0.1); 
             margin-bottom: 30px; 
-            backdrop-filter: blur(10px); /* မှန်ကြည်လေးလိုမျိုး ဖြစ်အောင် */
+            backdrop-filter: blur(15px); /* Glassmorphism Effect */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* Skills with Floating Animation */
+        /* Skills with Neon Hover */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .skill-box { 
             background: var(--card-gray); 
@@ -116,33 +143,44 @@
             text-align: center; 
             border: 1px solid rgba(255,255,255,0.05); 
             transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
         }
-        .skill-box:hover { transform: translateY(-12px); border-color: var(--primary-blue); box-shadow: 0 0 30px var(--glow-blue); }
-        .skill-box i { font-size: 3em; color: var(--primary-blue); margin-bottom: 20px; animation: float 3s infinite ease-in-out; }
+        .skill-box:hover { 
+            transform: translateY(-12px) scale(1.02); 
+            border-color: var(--neon-blue); 
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.3); 
+        }
+        .skill-box i { font-size: 3em; color: var(--neon-blue); margin-bottom: 20px; text-shadow: 0 0 15px var(--neon-blue); animation: floatIcon 3s infinite ease-in-out; }
 
-        @keyframes float {
+        @keyframes floatIcon {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
 
-        /* Timeline */
-        .timeline { border-left: 2px solid #333; padding-left: 40px; margin-left: 15px; }
+        /* Timeline Neon Points */
+        .timeline { border-left: 2px solid #222; padding-left: 40px; margin-left: 15px; }
         .timeline-item { position: relative; margin-bottom: 40px; }
-        .timeline-item::before { content: ""; position: absolute; left: -49px; top: 5px; width: 16px; height: 16px; background: var(--primary-blue); border-radius: 50%; box-shadow: 0 0 15px var(--primary-blue); }
+        .timeline-item::before { 
+            content: ""; position: absolute; left: -49px; top: 5px; width: 16px; height: 16px; 
+            background: var(--neon-blue); border-radius: 50%; 
+            box-shadow: 0 0 15px var(--neon-blue), 0 0 5px #fff; 
+        }
 
-        /* Portfolio Grayscale Effect */
+        /* Portfolio Grayscale to Neon Color */
         .portfolio-grid { display: grid; gap: 20px; margin-bottom: 60px; }
         .grid-sq { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
         .grid-flyer { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
         
         .portfolio-grid img { 
-            width: 100%; border-radius: 15px; border: 1px solid #333; object-fit: cover; cursor: pointer;
-            filter: grayscale(100%);
+            width: 100%; border-radius: 15px; border: 1px solid #222; object-fit: cover; cursor: pointer;
+            filter: grayscale(100%) brightness(0.7);
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .portfolio-grid img:hover { 
-            filter: grayscale(0%); transform: scale(1.05); border-color: var(--primary-blue); 
+            filter: grayscale(0%) brightness(1); 
+            transform: scale(1.05); 
+            border-color: var(--neon-blue); 
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
         }
 
         .img-sq { aspect-ratio: 1 / 1; }
@@ -154,14 +192,26 @@
             top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.95); justify-content: center; align-items: center;
         }
-        .lightbox-modal img { max-width: 90%; max-height: 85%; border-radius: 10px; animation: zoomIn 0.3s ease; }
+        .lightbox-modal img { max-width: 90%; max-height: 85%; border-radius: 10px; animation: zoomIn 0.3s ease; box-shadow: 0 0 30px rgba(255,255,255,0.1); }
         .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
 
-        .contact-area { background: rgba(0, 31, 63, 0.3); padding: 80px 20px; text-align: center; border-radius: 30px; margin: 100px 0; border: 1px solid var(--primary-blue); backdrop-filter: blur(5px); }
-        .contact-btn { display: inline-block; background: var(--primary-blue); color: #fff; padding: 18px 40px; margin: 15px; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
-        .contact-btn:hover { background: white; color: var(--primary-blue); transform: scale(1.1); box-shadow: 0 0 20px white; }
+        /* Contact Neon Button */
+        .contact-area { background: rgba(0, 20, 40, 0.4); padding: 80px 20px; text-align: center; border-radius: 30px; margin: 100px 0; border: 1px solid var(--neon-blue); backdrop-filter: blur(10px); box-shadow: 0 0 30px rgba(0, 242, 254, 0.2); }
+        .contact-btn { 
+            display: inline-block; padding: 18px 40px; margin: 15px; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; 
+            background: transparent;
+            color: var(--neon-blue);
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+        .contact-btn:hover { 
+            background: var(--neon-blue); color: #000; 
+            box-shadow: 0 0 30px var(--neon-blue); 
+            text-shadow: none;
+        }
 
-        footer { text-align: center; padding: 50px 0; color: #444; }
+        footer { text-align: center; padding: 50px 0; color: #333; }
 
         @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
@@ -226,14 +276,16 @@
 
             <section id="portfolio">
                 <h2 data-aos="fade-up">Creative Portfolio</h2>
+                <p style="color: var(--text-dim); margin-bottom: 20px;">(Click image to view full screen)</p>
+                
                 <h3>Social Media Posts</h3>
                 <div class="portfolio-grid grid-sq">
-                    <img src="Design 1.jpg" alt="Post 1" class="img-sq" data-aos="fade-right">
+                    <img src="Design 1.jpg" alt="Post 1" class="img-sq" data-aos="fade-up">
                     <img src="Design 2.png" alt="Post 2" class="img-sq" data-aos="fade-up">
-                    <img src="Design 3.jpg" alt="Post 3" class="img-sq" data-aos="fade-left">
-                    <img src="Design 4.jpg" alt="Post 4" class="img-sq" data-aos="fade-right">
+                    <img src="Design 3.jpg" alt="Post 3" class="img-sq" data-aos="fade-up">
+                    <img src="Design 4.jpg" alt="Post 4" class="img-sq" data-aos="fade-up">
                     <img src="Design 5.png" alt="Post 5" class="img-sq" data-aos="fade-up">
-                    <img src="design 6.png" alt="Post 6" class="img-sq" data-aos="fade-left">
+                    <img src="design 6.png" alt="Post 6" class="img-sq" data-aos="fade-up">
                 </div>
 
                 <h3>Marketing Flyers</h3>
@@ -263,6 +315,7 @@
     <script>
         AOS.init({ duration: 1200, once: true });
 
+        // Lightbox Logic
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const closeBtn = document.querySelector('.close-btn');
