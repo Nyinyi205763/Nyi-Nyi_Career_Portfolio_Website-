@@ -6,7 +6,6 @@
     <title>Nyi Nyi | Creative Marketer & Ops Expert</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- STYLE SECTION (Blue & Black Theme) --- */
         :root {
             --bg-black: #050505;
             --card-gray: #111111;
@@ -40,7 +39,7 @@
 
         /* Hero Header */
         header {
-            height: 90vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -50,23 +49,32 @@
             border-bottom: 3px solid var(--primary-blue);
         }
 
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-blue);
+            margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 0 20px var(--glow-blue);
+        }
+
         header h1 {
-            font-size: clamp(3em, 8vw, 5em);
-            letter-spacing: 8px;
+            font-size: clamp(2.5em, 6vw, 4.5em);
+            letter-spacing: 5px;
             text-transform: uppercase;
             text-shadow: 0 0 20px var(--primary-blue);
             margin-bottom: 10px;
         }
 
         header p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: var(--primary-blue);
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: bold;
         }
 
-        /* Sections Title */
         h2 {
             font-size: 2.2em;
             margin: 80px 0 40px;
@@ -76,22 +84,16 @@
             padding-left: 20px;
         }
 
-        /* About Section */
-        .about-card {
+        /* Cards & Grids */
+        .about-card, .edu-card {
             background: var(--card-gray);
             padding: 40px;
             border-radius: 20px;
             border: 1px solid #222;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
         }
 
-        .about-card p {
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            color: var(--text-dim);
-        }
-
-        /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -118,7 +120,7 @@
             margin-bottom: 20px;
         }
 
-        /* Experience Timeline */
+        /* Timeline Items */
         .timeline {
             border-left: 2px solid #333;
             padding-left: 40px;
@@ -143,19 +145,20 @@
         }
 
         .timeline-title {
-            font-size: 1.5em;
+            font-size: 1.4em;
             font-weight: bold;
             color: var(--text-white);
         }
 
-        .timeline-company {
+        .timeline-sub {
             color: var(--primary-blue);
-            font-size: 1.1em;
+            font-size: 1em;
             display: block;
             margin-bottom: 8px;
+            font-weight: bold;
         }
 
-        /* Portfolio Grid */
+        /* Portfolio */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -197,7 +200,7 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 1.1em;
             box-shadow: 0 0 20px var(--glow-blue);
         }
 
@@ -205,7 +208,6 @@
             background: #fff;
             color: #000;
             box-shadow: 0 0 40px #fff;
-            transform: scale(1.1);
         }
 
         footer {
@@ -216,20 +218,19 @@
             border-top: 1px solid #222;
         }
 
-        /* Animations */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         section { animation: fadeInUp 1s ease both; }
-
     </style>
 </head>
 <body>
 
     <header>
         <div class="container">
+            <img src="profile.JPG" alt="Nyi Nyi" class="profile-img">
             <h1>NYI NYI</h1>
             <p>Creative Marketer | Graphic Designer | Operations Specialist</p>
         </div>
@@ -240,8 +241,38 @@
         <section id="about">
             <h2>ABOUT ME</h2>
             <div class="about-card">
-                <p>ကျွန်တော် <strong>ကိုနီနီ</strong> ပါ။ လက်ရှိ <strong>360 Delight Lounge</strong> မှာ Junior Graphic Designer နဲ့ Marketing Assistant အဖြစ် တာဝန်ယူနေပါတယ်။</p>
-                <p>ကျွန်တော့်မှာ F&B နယ်ပယ်ရဲ့ အောက်ခြေ Operation ပိုင်းကနေ ဆိုင်သစ်ဖွင့်လှစ်ခြင်း (Pre-opening) အထိ ခိုင်မာတဲ့ အတွေ့အကြုံ ၄ နှစ်ကျော် ရှိထားပါတယ်။ အဲဒီအတွေ့အကြုံတွေကို Marketing ဗျူဟာတွေ၊ Creative Design ဖန်တီးမှုတွေနဲ့ ပေါင်းစပ်ပြီး လုပ်ငန်းတိုးတက်အောင် လုပ်ဆောင်ပေးနေသူ ဖြစ်ပါတယ်။</p>
+                <p>Hello, I am <strong>Nyi Nyi</strong>. Currently serving as a Junior Graphic Designer and Marketing Assistant at <strong>360 Delight Lounge</strong>.</p>
+                <p>I have over 4 years of solid experience in the F&B industry, ranging from ground operations to pre-opening management. I specialize in bridging operational insights with creative marketing strategies to drive business growth.</p>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>EDUCATION</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <p class="timeline-title">Diploma in Marketing Management</p>
+                    <span class="timeline-sub">MIBA University</span>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-title">Diploma in Digital Marketing</p>
+                    <span class="timeline-sub">MIBA University</span>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-title">Office Management</p>
+                    <span class="timeline-sub">Global Key Capacity Development Center</span>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-title">Graphic Design Certificate</p>
+                    <span class="timeline-sub">Skill Plus Computer Training Center</span>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-title">Bartending Certificate</p>
+                    <span class="timeline-sub">MIHS Bartending School</span>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-title">F&B Customer Service</p>
+                    <span class="timeline-sub">YGE Training Center</span>
+                </div>
             </div>
         </section>
 
@@ -251,39 +282,47 @@
                 <div class="skill-box">
                     <i class="fas fa-bullseye"></i>
                     <h3>Marketing & Admin</h3>
-                    <p>Marketing Management, Digital Strategy, Office Management.</p>
+                    <p>Digital Strategy, Marketing Management, Office Operations.</p>
                 </div>
                 <div class="skill-box">
-                    <i class="fas fa-bezier-curve"></i>
+                    <i class="fas fa-palette"></i>
                     <h3>Creative Design</h3>
-                    <p>Social Media Visuals, Graphic Content, Brand Identity Design.</p>
+                    <p>Social Media Visuals, Graphic Content, Brand Identity.</p>
                 </div>
                 <div class="skill-box">
-                    <i class="fas fa-utensils"></i>
+                    <i class="fas fa-glass-martini-alt"></i>
                     <h3>Hospitality Ops</h3>
-                    <p>Senior Bartending, F&B Service Excellence, Pre-opening Operations.</p>
+                    <p>Professional Bartending, Pre-opening Operations, Customer Service.</p>
                 </div>
             </div>
         </section>
 
         <section id="experience">
-            <h2>EXPERIENCE JOURNEY</h2>
+            <h2>WORK EXPERIENCE</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <p class="timeline-title">Junior Graphic Designer & Marketing Assistant</p>
-                    <span class="timeline-company">360 Delight Lounge | 2023 - Present</span>
+                    <span class="timeline-sub">360 Delight Lounge | 2023 - Present</span>
                 </div>
                 <div class="timeline-item">
                     <p class="timeline-title">Bartender (Pre-opening)</p>
-                    <span class="timeline-company">The Prestige Bar | 2023 Dec - Present</span>
+                    <span class="timeline-sub">The Prestige Bar | 2023 Dec - Present</span>
                 </div>
                 <div class="timeline-item">
                     <p class="timeline-title">Senior Bartender (Pre-opening)</p>
-                    <span class="timeline-company">360 Delight Lounge | 2023 Feb - Aug</span>
+                    <span class="timeline-sub">360 Delight Lounge | 2023 Feb - Aug</span>
                 </div>
                 <div class="timeline-item">
                     <p class="timeline-title">Senior Bartender (Pre-opening)</p>
-                    <span class="timeline-company">Aung Chan Thar Hotel | 2022 - 2023</span>
+                    <span class="timeline-sub">Aung Chan Thar Hotel (Thanlyin) | 2022 - 2023</span>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-title">Bar Helper</p>
+                    <span class="timeline-sub">A-4 KTV & Club (North Dagon) | 2021 - 2022</span>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-title">Food Runner</p>
+                    <span class="timeline-sub">K-2 KTV (North Dagon) | 2020 - 2021</span>
                 </div>
             </div>
         </section>
@@ -300,8 +339,8 @@
         </section>
 
         <section class="contact-area">
-            <h2>Let's Work Together</h2>
-            <p>သင်ယူထားတဲ့ ပညာရပ်တွေနဲ့ လုပ်ငန်းအတွေ့အကြုံတွေကို အသုံးချပြီး သင့်လုပ်ငန်းအတွက် အကောင်းဆုံး ဝန်ဆောင်မှုပေးဖို့ အသင့်ရှိပါတယ်။</p>
+            <h2>Get In Touch</h2>
+            <p>I'm available for full-time opportunities and creative collaborations.</p>
             <a href="tel:09764849398" class="contact-btn"><i class="fas fa-phone-alt"></i> 09 764 849 398</a>
             <a href="mailto:nyinyikyawthucareer@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> Email Me</a>
         </section>
@@ -309,7 +348,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Built by Nyi Nyi. All Rights Reserved.</p>
+        <p>&copy; 2024 Nyi Nyi. All Rights Reserved.</p>
     </footer>
 
 </body>
