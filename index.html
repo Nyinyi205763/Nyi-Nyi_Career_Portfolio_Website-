@@ -15,9 +15,10 @@
             --primary-blue: #007bff;
             --glow-blue: rgba(0, 123, 255, 0.5);
             --text-white: #ffffff;
+            --nav-bg: rgba(5, 5, 5, 0.8);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body { 
             background-color: var(--bg-black); 
@@ -27,7 +28,61 @@
             overflow-x: hidden;
         }
 
-        /* --- ✨ Smooth Scroll Background ✨ --- */
+        /* --- 🧭 Sticky Menu Bar with Gradient Line --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        /* The Gradient Line at the bottom of Nav */
+        nav::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), #00f2fe, var(--primary-blue), transparent);
+            background-size: 200% 100%;
+            animation: gradientMove 3s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 100% 0%; }
+            100% { background-position: -100% 0%; }
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            gap: clamp(15px, 5vw, 40px);
+        }
+
+        .nav-container a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            transition: 0.3s;
+            opacity: 0.8;
+        }
+
+        .nav-container a:hover {
+            color: var(--primary-blue);
+            opacity: 1;
+            text-shadow: 0 0 10px var(--glow-blue);
+        }
+
+        /* --- ✨ Smooth Scroll Background --- */
         .bg-wrapper {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -47,7 +102,7 @@
         .blob-1 { background: var(--primary-blue); top: -20%; left: -10%; }
         .blob-2 { background: #6f42c1; bottom: -20%; right: -10%; }
 
-        /* --- 🚀 Enhanced Hero Section 🚀 --- */
+        /* --- 🚀 Hero Section --- */
         header {
             position: relative;
             height: 100vh;
@@ -72,7 +127,6 @@
             filter: drop-shadow(0 0 15px var(--glow-blue));
         }
 
-        /* Typewriter Subtitle */
         .subtitle {
             font-size: 1.2em;
             color: var(--primary-blue);
@@ -82,7 +136,6 @@
             min-height: 1.6em;
         }
 
-        /* Social Icon Buttons */
         .hero-socials {
             margin-top: 30px;
             display: flex;
@@ -102,7 +155,6 @@
             filter: drop-shadow(0 0 15px var(--primary-blue));
         }
 
-        /* Animated Scroll Indicator */
         .scroll-down {
             position: absolute;
             bottom: 30px;
@@ -143,7 +195,7 @@
         .main-content { position: relative; z-index: 2; padding-top: 40px; }
         .container { max-width: 1100px; margin: auto; padding: 0 25px; }
 
-        h2 { font-size: 2em; margin: 50px 0 30px; color: var(--primary-blue); text-transform: uppercase; border-left: 6px solid var(--primary-blue); padding-left: 15px; }
+        h2 { font-size: 2em; margin: 80px 0 30px; color: var(--primary-blue); text-transform: uppercase; border-left: 6px solid var(--primary-blue); padding-left: 15px; }
 
         .info-card { 
             background: var(--card-gray); 
@@ -183,37 +235,32 @@
 </head>
 <body>
 
+    <nav>
+        <div class="nav-container">
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#portfolio">Project</a>
+            <a href="#contact">Contact Me</a>
+        </div>
+    </nav>
+
     <div class="bg-wrapper">
         <div class="blob blob-1" id="blob1"></div>
         <div class="blob blob-2" id="blob2"></div>
     </div>
 
-   <header>
+    <header id="home">
         <div data-aos="fade-down" data-aos-duration="1500" style="display: flex; flex-direction: column; align-items: center;">
             <h1>NYI NYI</h1>
             <div class="subtitle" id="typewriter"></div>
             
-            <div class="hero-socials" style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 30px;">
-                <a href="https://www.facebook.com/share/1FdL6TRXP3/?mibextid=wwXIfr" target="_blank" title="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.tiktok.com/@nyinyi205763?_r=1&_t=ZS-94LA6pamwLs" target="_blank" title="TikTok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://t.me/Wesley_X" target="_blank" title="Telegram">
-                    <i class="fab fa-telegram-plane"></i>
-                </a>
-                <a href="https://www.behance.net/nyinyi205763" target="_blank" title="Behance">
-                    <i class="fab fa-behance"></i>
-                </a>
+            <div class="hero-socials">
+                <a href="https://www.facebook.com/share/1FdL6TRXP3/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@nyinyi205763?_r=1&_t=ZS-94LA6pamwLs" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://t.me/Wesley_X" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                <a href="https://www.behance.net/nyinyi205763" target="_blank" title="Behance"><i class="fab fa-behance"></i></a>
             </div>
         </div>
-
-        <div class="scroll-down">
-            <div class="mouse"><div class="wheel"></div></div>
-            <span style="font-size: 0.7em; letter-spacing: 2px;">SCROLL</span>
-        </div>
-    </header>
 
         <div class="scroll-down">
             <div class="mouse"><div class="wheel"></div></div>
@@ -244,7 +291,7 @@
             </section>
 
             <section id="skills">
-                <h2 data-aos="fade-up">Core Skills</h2>
+                <h2>Core Skills</h2>
                 <div class="skills-grid">
                     <div class="skill-box" data-aos="fade-up">
                         <i class="fas fa-robot"></i>
@@ -286,7 +333,7 @@
                 </div>
             </section>
 
-            <section class="contact-area" data-aos="fade-up">
+            <section id="contact" class="contact-area" data-aos="fade-up">
                 <h2>Get In Touch</h2>
                 <a href="tel:09764849398" class="contact-btn">Call: 09 764 849 398</a>
                 <a href="mailto:nyinyikyawthucareer@gmail.com" class="contact-btn">Email Me</a>
@@ -318,7 +365,7 @@
 
             if (!isDeleting && charIdx > currentPhrase.length) {
                 isDeleting = true;
-                setTimeout(type, 2000); // Pause at end
+                setTimeout(type, 2000);
             } else if (isDeleting && charIdx === 0) {
                 isDeleting = false;
                 phraseIdx = (phraseIdx + 1) % phrases.length;
@@ -329,7 +376,7 @@
         }
         type();
 
-        // Scroll Background
+        // Scroll Background Effect
         const b1 = document.getElementById('blob1');
         const b2 = document.getElementById('blob2');
         window.addEventListener('scroll', () => {
@@ -338,7 +385,7 @@
             b2.style.transform = `translate(-${s * 0.1}px, -${s * 0.05}px)`;
         }, { passive: true });
 
-        // Lightbox
+        // Lightbox functionality
         document.querySelectorAll('.portfolio-grid img').forEach(img => {
             img.onclick = () => { 
                 document.getElementById('lightbox').style.display = 'flex'; 
