@@ -15,9 +15,10 @@
             --primary-blue: #007bff;
             --glow-blue: rgba(0, 123, 255, 0.5);
             --text-white: #ffffff;
+            --nav-bg: rgba(10, 10, 10, 0.8);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body { 
             background-color: var(--bg-black); 
@@ -27,6 +28,40 @@
             overflow-x: hidden;
         }
 
+        /* --- 🧭 Top Navigation Bar (New) 🧭 --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            height: 70px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo { font-size: 1.5em; font-weight: 900; color: var(--primary-blue); letter-spacing: 2px; }
+
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: #ddd; 
+            font-size: 0.85em; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+        .nav-links a:hover { color: var(--primary-blue); }
+
+        /* Mobile Menu Hide */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* ဖုန်းမှာဆိုရင် ရှင်းနေအောင် ခဏဖျောက်ထားပါတယ် */
+        }
+
         /* --- ✨ Smooth Scroll Background ✨ --- */
         .bg-wrapper {
             position: fixed;
@@ -34,20 +69,13 @@
             z-index: -1;
             pointer-events: none;
         }
-
         .blob {
-            position: absolute;
-            width: 60vw;
-            height: 60vw;
-            filter: blur(100px);
-            opacity: 0.25;
-            border-radius: 50%;
-            will-change: transform;
+            position: absolute; width: 60vw; height: 60vw; filter: blur(100px);
+            opacity: 0.25; border-radius: 50%; will-change: transform;
         }
         .blob-1 { background: var(--primary-blue); top: -20%; left: -10%; }
         .blob-2 { background: #6f42c1; bottom: -20%; right: -10%; }
 
-        /* --- 🚀 Enhanced Hero Section 🚀 --- */
         header {
             position: relative;
             height: 100vh;
@@ -69,112 +97,46 @@
             background: linear-gradient(to bottom, #fff, #888);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px var(--glow-blue));
         }
 
-        /* Typewriter Subtitle */
-        .subtitle {
-            font-size: 1.2em;
-            color: var(--primary-blue);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-weight: bold;
-            min-height: 1.6em;
-        }
+        .subtitle { font-size: 1.2em; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 4px; min-height: 1.6em; font-weight: bold; }
 
-        /* Social Icon Buttons */
         .hero-socials {
-            margin-top: 30px;
+            margin-top: 35px;
             display: flex;
-            gap: 25px;
+            justify-content: center;
+            align-items: center; /* Icon တွေ Alignment ညီအောင် လုပ်ထားသည် */
+            gap: 30px;
         }
+        .hero-socials a { color: white; font-size: 1.8em; transition: 0.4s; }
+        .hero-socials a:hover { color: var(--primary-blue); transform: translateY(-5px); }
 
-        .hero-socials a {
-            color: white;
-            font-size: 1.8em;
-            transition: 0.4s;
-            filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
-        }
+        .scroll-down { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.7; }
+        .mouse { width: 22px; height: 35px; border: 2px solid white; border-radius: 20px; position: relative; }
+        .wheel { width: 3px; height: 7px; background: var(--primary-blue); border-radius: 2px; position: absolute; top: 7px; left: 50%; transform: translateX(-50%); animation: scroll-anim 2s infinite; }
+        @keyframes scroll-anim { 0% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; transform: translate(-50%, 12px); } }
 
-        .hero-socials a:hover {
-            color: var(--primary-blue);
-            transform: translateY(-5px);
-            filter: drop-shadow(0 0 15px var(--primary-blue));
-        }
-
-        /* Animated Scroll Indicator */
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            opacity: 0.7;
-        }
-
-        .mouse {
-            width: 25px;
-            height: 40px;
-            border: 2px solid white;
-            border-radius: 20px;
-            position: relative;
-        }
-
-        .wheel {
-            width: 4px;
-            height: 8px;
-            background: var(--primary-blue);
-            border-radius: 2px;
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: scroll-anim 2s infinite;
-        }
-
-        @keyframes scroll-anim {
-            0% { opacity: 1; transform: translate(-50%, 0); }
-            100% { opacity: 0; transform: translate(-50%, 15px); }
-        }
-
-        .main-content { position: relative; z-index: 2; padding-top: 40px; }
         .container { max-width: 1100px; margin: auto; padding: 0 25px; }
-
-        h2 { font-size: 2em; margin: 50px 0 30px; color: var(--primary-blue); text-transform: uppercase; border-left: 6px solid var(--primary-blue); padding-left: 15px; }
-
-        .info-card { 
-            background: var(--card-gray); 
-            padding: 35px; 
-            border-radius: 20px; 
-            border: 1px solid rgba(255,255,255,0.05); 
-            margin-bottom: 25px; 
-            backdrop-filter: blur(10px);
-        }
-
+        h2 { font-size: 2em; margin: 80px 0 30px; color: var(--primary-blue); text-transform: uppercase; border-left: 6px solid var(--primary-blue); padding-left: 15px; }
+        .info-card { background: var(--card-gray); padding: 35px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 25px; backdrop-filter: blur(10px); }
         .timeline { border-left: 2px solid #333; padding-left: 35px; margin-left: 10px; }
         .timeline-item { position: relative; margin-bottom: 30px; }
-        .timeline-item::before { content: ""; position: absolute; left: -42px; top: 6px; width: 12px; height: 12px; background: var(--primary-blue); border-radius: 50%; box-shadow: 0 0 10px var(--primary-blue); }
+        .timeline-item::before { content: ""; position: absolute; left: -42px; top: 6px; width: 12px; height: 12px; background: var(--primary-blue); border-radius: 50%; }
 
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .skill-box { background: var(--card-gray); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s ease; }
-        .skill-box i { font-size: 2.8em; color: var(--primary-blue); margin-bottom: 20px; }
+        .skill-box { background: var(--card-gray); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .skill-box i { font-size: 2.5em; color: var(--primary-blue); margin-bottom: 15px; }
 
         .portfolio-grid { display: grid; gap: 15px; margin-bottom: 50px; }
         .grid-sq { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
         .grid-flyer { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-        
-        .portfolio-grid img { width: 100%; border-radius: 12px; border: 1px solid #222; object-fit: cover; cursor: pointer; filter: grayscale(100%); transition: 0.5s ease; }
-        .portfolio-grid img:hover { filter: grayscale(0%); transform: scale(1.03); border-color: var(--primary-blue); }
-        .img-sq { aspect-ratio: 1 / 1; }
-        .img-flyer { aspect-ratio: 1 / 1.414; }
+        .portfolio-grid img { width: 100%; border-radius: 12px; object-fit: cover; cursor: pointer; filter: grayscale(100%); transition: 0.5s; }
+        .portfolio-grid img:hover { filter: grayscale(0%); transform: scale(1.03); }
 
-        .contact-area { background: rgba(0, 31, 63, 0.4); padding: 60px 20px; text-align: center; border-radius: 30px; margin: 80px 0; border: 1px solid var(--primary-blue); }
-        .contact-btn { display: inline-block; background: var(--primary-blue); color: #fff; padding: 15px 35px; margin: 10px; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
+        .contact-area { background: rgba(0, 31, 63, 0.4); padding: 60px 20px; text-align: center; border-radius: 20px; margin: 80px 0; border: 1px solid var(--primary-blue); }
+        .contact-btn { display: inline-block; background: var(--primary-blue); color: #fff; padding: 15px 35px; margin: 10px; text-decoration: none; border-radius: 50px; font-weight: bold; }
 
-        .lightbox-modal { display: none; position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+        .lightbox-modal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
         .lightbox-modal img { max-width: 90%; max-height: 80%; border-radius: 10px; }
         .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
 
@@ -183,41 +145,37 @@
 </head>
 <body>
 
+    <nav>
+        <div class="logo">NYI NYI.</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skill</a></li>
+            <li><a href="#portfolio">Project</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
     <div class="bg-wrapper">
         <div class="blob blob-1" id="blob1"></div>
         <div class="blob blob-2" id="blob2"></div>
     </div>
 
-<header>
-        <div data-aos="fade-down" data-aos-duration="1500" style="display: flex; flex-direction: column; align-items: center;">
+    <header id="home">
+        <div data-aos="fade-down" data-aos-duration="1500">
             <h1>NYI NYI</h1>
             <div class="subtitle" id="typewriter"></div>
             
-            <div class="hero-socials" style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 30px;">
-                <a href="https://www.facebook.com/share/1FdL6TRXP3/?mibextid=wwXIfr" target="_blank" title="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.tiktok.com/@nyinyi205763?_r=1&_t=ZS-94LA6pamwLs" target="_blank" title="TikTok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://t.me/Wesley_X" target="_blank" title="Telegram">
-                    <i class="fab fa-telegram-plane"></i>
-                </a>
-                <a href="https://www.behance.net/nyinyi205763" target="_blank" title="Behance">
-                    <i class="fab fa-behance"></i>
-                </a>
+            <div class="hero-socials">
+                <a href="https://www.facebook.com/share/1FdL6TRXP3/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@nyinyi205763?_r=1&_t=ZS-94LA6pamwLs" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://t.me/Wesley_X" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+                <a href="https://www.behance.net/nyinyi205763" target="_blank"><i class="fab fa-behance"></i></a>
             </div>
         </div>
-
         <div class="scroll-down">
             <div class="mouse"><div class="wheel"></div></div>
-            <span style="font-size: 0.7em; letter-spacing: 2px;">SCROLL</span>
-        </div>
-    </header>
-
-        <div class="scroll-down">
-            <div class="mouse"><div class="wheel"></div></div>
-            <span style="font-size: 0.7em; letter-spacing: 2px;">SCROLL</span>
         </div>
     </header>
 
@@ -227,8 +185,7 @@
             <section id="about" data-aos="fade-up">
                 <h2>About Me</h2>
                 <div class="info-card">
-                    <p>I am <strong>Nyi Nyi</strong>, a multi-talented professional currently working as a <strong>Junior Graphic Designer and Marketing Assistant at 360 Delight Lounge</strong>.</p>
-                    <p>I specialize in <strong>OBS Live Streaming</strong>, AI Generation (Gemini AI), and bridging the gap between business operations and creative marketing.</p>
+                    <p>I am <strong>Nyi Nyi</strong>, a multi-talented professional currently working as a <strong>Junior Graphic Designer and Marketing Assistant at 360 Delight Lounge</strong>. I specialize in <strong>OBS Live Streaming</strong>, AI Generation, and bridging creative marketing with business operations.</p>
                 </div>
             </section>
 
@@ -244,33 +201,17 @@
             </section>
 
             <section id="skills">
-                <h2 data-aos="fade-up">Core Skills</h2>
+                <h2>Core Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-box" data-aos="fade-up">
-                        <i class="fas fa-robot"></i>
-                        <h3>Multimedia & AI</h3>
-                        <p>Specialized in OBS Studio for Live Streaming, Video Editing, and AI content generation.</p>
-                    </div>
-                    <div class="skill-box" data-aos="fade-up" data-aos-delay="100">
-                        <i class="fas fa-bullseye"></i>
-                        <h3>Marketing</h3>
-                        <p>Strategy development, Digital Advertising, Branding, and Creative Campaign planning.</p>
-                    </div>
-                    <div class="skill-box" data-aos="fade-up" data-aos-delay="200">
-                        <i class="fas fa-palette"></i>
-                        <h3>Graphic Design</h3>
-                        <p>Creating engaging social media visuals, marketing flyers, and brand identity materials.</p>
-                    </div>
-                    <div class="skill-box" data-aos="fade-up" data-aos-delay="300">
-                        <i class="fas fa-tasks"></i>
-                        <h3>Operations</h3>
-                        <p>Expertise in Office Management, F&B Service, and Business Operation processes.</p>
-                    </div>
+                    <div class="skill-box" data-aos="fade-up"><i class="fas fa-robot"></i><h3>Multimedia & AI</h3><p>OBS Streaming, Video Editing, AI Content Generation.</p></div>
+                    <div class="skill-box" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-bullseye"></i><h3>Marketing</h3><p>Strategy, Digital Ads, Branding, Creative Campaigns.</p></div>
+                    <div class="skill-box" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-palette"></i><h3>Graphic Design</h3><p>Social Media Visuals, Flyers, Brand Identity.</p></div>
+                    <div class="skill-box" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-tasks"></i><h3>Operations</h3><p>Office Management, F&B Service, Business Processes.</p></div>
                 </div>
             </section>
 
             <section id="portfolio">
-                <h2 data-aos="fade-up">Creative Portfolio</h2>
+                <h2>Creative Portfolio</h2>
                 <div class="portfolio-grid grid-sq">
                     <img src="Design 1.jpg" alt="P1" class="img-sq" loading="lazy">
                     <img src="Design 2.png" alt="P2" class="img-sq" loading="lazy">
@@ -286,9 +227,9 @@
                 </div>
             </section>
 
-            <section class="contact-area" data-aos="fade-up">
+            <section id="contact" class="contact-area" data-aos="fade-up">
                 <h2>Get In Touch</h2>
-                <a href="tel:09764849398" class="contact-btn">Call: 09 764 849 398</a>
+                <a href="tel:09764849398" class="contact-btn">Call Now</a>
                 <a href="mailto:nyinyikyawthucareer@gmail.com" class="contact-btn">Email Me</a>
             </section>
         </div>
@@ -301,37 +242,21 @@
     <script>
         AOS.init({ duration: 800, once: true });
         
-        // --- Typewriter Effect ---
+        // Typewriter
         const textElement = document.getElementById('typewriter');
         const phrases = ["Creative Marketer", "Graphic Designer", "Operations Specialist"];
-        let phraseIdx = 0;
-        let charIdx = 0;
-        let isDeleting = false;
-
+        let pIdx = 0, cIdx = 0, isDel = false;
         function type() {
-            const currentPhrase = phrases[phraseIdx];
-            if (isDeleting) {
-                textElement.textContent = currentPhrase.substring(0, charIdx--);
-            } else {
-                textElement.textContent = currentPhrase.substring(0, charIdx++);
-            }
-
-            if (!isDeleting && charIdx > currentPhrase.length) {
-                isDeleting = true;
-                setTimeout(type, 2000); // Pause at end
-            } else if (isDeleting && charIdx === 0) {
-                isDeleting = false;
-                phraseIdx = (phraseIdx + 1) % phrases.length;
-                setTimeout(type, 500);
-            } else {
-                setTimeout(type, isDeleting ? 50 : 100);
-            }
+            const curr = phrases[pIdx];
+            textElement.textContent = isDel ? curr.substring(0, cIdx--) : curr.substring(0, cIdx++);
+            if (!isDel && cIdx > curr.length) { isDel = true; setTimeout(type, 2000); }
+            else if (isDel && cIdx === 0) { isDel = false; pIdx = (pIdx + 1) % phrases.length; setTimeout(type, 500); }
+            else { setTimeout(type, isDel ? 50 : 100); }
         }
         type();
 
-        // Scroll Background
-        const b1 = document.getElementById('blob1');
-        const b2 = document.getElementById('blob2');
+        // Scroll Blobs
+        const b1 = document.getElementById('blob1'), b2 = document.getElementById('blob2');
         window.addEventListener('scroll', () => {
             const s = window.pageYOffset;
             b1.style.transform = `translate(${s * 0.1}px, ${s * 0.05}px)`;
@@ -340,13 +265,9 @@
 
         // Lightbox
         document.querySelectorAll('.portfolio-grid img').forEach(img => {
-            img.onclick = () => { 
-                document.getElementById('lightbox').style.display = 'flex'; 
-                document.getElementById('lightbox-img').src = img.src; 
-            };
+            img.onclick = () => { document.getElementById('lightbox').style.display = 'flex'; document.getElementById('lightbox-img').src = img.src; };
         });
         document.querySelector('.close-btn').onclick = () => { document.getElementById('lightbox').style.display = 'none'; };
     </script>
 </body>
 </html>
-
