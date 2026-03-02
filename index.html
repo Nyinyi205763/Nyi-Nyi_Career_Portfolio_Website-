@@ -10,15 +10,16 @@
     
     <style>
         :root {
-            --bg-black: #050505;
-            --card-gray: rgba(18, 18, 18, 0.95);
+            --bg-black: #000000;
+            --card-gray: rgba(10, 10, 10, 0.9);
             --primary-blue: #007bff;
-            --glow-blue: rgba(0, 123, 255, 0.5);
+            --neon-blue: #00f2fe;
+            --glow-blue: rgba(0, 242, 254, 0.3);
             --text-white: #ffffff;
-            --nav-bg: rgba(5, 5, 5, 0.8);
+            --text-dim: #b0b0b0;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
             background-color: var(--bg-black); 
@@ -26,63 +27,10 @@
             font-family: 'Segoe UI', Roboto, sans-serif; 
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* --- 🧭 Sticky Menu Bar with Gradient Line --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 15px 0;
-        }
-
-        /* The Gradient Line at the bottom of Nav */
-        nav::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary-blue), #00f2fe, var(--primary-blue), transparent);
-            background-size: 200% 100%;
-            animation: gradientMove 3s linear infinite;
-        }
-
-        @keyframes gradientMove {
-            0% { background-position: 100% 0%; }
-            100% { background-position: -100% 0%; }
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: auto;
-            display: flex;
-            justify-content: center;
-            gap: clamp(15px, 5vw, 40px);
-        }
-
-        .nav-container a {
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-            transition: 0.3s;
-            opacity: 0.8;
-        }
-
-        .nav-container a:hover {
-            color: var(--primary-blue);
-            opacity: 1;
-            text-shadow: 0 0 10px var(--glow-blue);
-        }
-
-        /* --- ✨ Smooth Scroll Background --- */
+        /* --- ✨ Smooth Scroll-Reactive Background (New Aesthetic) ✨ --- */
         .bg-wrapper {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -92,17 +40,20 @@
 
         .blob {
             position: absolute;
-            width: 60vw;
-            height: 60vw;
+            width: 70vw;
+            height: 70vw;
             filter: blur(100px);
-            opacity: 0.25;
+            opacity: 0.3;
             border-radius: 50%;
             will-change: transform;
         }
+
+        /* Abstract Glowing Blobs (Blue & Purple) */
         .blob-1 { background: var(--primary-blue); top: -20%; left: -10%; }
         .blob-2 { background: #6f42c1; bottom: -20%; right: -10%; }
+        .blob-3 { background: var(--neon-blue); top: 50%; left: 40%; width: 40vw; height: 40vw; opacity: 0.2; }
 
-        /* --- 🚀 Hero Section --- */
+        /* --- Header (Improved Content Clarity) --- */
         header {
             position: relative;
             height: 100vh;
@@ -111,178 +62,98 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url('profile.JPG') center/cover no-repeat;
-            padding: 0 20px;
+            z-index: 1;
         }
 
+        /* NYI NYI with Glow Effect */
         header h1 { 
             font-size: clamp(3em, 10vw, 6em); 
             letter-spacing: 12px; 
             text-transform: uppercase; 
+            margin-bottom: 10px;
             font-weight: 900;
-            margin-bottom: 5px;
-            background: linear-gradient(to bottom, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px var(--glow-blue));
+            color: #fff;
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 20px var(--neon-blue),
+                0 0 30px var(--neon-blue),
+                0 0 40px var(--neon-blue);
         }
 
-        .subtitle {
-            font-size: 1.2em;
-            color: var(--primary-blue);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-weight: bold;
-            min-height: 1.6em;
-        }
-
-        .hero-socials {
-            margin-top: 30px;
-            display: flex;
-            gap: 25px;
-        }
-
-        .hero-socials a {
-            color: white;
-            font-size: 1.8em;
-            transition: 0.4s;
-            filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
-        }
-
-        .hero-socials a:hover {
-            color: var(--primary-blue);
-            transform: translateY(-5px);
-            filter: drop-shadow(0 0 15px var(--primary-blue));
-        }
-
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            opacity: 0.7;
-        }
-
-        .mouse {
-            width: 25px;
-            height: 40px;
-            border: 2px solid white;
-            border-radius: 20px;
-            position: relative;
-        }
-
-        .wheel {
-            width: 4px;
-            height: 8px;
-            background: var(--primary-blue);
-            border-radius: 2px;
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: scroll-anim 2s infinite;
-        }
-
-        @keyframes scroll-anim {
-            0% { opacity: 1; transform: translate(-50%, 0); }
-            100% { opacity: 0; transform: translate(-50%, 15px); }
-        }
+        header p { font-size: 1.2em; color: var(--neon-blue); text-transform: uppercase; letter-spacing: 4px; font-weight: bold; }
 
         .main-content { position: relative; z-index: 2; padding-top: 40px; }
         .container { max-width: 1100px; margin: auto; padding: 0 25px; }
 
-        h2 { font-size: 2em; margin: 80px 0 30px; color: var(--primary-blue); text-transform: uppercase; border-left: 6px solid var(--primary-blue); padding-left: 15px; }
+        h2 { font-size: 2.2em; margin: 60px 0 35px; color: var(--neon-blue); text-transform: uppercase; border-left: 8px solid var(--primary-blue); padding-left: 18px; }
 
         .info-card { 
             background: var(--card-gray); 
-            padding: 35px; 
+            padding: 40px; 
             border-radius: 20px; 
             border: 1px solid rgba(255,255,255,0.05); 
             margin-bottom: 25px; 
             backdrop-filter: blur(10px);
         }
 
+        /* Timeline (Education Data) */
         .timeline { border-left: 2px solid #333; padding-left: 35px; margin-left: 10px; }
-        .timeline-item { position: relative; margin-bottom: 30px; }
-        .timeline-item::before { content: ""; position: absolute; left: -42px; top: 6px; width: 12px; height: 12px; background: var(--primary-blue); border-radius: 50%; box-shadow: 0 0 10px var(--primary-blue); }
+        .timeline-item { position: relative; margin-bottom: 35px; }
+        .timeline-item::before { content: ""; position: absolute; left: -42px; top: 6px; width: 14px; height: 14px; background: var(--primary-blue); border-radius: 50%; box-shadow: 0 0 12px var(--neon-blue); }
 
+        /* Skills */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .skill-box { background: var(--card-gray); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s ease; }
+        .skill-box { background: var(--card-gray); padding: 30px; border-radius: 18px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s ease; }
+        .skill-box:hover { transform: translateY(-10px); border-color: var(--neon-blue); box-shadow: 0 0 25px rgba(0, 242, 254, 0.3); }
         .skill-box i { font-size: 2.8em; color: var(--primary-blue); margin-bottom: 20px; }
 
-        .portfolio-grid { display: grid; gap: 15px; margin-bottom: 50px; }
+        /* Portfolio */
+        .portfolio-grid { display: grid; gap: 18px; margin-bottom: 60px; }
         .grid-sq { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
         .grid-flyer { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
         
-        .portfolio-grid img { width: 100%; border-radius: 12px; border: 1px solid #222; object-fit: cover; cursor: pointer; filter: grayscale(100%); transition: 0.5s ease; }
-        .portfolio-grid img:hover { filter: grayscale(0%); transform: scale(1.03); border-color: var(--primary-blue); }
+        .portfolio-grid img { width: 100%; border-radius: 15px; border: 1px solid #222; object-fit: cover; cursor: pointer; filter: grayscale(100%); transition: 0.5s Ease; }
+        .portfolio-grid img:hover { filter: grayscale(0%); transform: scale(1.04); border-color: var(--neon-blue); }
         .img-sq { aspect-ratio: 1 / 1; }
         .img-flyer { aspect-ratio: 1 / 1.414; }
 
-        .contact-area { background: rgba(0, 31, 63, 0.4); padding: 60px 20px; text-align: center; border-radius: 30px; margin: 80px 0; border: 1px solid var(--primary-blue); }
-        .contact-btn { display: inline-block; background: var(--primary-blue); color: #fff; padding: 15px 35px; margin: 10px; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
+        .contact-area { background: rgba(0, 31, 63, 0.4); padding: 70px 20px; text-align: center; border-radius: 25px; margin: 90px 0; border: 1px solid var(--primary-blue); }
+        .contact-btn { display: inline-block; background: var(--primary-blue); color: #fff; padding: 18px 38px; margin: 12px; text-decoration: none; border-radius: 55px; font-weight: bold; transition: 0.3s; }
+        .contact-btn:hover { background: #fff; color: var(--primary-blue); transform: scale(1.05); }
 
-        .lightbox-modal { display: none; position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
-        .lightbox-modal img { max-width: 90%; max-height: 80%; border-radius: 10px; }
-        .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
+        .lightbox-modal { display: none; position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; }
+        .lightbox-modal img { max-width: 90%; max-height: 80%; border-radius: 10px; animation: zoomIn 0.3s ease; }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 45px; cursor: pointer; }
 
-        footer { text-align: center; padding: 40px 0; color: #555; }
+        footer { text-align: center; padding: 45px 0; color: #555; font-size: 0.9em; }
+        @keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-12px);} 60% {transform: translateY(-6px);} }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <a href="#about">About Me</a>
-            <a href="#skills">Skills</a>
-            <a href="#portfolio">Project</a>
-            <a href="#contact">Contact Me</a>
-        </div>
-    </nav>
-
     <div class="bg-wrapper">
         <div class="blob blob-1" id="blob1"></div>
         <div class="blob blob-2" id="blob2"></div>
+        <div class="blob blob-3" id="blob3"></div>
     </div>
 
-    <header id="home">
-        <div data-aos="fade-down" data-aos-duration="1500" style="display: flex; flex-direction: column; align-items: center;">
+    <header>
+        <div class="header-content" data-aos="zoom-out" data-aos-duration="1200">
             <h1>NYI NYI</h1>
-            <div class="subtitle" id="typewriter"></div>
-            
-            <div class="hero-socials">
-                <a href="https://www.facebook.com/share/1FdL6TRXP3/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.tiktok.com/@nyinyi205763?_r=1&_t=ZS-94LA6pamwLs" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="https://t.me/Wesley_X" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                <a href="https://www.behance.net/nyinyi205763" target="_blank" title="Behance"><i class="fab fa-behance"></i></a>
-            </div>
+            <p>Creative Marketer | Graphic Designer | Operations Specialist</p>
         </div>
-
-        <div class="scroll-down">
-            <div class="mouse"><div class="wheel"></div></div>
-            <span style="font-size: 0.7em; letter-spacing: 2px;">SCROLL</span>
-        </div>
+        <div style="font-size: 2em; color: white; position: absolute; bottom: 35px; animation: bounce 2s infinite;"><i class="fas fa-chevron-down"></i></div>
     </header>
 
     <div class="main-content">
         <div class="container">
             
-           <section id="about" data-aos="fade-right">
+            <section id="about" data-aos="fade-up">
                 <h2>About Me</h2>
-                <div class="info-card" style="line-height: 1.8; text-align: justify;">
-                    <p style="margin-bottom: 15px;">
-                        I am <strong style="color: var(--neon-blue);">Nyi Nyi</strong>, a multi-disciplinary creative professional and strategic thinker currently serving as a <strong>Junior Graphic Designer and Marketing Assistant at 360 Delight Lounge</strong>.
-                    </p>
-                    <p style="margin-bottom: 15px;">
-                        With a strong foundation in <strong style="color: var(--neon-blue);">Marketing Management</strong> and a passion for visual storytelling, I specialize in crafting high-impact designs and managing complex <strong>OBS Live Streaming</strong> setups. My approach combines creative flair with data-driven marketing insights, ensuring every project not only looks stunning but also drives business growth.
-                    </p>
-                    <p>
-                        I am deeply interested in the synergy between <strong>AI technology</strong> and modern marketing, constantly evolving my skillset to stay ahead in the digital landscape. Whether it's building a brand identity or optimizing business operations, I am dedicated to delivering excellence and innovative solutions.
-                    </p>
+                <div class="info-card">
+                    <p>I am <strong>Nyi Nyi</strong>, a multi-talented professional currently working as a <strong>Junior Graphic Designer and Marketing Assistant at 360 Delight Lounge</strong>.</p>
+                    <p>I bridge the gap between business operations and creative marketing to drive results. Proficient in <strong>OBS Studio</strong> and <strong>Gemini AI</strong> tools.</p>
                 </div>
             </section>
 
@@ -298,49 +169,35 @@
             </section>
 
             <section id="skills">
-                <h2>Core Skills</h2>
+                <h2 data-aos="fade-up">Core Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-box" data-aos="fade-up">
-                        <i class="fas fa-robot"></i>
-                        <h3>Multimedia & AI</h3>
-                        <p>Specialized in OBS Studio for Live Streaming, Video Editing, and AI content generation.</p>
-                    </div>
-                    <div class="skill-box" data-aos="fade-up" data-aos-delay="100">
-                        <i class="fas fa-bullseye"></i>
-                        <h3>Marketing</h3>
-                        <p>Strategy development, Digital Advertising, Branding, and Creative Campaign planning.</p>
-                    </div>
-                    <div class="skill-box" data-aos="fade-up" data-aos-delay="200">
-                        <i class="fas fa-palette"></i>
-                        <h3>Graphic Design</h3>
-                        <p>Creating engaging social media visuals, marketing flyers, and brand identity materials.</p>
-                    </div>
-                    <div class="skill-box" data-aos="fade-up" data-aos-delay="300">
-                        <i class="fas fa-tasks"></i>
-                        <h3>Operations</h3>
-                        <p>Expertise in Office Management, F&B Service, and Business Operation processes.</p>
-                    </div>
+                    <div class="skill-box" data-aos="flip-left"><i class="fas fa-robot"></i><h3>Multimedia & AI</h3><p>Live Streaming, Video Editing</p></div>
+                    <div class="skill-box" data-aos="flip-left" data-aos-delay="100"><i class="fas fa-bullseye"></i><h3>Marketing</h3><p>Strategy, Digital Ads</p></div>
+                    <div class="skill-box" data-aos="flip-left" data-aos-delay="200"><i class="fas fa-palette"></i><h3>Design</h3><p>Social Media, Flyers</p></div>
+                    <div class="skill-box" data-aos="flip-left" data-aos-delay="300"><i class="fas fa-cocktail"></i><h3>Operations</h3><p>F&B Management</p></div>
                 </div>
             </section>
 
             <section id="portfolio">
                 <h2 data-aos="fade-up">Creative Portfolio</h2>
+                <h3>Social Media Posts</h3>
                 <div class="portfolio-grid grid-sq">
-                    <img src="Design 1.jpg" alt="P1" class="img-sq" loading="lazy">
-                    <img src="Design 2.png" alt="P2" class="img-sq" loading="lazy">
-                    <img src="Design 3.jpg" alt="P3" class="img-sq" loading="lazy">
-                    <img src="Design 4.jpg" alt="P4" class="img-sq" loading="lazy">
-                    <img src="Design 5.png" alt="P5" class="img-sq" loading="lazy">
-                    <img src="design 6.png" alt="P6" class="img-sq" loading="lazy">
+                    <img src="Design 1.jpg" alt="Post 1" class="img-sq" loading="lazy">
+                    <img src="Design 2.png" alt="Post 2" class="img-sq" loading="lazy">
+                    <img src="Design 3.jpg" alt="Post 3" class="img-sq" loading="lazy">
+                    <img src="Design 4.jpg" alt="Post 4" class="img-sq" loading="lazy">
+                    <img src="Design 5.png" alt="Post 5" class="img-sq" loading="lazy">
+                    <img src="design 6.png" alt="Post 6" class="img-sq" loading="lazy">
                 </div>
+                <h3>Marketing Flyers</h3>
                 <div class="portfolio-grid grid-flyer">
-                    <img src="flyer1.jpg" alt="F1" class="img-flyer" loading="lazy">
-                    <img src="flyer2.png" alt="F2" class="img-flyer" loading="lazy">
-                    <img src="flyer3.jpg" alt="F3" class="img-flyer" loading="lazy">
+                    <img src="flyer1.jpg" alt="Flyer 1" class="img-flyer" loading="lazy">
+                    <img src="flyer2.png" alt="Flyer 2" class="img-flyer" loading="lazy">
+                    <img src="flyer3.jpg" alt="Flyer 3" class="img-flyer" loading="lazy">
                 </div>
             </section>
 
-            <section id="contact" class="contact-area" data-aos="fade-up">
+            <section class="contact-area" data-aos="fade-up">
                 <h2>Get In Touch</h2>
                 <a href="tel:09764849398" class="contact-btn">Call: 09 764 849 398</a>
                 <a href="mailto:nyinyikyawthucareer@gmail.com" class="contact-btn">Email Me</a>
@@ -353,46 +210,21 @@
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ duration: 1000, once: true });
         
-        // --- Typewriter Effect ---
-        const textElement = document.getElementById('typewriter');
-        const phrases = ["Creative Marketer", "Graphic Designer", "Operations Specialist"];
-        let phraseIdx = 0;
-        let charIdx = 0;
-        let isDeleting = false;
-
-        function type() {
-            const currentPhrase = phrases[phraseIdx];
-            if (isDeleting) {
-                textElement.textContent = currentPhrase.substring(0, charIdx--);
-            } else {
-                textElement.textContent = currentPhrase.substring(0, charIdx++);
-            }
-
-            if (!isDeleting && charIdx > currentPhrase.length) {
-                isDeleting = true;
-                setTimeout(type, 2000);
-            } else if (isDeleting && charIdx === 0) {
-                isDeleting = false;
-                phraseIdx = (phraseIdx + 1) % phrases.length;
-                setTimeout(type, 500);
-            } else {
-                setTimeout(type, isDeleting ? 50 : 100);
-            }
-        }
-        type();
-
-        // Scroll Background Effect
         const b1 = document.getElementById('blob1');
         const b2 = document.getElementById('blob2');
+        const b3 = document.getElementById('blob3');
+
+        // Scroll-driven animation (Zero CPU load when not scrolling)
         window.addEventListener('scroll', () => {
             const s = window.pageYOffset;
             b1.style.transform = `translate(${s * 0.1}px, ${s * 0.05}px)`;
             b2.style.transform = `translate(-${s * 0.1}px, -${s * 0.05}px)`;
+            b3.style.transform = `translate(${s * -0.03}px, ${s * 0.12}px) rotate(${s * 0.1}deg)`;
         }, { passive: true });
 
-        // Lightbox functionality
+        // Lightbox Logic
         document.querySelectorAll('.portfolio-grid img').forEach(img => {
             img.onclick = () => { 
                 document.getElementById('lightbox').style.display = 'flex'; 
@@ -400,7 +232,7 @@
             };
         });
         document.querySelector('.close-btn').onclick = () => { document.getElementById('lightbox').style.display = 'none'; };
+        window.onclick = (e) => { if(e.target.className === 'lightbox-modal') document.getElementById('lightbox').style.display = 'none'; };
     </script>
 </body>
 </html>
-
