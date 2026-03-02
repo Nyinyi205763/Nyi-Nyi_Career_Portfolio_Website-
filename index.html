@@ -29,17 +29,17 @@
             position: relative;
         }
 
-        /* --- ✨ Ultra-Dynamic Background (Always Roaming) ✨ --- */
+        /* --- ✨ Ultra-Dynamic Background ✨ --- */
         #bg-canvas {
             position: fixed;
             top: -20%; left: -20%; width: 140%; height: 140%;
             z-index: -1;
             background: 
-                radial-gradient(circle at var(--x1, 25%) var(--y1, 25%), rgba(0, 123, 255, 0.35) 0%, transparent 45%),
-                radial-gradient(circle at var(--x2, 75%) var(--y2, 75%), rgba(112, 0, 255, 0.3) 0%, transparent 45%),
-                radial-gradient(circle at var(--x3, 50%) var(--y3, 50%), rgba(0, 242, 254, 0.25) 0%, transparent 50%);
+                radial-gradient(circle at var(--x1, 20%) var(--y1, 20%), rgba(0, 123, 255, 0.35) 0%, transparent 40%),
+                radial-gradient(circle at var(--x2, 80%) var(--y2, 80%), rgba(112, 0, 255, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at var(--x3, 50%) var(--y3, 50%), rgba(0, 242, 254, 0.25) 0%, transparent 45%);
             filter: blur(70px);
-            transition: all 0.5s ease-out;
+            transition: all 0.4s ease-out;
         }
 
         header {
@@ -58,104 +58,49 @@
             z-index: 1;
         }
 
-        header h1 { 
-            font-size: clamp(3em, 10vw, 6em); 
-            letter-spacing: 10px; 
-            text-transform: uppercase; 
-            text-shadow: 0 0 30px var(--primary-blue);
-            margin-bottom: 15px;
-        }
+        header h1 { font-size: clamp(3em, 10vw, 6em); letter-spacing: 10px; text-transform: uppercase; text-shadow: 0 0 30px var(--primary-blue); margin-bottom: 15px; }
+        header p { font-size: 1.2em; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 3px; font-weight: bold; }
 
-        header p { 
-            font-size: 1.2em; 
-            color: var(--primary-blue); 
-            text-transform: uppercase; 
-            letter-spacing: 3px; 
-            font-weight: bold;
-        }
-
-        .main-content {
-            position: relative;
-            z-index: 2;
-            padding-top: 50px;
-            background: transparent;
-        }
-
+        .main-content { position: relative; z-index: 2; padding-top: 50px; background: transparent; }
         .container { max-width: 1100px; margin: auto; padding: 0 25px; }
 
-        h2 { 
-            font-size: 2.2em; 
-            margin: 60px 0 40px; 
-            color: var(--primary-blue); 
-            text-transform: uppercase; 
-            border-left: 8px solid var(--primary-blue); 
-            padding-left: 20px; 
-        }
+        h2 { font-size: 2.2em; margin: 60px 0 40px; color: var(--primary-blue); text-transform: uppercase; border-left: 8px solid var(--primary-blue); padding-left: 20px; }
 
-        .info-card { 
-            background: var(--card-gray); 
-            padding: 40px; 
-            border-radius: 20px; 
-            border: 1px solid rgba(255,255,255,0.05); 
-            margin-bottom: 30px; 
-            backdrop-filter: blur(10px);
-        }
+        .info-card { background: var(--card-gray); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 30px; backdrop-filter: blur(10px); }
 
         /* Timeline */
         .timeline { border-left: 2px solid #333; padding-left: 40px; margin-left: 15px; }
         .timeline-item { position: relative; margin-bottom: 40px; }
-        .timeline-item::before { 
-            content: ""; position: absolute; left: -49px; top: 5px; 
-            width: 16px; height: 16px; background: var(--primary-blue); 
-            border-radius: 50%; box-shadow: 0 0 15px var(--primary-blue); 
-        }
+        .timeline-item::before { content: ""; position: absolute; left: -49px; top: 5px; width: 16px; height: 16px; background: var(--primary-blue); border-radius: 50%; box-shadow: 0 0 15px var(--primary-blue); }
 
         /* Skills */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .skill-box { 
-            background: var(--card-gray); 
-            padding: 35px; 
-            border-radius: 20px; 
-            text-align: center; 
-            border: 1px solid rgba(255,255,255,0.05); 
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-        }
+        .skill-box { background: var(--card-gray); padding: 35px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; backdrop-filter: blur(10px); }
         .skill-box:hover { transform: translateY(-12px); border-color: var(--primary-blue); box-shadow: 0 0 30px var(--glow-blue); }
         .skill-box i { font-size: 3em; color: var(--primary-blue); margin-bottom: 20px; animation: float 3s infinite ease-in-out; }
 
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* Portfolio Grids */
+        /* Portfolio */
         .portfolio-grid { display: grid; gap: 20px; margin-bottom: 60px; }
         .grid-sq { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
         .grid-flyer { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
         
-        .portfolio-grid img { 
-            width: 100%; border-radius: 15px; border: 1px solid #333; object-fit: cover; cursor: pointer;
-            filter: grayscale(100%);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+        .portfolio-grid img { width: 100%; border-radius: 15px; border: 1px solid #333; object-fit: cover; cursor: pointer; filter: grayscale(100%); transition: 0.6s; }
         .portfolio-grid img:hover { filter: grayscale(0%); transform: scale(1.05); border-color: var(--primary-blue); }
-
         .img-sq { aspect-ratio: 1 / 1; }
         .img-flyer { aspect-ratio: 1 / 1.414; }
 
-        /* Lightbox */
-        .lightbox-modal {
-            display: none; position: fixed; z-index: 999;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.95); justify-content: center; align-items: center;
-        }
+        .contact-area { background: rgba(0, 31, 63, 0.3); padding: 80px 20px; text-align: center; border-radius: 30px; margin: 100px 0; border: 1px solid var(--primary-blue); backdrop-filter: blur(5px); }
+        .contact-btn { display: inline-block; background: var(--primary-blue); color: #fff; padding: 18px 40px; margin: 15px; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
+
+        .lightbox-modal { display: none; position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); justify-content: center; align-items: center; }
         .lightbox-modal img { max-width: 90%; max-height: 85%; border-radius: 10px; animation: zoomIn 0.3s ease; }
         .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
 
-        .contact-area { background: rgba(0, 31, 63, 0.3); padding: 80px 20px; text-align: center; border-radius: 30px; margin: 100px 0; border: 1px solid var(--primary-blue); backdrop-filter: blur(5px); }
-        .contact-btn { display: inline-block; background: var(--primary-blue); color: #fff; padding: 18px 40px; margin: 15px; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
-        
         footer { text-align: center; padding: 50px 0; color: #444; }
-        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
 </head>
 <body>
@@ -176,8 +121,7 @@
             <section id="about" data-aos="fade-right">
                 <h2>About Me</h2>
                 <div class="info-card">
-                    <p>I am <strong>Nyi Nyi</strong>, a multi-talented professional currently working as a Junior Graphic Designer and Marketing Assistant at 360 Delight Lounge.</p>
-                    <p>I bridge the gap between business operations and creative marketing to drive results. Proficient in <strong>OBS Studio</strong> and <strong>Gemini AI</strong> tools.</p>
+                    <p>I am <strong>Nyi Ny</strong>i, a multi-talented professional currently working as a Junior Graphic Designer and Marketing Assistant at 360 Delight Lounge.</p>
                 </div>
             </section>
 
@@ -195,26 +139,9 @@
             <section id="skills">
                 <h2 data-aos="fade-up">Core Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-box" data-aos="flip-left" data-aos-delay="100">
-                        <i class="fas fa-robot"></i>
-                        <h3>Multimedia & AI</h3>
-                        <p>Live Streaming (OBS Studio), Video Editing, and AI Generation.</p>
-                    </div>
-                    <div class="skill-box" data-aos="flip-left" data-aos-delay="200">
-                        <i class="fas fa-bullseye"></i>
-                        <h3>Marketing</h3>
-                        <p>Strategy, Digital Ads, Branding</p>
-                    </div>
-                    <div class="skill-box" data-aos="flip-left" data-aos-delay="300">
-                        <i class="fas fa-palette"></i>
-                        <h3>Design</h3>
-                        <p>Social Media, Flyers, Visuals</p>
-                    </div>
-                    <div class="skill-box" data-aos="flip-left" data-aos-delay="400">
-                        <i class="fas fa-cocktail"></i>
-                        <h3>Operations</h3>
-                        <p>Pre-opening, F&B Management</p>
-                    </div>
+                    <div class="skill-box" data-aos="flip-left"><i class="fas fa-robot"></i><h3>Multimedia & AI</h3></div>
+                    <div class="skill-box" data-aos="flip-left" data-aos-delay="200"><i class="fas fa-bullseye"></i><h3>Marketing</h3></div>
+                    <div class="skill-box" data-aos="flip-left" data-aos-delay="400"><i class="fas fa-palette"></i><h3>Design</h3></div>
                 </div>
             </section>
 
@@ -222,76 +149,52 @@
                 <h2 data-aos="fade-up">Creative Portfolio</h2>
                 <h3>Social Media Posts</h3>
                 <div class="portfolio-grid grid-sq">
-                    <img src="Design 1.jpg" alt="Post 1" class="img-sq" data-aos="fade-right">
-                    <img src="Design 2.png" alt="Post 2" class="img-sq" data-aos="fade-up">
-                    <img src="Design 3.jpg" alt="Post 3" class="img-sq" data-aos="fade-left">
-                    <img src="Design 4.jpg" alt="Post 4" class="img-sq" data-aos="fade-right">
-                    <img src="Design 5.png" alt="Post 5" class="img-sq" data-aos="fade-up">
-                    <img src="design 6.png" alt="Post 6" class="img-sq" data-aos="fade-left">
+                    <img src="Design 1.jpg" alt="P1" class="img-sq">
+                    <img src="Design 2.png" alt="P2" class="img-sq">
+                    <img src="Design 3.jpg" alt="P3" class="img-sq">
+                    <img src="Design 4.jpg" alt="P4" class="img-sq">
+                    <img src="Design 5.png" alt="P5" class="img-sq">
+                    <img src="design 6.png" alt="P6" class="img-sq">
                 </div>
-
                 <h3>Marketing Flyers</h3>
                 <div class="portfolio-grid grid-flyer">
-                    <img src="flyer1.jpg" alt="Flyer 1" class="img-flyer" data-aos="zoom-in">
-                    <img src="flyer2.png" alt="Flyer 2" class="img-flyer" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="flyer3.jpg" alt="Flyer 3" class="img-flyer" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="flyer1.jpg" alt="F1" class="img-flyer">
+                    <img src="flyer2.png" alt="F2" class="img-flyer">
+                    <img src="flyer3.jpg" alt="F3" class="img-flyer">
                 </div>
             </section>
 
             <section class="contact-area" data-aos="fade-up">
                 <h2>Get In Touch</h2>
                 <a href="tel:09764849398" class="contact-btn">Call: 09 764 849 398</a>
-                <a href="mailto:nyinyikyawthucareer@gmail.com" class="contact-btn">Email Me</a>
             </section>
         </div>
     </div>
 
-    <div id="lightbox" class="lightbox-modal">
-        <span class="close-btn">&times;</span>
-        <img id="lightbox-img" src="">
-    </div>
-
+    <div id="lightbox" class="lightbox-modal"><span class="close-btn">&times;</span><img id="lightbox-img" src=""></div>
     <footer><p>&copy; 2024 Nyi Nyi Portfolio</p></footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1200, once: true });
-
         const bg = document.getElementById('bg-canvas');
         let time = 0;
-
-        // ✨ Animation Script (Roams automatically + Reactive to Scroll) ✨
-        function roamBackground() {
+        function roam() {
             time += 0.006;
             const scrollVal = window.scrollY * 0.04;
-
-            const x1 = 30 + Math.sin(time) * 25 + (scrollVal % 15);
-            const y1 = 30 + Math.cos(time * 0.7) * 20;
-
-            const x2 = 70 + Math.cos(time * 1.1) * 30;
-            const y2 = 70 + Math.sin(time) * 25 - (scrollVal % 10);
-
-            const x3 = 50 + Math.sin(time * 0.4) * 35;
-            const y3 = 50 + Math.cos(time * 1.4) * 25;
-
-            bg.style.setProperty('--x1', `${x1}%`);
-            bg.style.setProperty('--y1', `${y1}%`);
-            bg.style.setProperty('--x2', `${x2}%`);
-            bg.style.setProperty('--y2', `${y2}%`);
-            bg.style.setProperty('--x3', `${x3}%`);
-            bg.style.setProperty('--y3', `${y3}%`);
-
-            requestAnimationFrame(roamBackground);
+            bg.style.setProperty('--x1', `${30 + Math.sin(time) * 20 + (scrollVal % 15)}%`);
+            bg.style.setProperty('--y1', `${30 + Math.cos(time * 0.8) * 15}%`);
+            bg.style.setProperty('--x2', `${70 + Math.cos(time * 1.1) * 20}%`);
+            bg.style.setProperty('--y2', `${70 + Math.sin(time) * 20 - (scrollVal % 10)}%`);
+            bg.style.setProperty('--x3', `${50 + Math.sin(time * 0.5) * 30}%`);
+            bg.style.setProperty('--y3', `${50 + Math.cos(time * 1.5) * 20}%`);
+            requestAnimationFrame(roam);
         }
-        roamBackground();
-
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
+        roam();
         document.querySelectorAll('.portfolio-grid img').forEach(img => {
-            img.onclick = () => { lightbox.style.display = 'flex'; lightboxImg.src = img.src; };
+            img.onclick = () => { document.getElementById('lightbox').style.display = 'flex'; document.getElementById('lightbox-img').src = img.src; };
         });
-        document.querySelector('.close-btn').onclick = () => { lightbox.style.display = 'none'; };
-        window.onclick = (e) => { if (e.target == lightbox) lightbox.style.display = 'none'; };
+        document.querySelector('.close-btn').onclick = () => { document.getElementById('lightbox').style.display = 'none'; };
     </script>
 </body>
 </html>
