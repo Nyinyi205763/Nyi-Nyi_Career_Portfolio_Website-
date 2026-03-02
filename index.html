@@ -86,28 +86,95 @@
         }
         .nav-links a:hover { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
 
-        /* --- 🚀 Hero Section --- */
+        /* --- 🚀 Hero Section (Fixed Data Structure) --- */
         header {
             height: 100vh;
             display: flex; flex-direction: column;
             justify-content: center; align-items: center;
-            text-align: center;
             padding: 0 20px;
+            position: relative;
+        }
+
+        .header-main-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px; /* Space between text and profile */
+            width: 100%;
+            max-width: 1100px;
+            z-index: 10;
+        }
+
+        .header-text-block {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            flex: 1;
         }
 
         header h1 { 
-            font-size: clamp(3.5em, 12vw, 7em); 
-            letter-spacing: 15px; font-weight: 900;
+            font-size: clamp(3.5em, 8vw, 6em); 
+            letter-spacing: 12px; font-weight: 900;
             background: linear-gradient(to bottom, #fff, #888);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.4));
+            filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.3));
+            margin-bottom: 5px;
         }
 
-        .subtitle { font-size: 1.3em; color: var(--neon-blue); font-weight: bold; letter-spacing: 4px; min-height: 1.5em; text-transform: uppercase; }
+        .subtitle { font-size: 1.1em; color: var(--neon-blue); font-weight: bold; letter-spacing: 4px; min-height: 1.5em; text-transform: uppercase; }
 
-        .hero-socials { margin-top: 30px; display: flex; gap: 25px; }
-        .hero-socials a { color: white; font-size: 1.8em; transition: 0.4s; }
-        .hero-socials a:hover { color: var(--neon-blue); transform: translateY(-5px); }
+        /* ✨ Fixed Data: Social Icons Section with Neon Style and Be Removed ✨ */
+        .hero-socials { 
+            margin-top: 25px; 
+            display: flex; 
+            gap: 20px; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .hero-socials a { 
+            color: var(--neon-blue); 
+            font-size: 1.6em; 
+            transition: 0.4s; 
+            text-shadow: 0 0 10px var(--neon-blue); /* Neon Style */
+        }
+        .hero-socials a:hover { transform: translateY(-5px); }
+
+        /* ✨ Profile with Frame Section ✨ */
+        .header-profile-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 0 0 35%; /* Control size of profile area */
+        }
+
+        .header-profile-frame {
+            width: 100%;
+            max-width: 300px; /* Base size */
+            aspect-ratio: 1/1;
+            border-radius: 20px;
+            border: 2px solid var(--neon-blue); /* Neon Frame */
+            box-shadow: 0 0 20px var(--glow-blue);
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background within frame */
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s ease;
+        }
+        .header-profile-frame:hover {
+            border-color: #fff;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            transform: scale(1.02);
+        }
+
+        .header-profile-image {
+            width: 100%;
+            height: 100%;
+            background: url('profile.JPG') center/cover no-repeat;
+            filter: brightness(0.9);
+            border-radius: 18px; /* Slightly inner frame */
+        }
 
         /* --- 🧊 Glass Container Styles --- */
         .container { max-width: 1000px; margin: auto; padding: 0 25px; }
@@ -175,10 +242,15 @@
 
         footer { text-align: center; padding: 60px 0; color: rgba(255,255,255,0.2); font-size: 0.85em; }
 
-        @media (max-width: 600px) {
+        /* Mobile Adjustments */
+        @media (max-width: 850px) {
+            .header-main-content { flex-direction: column; gap: 30px; }
+            .header-text-block { text-align: center; align-items: center; flex: unset; }
+            .header-profile-block { flex: unset; width: 100%; max-width: 250px; }
+            header h1 { font-size: 3.5em; letter-spacing: 8px; }
+            .subtitle { font-size: 0.9em; letter-spacing: 2px; }
             nav { width: 95%; padding: 10px 10px; }
             .nav-links a { font-size: 0.65em; letter-spacing: 1px; }
-            header h1 { font-size: 3.5em; letter-spacing: 8px; }
             .glass-card { padding: 25px; }
         }
     </style>
@@ -192,25 +264,36 @@
     </div>
 
     <nav>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#portfolio">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portfolio">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
     <header>
-        <div data-aos="zoom-out" data-aos-duration="1500">
-            <h1>NYI NYI</h1>
-            <div class="subtitle" id="typewriter"></div>
+        <div class="header-main-content" data-aos="zoom-out" data-aos-duration="1500">
             
-            <div class="hero-socials">
-                <a href="https://www.facebook.com/share/1FdL6TRXP3/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.tiktok.com/@nyinyi205763" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="https://t.me/Wesley_X" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-                <a href="https://www.behance.net/nyinyi205763" target="_blank"><i class="fab fa-behance"></i></a>
+            <div class="header-text-block">
+                <h1>NYI NYI</h1>
+                <div class="subtitle" id="typewriter"></div>
+                
+                <div class="hero-socials">
+                    <a href="https://www.facebook.com/share/1FdL6TRXP3/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@nyinyi205763" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://t.me/Wesley_X" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                </div>
             </div>
+
+            <div class="header-profile-block">
+                <div class="header-profile-frame">
+                    <div class="header-profile-image"></div>
+                </div>
+            </div>
+
         </div>
     </header>
 
@@ -293,7 +376,7 @@
             <section id="contact" class="contact-area" data-aos="fade-up">
                 <h2>Get In Touch</h2>
                 <p style="margin-bottom: 30px;">Let's work together on your next creative project.</p>
-                <a href="tel:09764849398" class="contact-btn">Call: 09 764 849 398</a>
+                <a href="tel:09764849398" class="contact-btn">Call Now</a>
                 <a href="mailto:nyinyikyawthucareer@gmail.com" class="contact-btn">Email Me</a>
             </section>
         </div>
@@ -314,10 +397,12 @@
 
         function type() {
             const currentPhrase = phrases[phraseIdx];
-            textElement.textContent = isDeleting ? currentPhrase.substring(0, charIdx--) : currentPhrase.substring(0, charIdx++);
-            if (!isDeleting && charIdx > currentPhrase.length) { isDeleting = true; setTimeout(type, 2000); }
-            else if (isDeleting && charIdx === 0) { isDeleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; setTimeout(type, 500); }
-            else { setTimeout(type, isDeleting ? 50 : 100); }
+            if (textElement) { //
+                textElement.textContent = isDeleting ? currentPhrase.substring(0, charIdx--) : currentPhrase.substring(0, charIdx++);
+                if (!isDeleting && charIdx > currentPhrase.length) { isDeleting = true; setTimeout(type, 2000); }
+                else if (isDeleting && charIdx === 0) { isDeleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; setTimeout(type, 500); }
+                else { setTimeout(type, isDeleting ? 50 : 100); }
+            }
         }
         type();
 
