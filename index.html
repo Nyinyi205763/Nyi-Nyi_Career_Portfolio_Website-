@@ -11,7 +11,7 @@
     <style>
         :root {
             --bg-black: #050505;
-            --card-gray: rgba(17, 17, 17, 0.85);
+            --card-gray: rgba(15, 15, 15, 0.9);
             --primary-blue: #007bff;
             --glow-blue: rgba(0, 123, 255, 0.3);
             --text-white: #ffffff;
@@ -27,18 +27,34 @@
             overflow-x: hidden;
         }
 
-        /* --- ✨ Optimized Dynamic Background (GPU Accelerated) ✨ --- */
-        #bg-canvas {
+        /* --- ✨ Smooth Scroll-Reactive Background (No JS Loop) ✨ --- */
+        .bg-wrapper {
             position: fixed;
-            top: -15%; left: -15%; width: 130%; height: 130%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background: 
-                radial-gradient(circle at var(--x1, 25%) var(--y1, 25%), rgba(0, 123, 255, 0.25) 0%, transparent 45%),
-                radial-gradient(circle at var(--x2, 75%) var(--y2, 75%), rgba(112, 0, 255, 0.2) 0%, transparent 45%),
-                radial-gradient(circle at var(--x3, 50%) var(--y3, 50%), rgba(0, 242, 254, 0.15) 0%, transparent 50%);
-            filter: blur(60px);
-            will-change: transform; /* Boost performance */
+            overflow: hidden;
             pointer-events: none;
+        }
+
+        .blob {
+            position: absolute;
+            width: 50vw;
+            height: 50vw;
+            filter: blur(80px);
+            opacity: 0.4;
+            border-radius: 50%;
+            will-change: transform;
+        }
+
+        /* Scroll နဲ့အတူ လိုက်ပါလှုပ်ရှားမယ့် Blob များ */
+        .blob-1 { 
+            background: var(--primary-blue); 
+            top: -10%; left: -10%; 
+            /* Scroll ဆွဲရင် ရွေ့လျားမှုကို CSS ကပဲ ကိုင်တွယ်ပါတယ် */
+        }
+        .blob-2 { 
+            background: #7000ff; 
+            bottom: -10%; right: -10%; 
         }
 
         header {
@@ -49,7 +65,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('profile.JPG') center/cover no-repeat fixed;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('profile.JPG') center/cover no-repeat;
             z-index: 1;
         }
 
@@ -61,9 +77,18 @@
 
         h2 { font-size: 2em; margin: 50px 0 30px; color: var(--primary-blue); text-transform: uppercase; border-left: 6px solid var(--primary-blue); padding-left: 15px; }
 
-        .info-card { background: var(--card-gray); padding: 35px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 25px; backdrop-filter: blur(8px); }
+        .info-card { 
+            background: var(--card-gray); 
+            padding: 35px; 
+            border-radius: 15px; 
+            border: 1px solid rgba(255,255,255,0.05); 
+            margin-bottom: 25px; 
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+        .info-card:hover { border-color: var(--primary-blue); }
 
-        /* Timeline */
+        /* Timeline (Education Data) */
         .timeline { border-left: 2px solid #333; padding-left: 35px; margin-left: 10px; }
         .timeline-item { position: relative; margin-bottom: 30px; }
         .timeline-item::before { content: ""; position: absolute; left: -42px; top: 6px; width: 12px; height: 12px; background: var(--primary-blue); border-radius: 50%; box-shadow: 0 0 10px var(--primary-blue); }
@@ -89,19 +114,21 @@
         .contact-btn:hover { background: #fff; color: var(--primary-blue); transform: scale(1.05); }
 
         .lightbox-modal { display: none; position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
-        .lightbox-modal img { max-width: 90%; max-height: 80%; border-radius: 8px; animation: zoomIn 0.3s ease; }
+        .lightbox-modal img { max-width: 90%; max-height: 80%; border-radius: 8px; }
         .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
 
         footer { text-align: center; padding: 40px 0; color: #666; font-size: 0.9em; }
-        @keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <div id="bg-canvas"></div>
+    <div class="bg-wrapper">
+        <div class="blob blob-1" id="blob1"></div>
+        <div class="blob blob-2" id="blob2"></div>
+    </div>
 
     <header>
-        <div class="header-content" data-aos="zoom-out" data-aos-duration="1500">
+        <div class="header-content" data-aos="zoom-out" data-aos-duration="1000">
             <h1>NYI NYI</h1>
             <p>Creative Marketer | Graphic Designer | Operations Specialist</p>
         </div>
@@ -110,7 +137,7 @@
     <div class="main-content">
         <div class="container">
             
-            <section id="about" data-aos="fade-right">
+            <section id="about" data-aos="fade-up">
                 <h2>About Me</h2>
                 <div class="info-card">
                     <p>I am <strong>Nyi Nyi</strong>, a multi-talented professional currently working as a <strong>Junior Graphic Designer and Marketing Assistant at 360 Delight Lounge</strong>.</p>
@@ -118,7 +145,7 @@
                 </div>
             </section>
 
-            <section id="education" data-aos="fade-left">
+            <section id="education" data-aos="fade-up">
                 <h2>Education</h2>
                 <div class="timeline">
                     <div class="timeline-item"><strong>Marketing Management</strong><br>MIBA University</div>
@@ -132,10 +159,10 @@
             <section id="skills">
                 <h2 data-aos="fade-up">Core Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-box" data-aos="flip-left"><i class="fas fa-robot"></i><h3>Multimedia & AI</h3><p>Live Streaming, Video Editing</p></div>
-                    <div class="skill-box" data-aos="flip-left" data-aos-delay="100"><i class="fas fa-bullseye"></i><h3>Marketing</h3><p>Strategy, Digital Ads</p></div>
-                    <div class="skill-box" data-aos="flip-left" data-aos-delay="200"><i class="fas fa-palette"></i><h3>Design</h3><p>Social Media, Flyers</p></div>
-                    <div class="skill-box" data-aos="flip-left" data-aos-delay="300"><i class="fas fa-cocktail"></i><h3>Operations</h3><p>F&B Management</p></div>
+                    <div class="skill-box"><i class="fas fa-robot"></i><h3>Multimedia & AI</h3></div>
+                    <div class="skill-box"><i class="fas fa-bullseye"></i><h3>Marketing</h3></div>
+                    <div class="skill-box"><i class="fas fa-palette"></i><h3>Design</h3></div>
+                    <div class="skill-box"><i class="fas fa-cocktail"></i><h3>Operations</h3></div>
                 </div>
             </section>
 
@@ -171,24 +198,21 @@
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        // AOS Animation ကို ပိုပေါ့အောင် ချိန်ညှိခြင်း
+        AOS.init({ duration: 800, once: true, disable: 'mobile' });
         
-        const bg = document.getElementById('bg-canvas');
-        let time = 0;
-        
-        function roam() {
-            time += 0.005;
-            const s = window.scrollY * 0.02;
-            bg.style.setProperty('--x1', `${30 + Math.sin(time) * 15 + (s % 10)}%`);
-            bg.style.setProperty('--y1', `${30 + Math.cos(time * 0.7) * 10}%`);
-            bg.style.setProperty('--x2', `${70 + Math.cos(time * 0.9) * 15}%`);
-            bg.style.setProperty('--y2', `${70 + Math.sin(time) * 15 - (s % 8)}%`);
-            bg.style.setProperty('--x3', `${50 + Math.sin(time * 0.4) * 20}%`);
-            bg.style.setProperty('--y3', `${50 + Math.cos(time * 1.2) * 15}%`);
-            requestAnimationFrame(roam);
-        }
-        roam();
+        const b1 = document.getElementById('blob1');
+        const b2 = document.getElementById('blob2');
 
+        // Scroll ဆွဲမှသာ Background ရွေ့လျားမည့် ပေါ့ပါးသော Script
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            // CPU မစားဘဲ Transform ကိုသာ သုံးထားသည်
+            b1.style.transform = `translate(${scroll * 0.1}px, ${scroll * 0.2}px)`;
+            b2.style.transform = `translate(-${scroll * 0.1}px, -${scroll * 0.2}px)`;
+        });
+
+        // Lightbox
         document.querySelectorAll('.portfolio-grid img').forEach(img => {
             img.onclick = () => { 
                 document.getElementById('lightbox').style.display = 'flex'; 
@@ -196,7 +220,6 @@
             };
         });
         document.querySelector('.close-btn').onclick = () => { document.getElementById('lightbox').style.display = 'none'; };
-        window.onclick = (e) => { if(e.target.className === 'lightbox-modal') document.getElementById('lightbox').style.display = 'none'; };
     </script>
 </body>
 </html>
