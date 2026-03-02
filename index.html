@@ -15,7 +15,6 @@
             --primary-blue: #007bff;
             --glow-blue: rgba(0, 123, 255, 0.4);
             --text-white: #ffffff;
-            --text-dim: #b0b0b0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,17 +28,17 @@
             position: relative;
         }
 
-        /* --- ✨ Ultra-Dynamic Background ✨ --- */
+        /* --- ✨ Ultra-Dynamic Roaming Background ✨ --- */
         #bg-canvas {
             position: fixed;
             top: -20%; left: -20%; width: 140%; height: 140%;
             z-index: -1;
             background: 
-                radial-gradient(circle at var(--x1, 20%) var(--y1, 20%), rgba(0, 123, 255, 0.35) 0%, transparent 40%),
-                radial-gradient(circle at var(--x2, 80%) var(--y2, 80%), rgba(112, 0, 255, 0.3) 0%, transparent 40%),
-                radial-gradient(circle at var(--x3, 50%) var(--y3, 50%), rgba(0, 242, 254, 0.25) 0%, transparent 45%);
+                radial-gradient(circle at var(--x1, 25%) var(--y1, 25%), rgba(0, 123, 255, 0.3) 0%, transparent 45%),
+                radial-gradient(circle at var(--x2, 75%) var(--y2, 75%), rgba(112, 0, 255, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at var(--x3, 50%) var(--y3, 50%), rgba(0, 242, 254, 0.2) 0%, transparent 50%);
             filter: blur(70px);
-            transition: all 0.4s ease-out;
+            transition: all 0.6s cubic-bezier(0.2, 0.5, 0.8, 0.2);
         }
 
         header {
@@ -121,7 +120,8 @@
             <section id="about" data-aos="fade-right">
                 <h2>About Me</h2>
                 <div class="info-card">
-                    <p>I am <strong>Nyi Ny</strong>i, a multi-talented professional currently working as a Junior Graphic Designer and Marketing Assistant at 360 Delight Lounge.</p>
+                    <p>I am <strong>Nyi Nyi</strong>, a multi-talented professional currently working as a <strong>Junior Graphic Designer and Marketing Assistant at 360 Delight Lounge</strong>.</p>
+                    <p>I specialize in <strong>OBS Live Streaming</strong>, AI Generation (Gemini AI), and bridging the gap between business operations and creative marketing.</p>
                 </div>
             </section>
 
@@ -139,9 +139,10 @@
             <section id="skills">
                 <h2 data-aos="fade-up">Core Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-box" data-aos="flip-left"><i class="fas fa-robot"></i><h3>Multimedia & AI</h3></div>
-                    <div class="skill-box" data-aos="flip-left" data-aos-delay="200"><i class="fas fa-bullseye"></i><h3>Marketing</h3></div>
-                    <div class="skill-box" data-aos="flip-left" data-aos-delay="400"><i class="fas fa-palette"></i><h3>Design</h3></div>
+                    <div class="skill-box" data-aos="flip-left" data-aos-delay="100"><i class="fas fa-robot"></i><h3>Multimedia & AI</h3><p>Live Streaming, Video Editing, AI Content</p></div>
+                    <div class="skill-box" data-aos="flip-left" data-aos-delay="200"><i class="fas fa-bullseye"></i><h3>Marketing</h3><p>Strategy, Digital Ads, Branding</p></div>
+                    <div class="skill-box" data-aos="flip-left" data-aos-delay="300"><i class="fas fa-palette"></i><h3>Design</h3><p>Social Media Visuals, Flyers, Branding</p></div>
+                    <div class="skill-box" data-aos="flip-left" data-aos-delay="400"><i class="fas fa-cocktail"></i><h3>Operations</h3><p>F&B Management, Office Admin</p></div>
                 </div>
             </section>
 
@@ -167,6 +168,7 @@
             <section class="contact-area" data-aos="fade-up">
                 <h2>Get In Touch</h2>
                 <a href="tel:09764849398" class="contact-btn">Call: 09 764 849 398</a>
+                <a href="mailto:nyinyikyawthucareer@gmail.com" class="contact-btn">Email Me</a>
             </section>
         </div>
     </div>
@@ -181,11 +183,11 @@
         let time = 0;
         function roam() {
             time += 0.006;
-            const scrollVal = window.scrollY * 0.04;
-            bg.style.setProperty('--x1', `${30 + Math.sin(time) * 20 + (scrollVal % 15)}%`);
+            const s = window.scrollY * 0.04;
+            bg.style.setProperty('--x1', `${30 + Math.sin(time) * 20 + (s % 15)}%`);
             bg.style.setProperty('--y1', `${30 + Math.cos(time * 0.8) * 15}%`);
             bg.style.setProperty('--x2', `${70 + Math.cos(time * 1.1) * 20}%`);
-            bg.style.setProperty('--y2', `${70 + Math.sin(time) * 20 - (scrollVal % 10)}%`);
+            bg.style.setProperty('--y2', `${70 + Math.sin(time) * 20 - (s % 10)}%`);
             bg.style.setProperty('--x3', `${50 + Math.sin(time * 0.5) * 30}%`);
             bg.style.setProperty('--y3', `${50 + Math.cos(time * 1.5) * 20}%`);
             requestAnimationFrame(roam);
