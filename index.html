@@ -11,14 +11,15 @@
     <style>
         :root {
             --bg-black: #050505;
-            --card-gray: rgba(18, 18, 18, 0.95);
+            --card-gray: rgba(17, 17, 17, 0.85);
             --primary-blue: #007bff;
-            --glow-blue: rgba(0, 123, 255, 0.5);
+            --neon-blue: #00f2fe;
+            --neon-purple: #4facfe;
+            --glow-blue: rgba(0, 123, 255, 0.3);
             --text-white: #ffffff;
-            --nav-bg: rgba(10, 10, 10, 0.8);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
             background-color: var(--bg-black); 
@@ -26,55 +27,24 @@
             font-family: 'Segoe UI', Roboto, sans-serif; 
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* --- 🧭 Top Navigation Bar (New) 🧭 --- */
-        nav {
+        /* --- ✨ Smooth Dynamic Background (Home Screen) ✨ --- */
+        #bg-canvas {
             position: fixed;
-            top: 0; width: 100%;
-            height: 70px;
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .logo { font-size: 1.5em; font-weight: 900; color: var(--primary-blue); letter-spacing: 2px; }
-
-        .nav-links { display: flex; list-style: none; gap: 25px; }
-        .nav-links a { 
-            text-decoration: none; 
-            color: #ddd; 
-            font-size: 0.85em; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            transition: 0.3s;
-            font-weight: 600;
-        }
-        .nav-links a:hover { color: var(--primary-blue); }
-
-        /* Mobile Menu Hide */
-        @media (max-width: 768px) {
-            .nav-links { display: none; } /* ဖုန်းမှာဆိုရင် ရှင်းနေအောင် ခဏဖျောက်ထားပါတယ် */
-        }
-
-        /* --- ✨ Smooth Scroll Background ✨ --- */
-        .bg-wrapper {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: -20%; left: -20%; width: 140%; height: 140%;
             z-index: -1;
+            /* Auto-moving Neon Aura Effect */
+            background: 
+                radial-gradient(circle at var(--x1, 20%) var(--y1, 20%), rgba(0, 123, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at var(--x2, 80%) var(--y2, 80%), rgba(112, 0, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at var(--x3, 50%) var(--y3, 50%), rgba(0, 242, 254, 0.25) 0%, transparent 50%);
+            filter: blur(70px);
+            transition: all 0.4s ease-out;
+            will-change: transform; /* Hardware Acceleration */
             pointer-events: none;
         }
-        .blob {
-            position: absolute; width: 60vw; height: 60vw; filter: blur(100px);
-            opacity: 0.25; border-radius: 50%; will-change: transform;
-        }
-        .blob-1 { background: var(--primary-blue); top: -20%; left: -10%; }
-        .blob-2 { background: #6f42c1; bottom: -20%; right: -10%; }
 
         header {
             position: relative;
@@ -84,112 +54,97 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url('profile.JPG') center/cover no-repeat;
-            padding: 0 20px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('profile.JPG') center/cover no-repeat fixed;
+            z-index: 1;
         }
 
+        /* --- ✨ Top Bar Color Gradient Animation ("NYI NYI") ✨ --- */
         header h1 { 
-            font-size: clamp(3em, 10vw, 6em); 
-            letter-spacing: 12px; 
+            font-size: clamp(2.8em, 9vw, 5.5em); 
+            letter-spacing: 8px; 
             text-transform: uppercase; 
-            font-weight: 900;
-            margin-bottom: 5px;
-            background: linear-gradient(to bottom, #fff, #888);
+            margin-bottom: 10px;
+            
+            /* Gradient Text with Animation */
+            background: linear-gradient(90deg, #fff, var(--neon-blue), var(--neon-purple), #fff);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: gradientText 6s linear infinite;
+            
+            /* Enhanced Neon Glow */
+            text-shadow: 
+                0 0 10px rgba(0, 242, 254, 0.5),
+                0 0 20px rgba(0, 242, 254, 0.3),
+                0 0 30px rgba(79, 172, 254, 0.2);
         }
 
-        .subtitle { font-size: 1.2em; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 4px; min-height: 1.6em; font-weight: bold; }
-
-        .hero-socials {
-            margin-top: 35px;
-            display: flex;
-            justify-content: center;
-            align-items: center; /* Icon တွေ Alignment ညီအောင် လုပ်ထားသည် */
-            gap: 30px;
+        @keyframes gradientText {
+            to { background-position: 200% center; }
         }
-        .hero-socials a { color: white; font-size: 1.8em; transition: 0.4s; }
-        .hero-socials a:hover { color: var(--primary-blue); transform: translateY(-5px); }
 
-        .scroll-down { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.7; }
-        .mouse { width: 22px; height: 35px; border: 2px solid white; border-radius: 20px; position: relative; }
-        .wheel { width: 3px; height: 7px; background: var(--primary-blue); border-radius: 2px; position: absolute; top: 7px; left: 50%; transform: translateX(-50%); animation: scroll-anim 2s infinite; }
-        @keyframes scroll-anim { 0% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; transform: translate(-50%, 12px); } }
+        header p { font-size: 1.1em; color: var(--neon-blue); text-transform: uppercase; letter-spacing: 3px; font-weight: bold; }
 
+        .main-content { position: relative; z-index: 2; padding-top: 40px; }
         .container { max-width: 1100px; margin: auto; padding: 0 25px; }
-        h2 { font-size: 2em; margin: 80px 0 30px; color: var(--primary-blue); text-transform: uppercase; border-left: 6px solid var(--primary-blue); padding-left: 15px; }
-        .info-card { background: var(--card-gray); padding: 35px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 25px; backdrop-filter: blur(10px); }
+
+        h2 { font-size: 2em; margin: 50px 0 30px; color: var(--neon-blue); text-transform: uppercase; border-left: 6px solid var(--primary-blue); padding-left: 15px; }
+
+        .info-card { background: var(--card-gray); padding: 35px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 25px; backdrop-filter: blur(8px); }
+
+        /* Timeline (Education Data) */
         .timeline { border-left: 2px solid #333; padding-left: 35px; margin-left: 10px; }
         .timeline-item { position: relative; margin-bottom: 30px; }
-        .timeline-item::before { content: ""; position: absolute; left: -42px; top: 6px; width: 12px; height: 12px; background: var(--primary-blue); border-radius: 50%; }
+        .timeline-item::before { content: ""; position: absolute; left: -42px; top: 6px; width: 12px; height: 12px; background: var(--primary-blue); border-radius: 50%; box-shadow: 0 0 10px var(--neon-blue); }
 
+        /* Skills */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .skill-box { background: var(--card-gray); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .skill-box { background: var(--card-gray); padding: 30px; border-radius: 15px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s ease; }
+        .skill-box:hover { transform: translateY(-8px); border-color: var(--neon-blue); box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); }
         .skill-box i { font-size: 2.5em; color: var(--primary-blue); margin-bottom: 15px; }
 
+        /* Portfolio */
         .portfolio-grid { display: grid; gap: 15px; margin-bottom: 50px; }
         .grid-sq { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-        .grid-flyer { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-        .portfolio-grid img { width: 100%; border-radius: 12px; object-fit: cover; cursor: pointer; filter: grayscale(100%); transition: 0.5s; }
-        .portfolio-grid img:hover { filter: grayscale(0%); transform: scale(1.03); }
+        
+        .portfolio-grid img { width: 100%; border-radius: 12px; border: 1px solid #222; object-fit: cover; cursor: pointer; filter: grayscale(100%); transition: 0.5s; }
+        .portfolio-grid img:hover { filter: grayscale(0%); transform: scale(1.03); border-color: var(--neon-blue); }
+        .img-sq { aspect-ratio: 1 / 1; }
 
         .contact-area { background: rgba(0, 31, 63, 0.4); padding: 60px 20px; text-align: center; border-radius: 20px; margin: 80px 0; border: 1px solid var(--primary-blue); }
-        .contact-btn { display: inline-block; background: var(--primary-blue); color: #fff; padding: 15px 35px; margin: 10px; text-decoration: none; border-radius: 50px; font-weight: bold; }
+        .contact-btn { display: inline-block; background: var(--primary-blue); color: #fff; padding: 15px 35px; margin: 10px; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
 
-        .lightbox-modal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
-        .lightbox-modal img { max-width: 90%; max-height: 80%; border-radius: 10px; }
+        .lightbox-modal { display: none; position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+        .lightbox-modal img { max-width: 90%; max-height: 80%; border-radius: 8px; animation: zoomIn 0.3s ease; }
         .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
 
-        footer { text-align: center; padding: 40px 0; color: #555; }
+        footer { text-align: center; padding: 40px 0; color: #666; font-size: 0.9em; }
+        @keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">NYI NYI.</div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Skill</a></li>
-            <li><a href="#portfolio">Project</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <div id="bg-canvas"></div>
 
-    <div class="bg-wrapper">
-        <div class="blob blob-1" id="blob1"></div>
-        <div class="blob blob-2" id="blob2"></div>
-    </div>
-
-    <header id="home">
-        <div data-aos="fade-down" data-aos-duration="1500">
+    <header>
+        <div class="header-content" data-aos="zoom-out" data-aos-duration="1500">
             <h1>NYI NYI</h1>
-            <div class="subtitle" id="typewriter"></div>
-            
-            <div class="hero-socials">
-                <a href="https://www.facebook.com/share/1FdL6TRXP3/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.tiktok.com/@nyinyi205763?_r=1&_t=ZS-94LA6pamwLs" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="https://t.me/Wesley_X" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-                <a href="https://www.behance.net/nyinyi205763" target="_blank"><i class="fab fa-behance"></i></a>
-            </div>
-        </div>
-        <div class="scroll-down">
-            <div class="mouse"><div class="wheel"></div></div>
+            <p>Creative Marketer | Graphic Designer | Operations Specialist</p>
         </div>
     </header>
 
     <div class="main-content">
         <div class="container">
             
-            <section id="about" data-aos="fade-up">
+            <section id="about" data-aos="fade-right">
                 <h2>About Me</h2>
                 <div class="info-card">
-                    <p>I am <strong>Nyi Nyi</strong>, a multi-talented professional currently working as a <strong>Junior Graphic Designer and Marketing Assistant at 360 Delight Lounge</strong>. I specialize in <strong>OBS Live Streaming</strong>, AI Generation, and bridging creative marketing with business operations.</p>
+                    <p>I am <strong>Nyi Nyi</strong>, a multi-talented professional currently working as a <strong>Junior Graphic Designer and Marketing Assistant at 360 Delight Lounge</strong>.</p>
+                    <p>I specialize in <strong>OBS Live Streaming</strong>, AI Generation, and bridging the gap between business operations and creative marketing.</p>
                 </div>
             </section>
 
-            <section id="education" data-aos="fade-up">
+            <section id="education" data-aos="fade-left">
                 <h2>Education</h2>
                 <div class="timeline">
                     <div class="timeline-item"><strong>Marketing Management</strong><br>MIBA University</div>
@@ -201,17 +156,16 @@
             </section>
 
             <section id="skills">
-                <h2>Core Skills</h2>
+                <h2 data-aos="fade-up">Core Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-box" data-aos="fade-up"><i class="fas fa-robot"></i><h3>Multimedia & AI</h3><p>OBS Streaming, Video Editing, AI Content Generation.</p></div>
-                    <div class="skill-box" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-bullseye"></i><h3>Marketing</h3><p>Strategy, Digital Ads, Branding, Creative Campaigns.</p></div>
-                    <div class="skill-box" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-palette"></i><h3>Graphic Design</h3><p>Social Media Visuals, Flyers, Brand Identity.</p></div>
-                    <div class="skill-box" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-tasks"></i><h3>Operations</h3><p>Office Management, F&B Service, Business Processes.</p></div>
+                    <div class="skill-box" data-aos="flip-left"><i class="fas fa-robot"></i><h3>Multimedia & AI</h3><p>Live Streaming, Video Editing</p></div>
+                    <div class="skill-box" data-aos="flip-left" data-aos-delay="100"><i class="fas fa-bullseye"></i><h3>Marketing</h3><p>Strategy, Digital Ads</p></div>
+                    <div class="skill-box" data-aos="flip-left" data-aos-delay="200"><i class="fas fa-palette"></i><h3>Design</h3><p>Social Media, Flyers</p></div>
                 </div>
             </section>
 
             <section id="portfolio">
-                <h2>Creative Portfolio</h2>
+                <h2 data-aos="fade-up">Creative Portfolio</h2>
                 <div class="portfolio-grid grid-sq">
                     <img src="Design 1.jpg" alt="P1" class="img-sq" loading="lazy">
                     <img src="Design 2.png" alt="P2" class="img-sq" loading="lazy">
@@ -220,16 +174,11 @@
                     <img src="Design 5.png" alt="P5" class="img-sq" loading="lazy">
                     <img src="design 6.png" alt="P6" class="img-sq" loading="lazy">
                 </div>
-                <div class="portfolio-grid grid-flyer">
-                    <img src="flyer1.jpg" alt="F1" class="img-flyer" loading="lazy">
-                    <img src="flyer2.png" alt="F2" class="img-flyer" loading="lazy">
-                    <img src="flyer3.jpg" alt="F3" class="img-flyer" loading="lazy">
-                </div>
             </section>
 
-            <section id="contact" class="contact-area" data-aos="fade-up">
+            <section class="contact-area" data-aos="fade-up">
                 <h2>Get In Touch</h2>
-                <a href="tel:09764849398" class="contact-btn">Call Now</a>
+                <a href="tel:09764849398" class="contact-btn">Call: 09 764 849 398</a>
                 <a href="mailto:nyinyikyawthucareer@gmail.com" class="contact-btn">Email Me</a>
             </section>
         </div>
@@ -240,34 +189,38 @@
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        // AOS Duration ကို ပိုမြန်အောင်လုပ်ခြင်း (Faster & Smoother)
         AOS.init({ duration: 800, once: true });
         
-        // Typewriter
-        const textElement = document.getElementById('typewriter');
-        const phrases = ["Creative Marketer", "Graphic Designer", "Operations Specialist"];
-        let pIdx = 0, cIdx = 0, isDel = false;
-        function type() {
-            const curr = phrases[pIdx];
-            textElement.textContent = isDel ? curr.substring(0, cIdx--) : curr.substring(0, cIdx++);
-            if (!isDel && cIdx > curr.length) { isDel = true; setTimeout(type, 2000); }
-            else if (isDel && cIdx === 0) { isDel = false; pIdx = (pIdx + 1) % phrases.length; setTimeout(type, 500); }
-            else { setTimeout(type, isDel ? 50 : 100); }
-        }
-        type();
+        const bg = document.getElementById('bg-canvas');
+        let time = 0;
+        
+        // ✨ Animation Loop (Always Moving) ✨
+        function roam() {
+            time += 0.005; // အမြန်နှုန်း
+            const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+            const s = scrollPercent * 10; // Scroll ပေါ်မူတည်ပြီး ရွေ့လျားမှု
 
-        // Scroll Blobs
-        const b1 = document.getElementById('blob1'), b2 = document.getElementById('blob2');
-        window.addEventListener('scroll', () => {
-            const s = window.pageYOffset;
-            b1.style.transform = `translate(${s * 0.1}px, ${s * 0.05}px)`;
-            b2.style.transform = `translate(-${s * 0.1}px, -${s * 0.05}px)`;
-        }, { passive: true });
+            bg.style.setProperty('--x1', `${30 + Math.sin(time) * 20 + (s % 15)}%`);
+            bg.style.setProperty('--y1', `${30 + Math.cos(time * 0.8) * 15}%`);
+            bg.style.setProperty('--x2', `${70 + Math.cos(time * 1.1) * 20}%`);
+            bg.style.setProperty('--y2', `${70 + Math.sin(time) * 20 - (s % 10)}%`);
+            bg.style.setProperty('--x3', `${50 + Math.sin(time * 0.5) * 30}%`);
+            bg.style.setProperty('--y3', `${50 + Math.cos(time * 1.5) * 20}%`);
+            
+            requestAnimationFrame(roam);
+        }
+        roam();
 
         // Lightbox
         document.querySelectorAll('.portfolio-grid img').forEach(img => {
-            img.onclick = () => { document.getElementById('lightbox').style.display = 'flex'; document.getElementById('lightbox-img').src = img.src; };
+            img.onclick = () => { 
+                document.getElementById('lightbox').style.display = 'flex'; 
+                document.getElementById('lightbox-img').src = img.src; 
+            };
         });
         document.querySelector('.close-btn').onclick = () => { document.getElementById('lightbox').style.display = 'none'; };
+        window.onclick = (e) => { if(e.target.className === 'lightbox-modal') document.getElementById('lightbox').style.display = 'none'; };
     </script>
 </body>
 </html>
