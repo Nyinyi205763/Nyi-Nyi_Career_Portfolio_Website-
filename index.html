@@ -289,6 +289,25 @@
             .nav-links a { font-size: 0.65em; letter-spacing: 1px; }
             .glass-card { padding: 25px; }
         }
+      <div class="chat-toggle" onclick="toggleChat()">
+💬
+</div>
+
+<div class="chat-box" id="chatBox">
+<div class="chat-header">
+Chat with Nyi Nyi
+<span onclick="toggleChat()">✖</span>
+</div>
+
+<div class="chat-body" id="chatBody">
+<div class="bot-msg">Hi 👋 How can I help you?</div>
+</div>
+
+<div class="chat-input">
+<input type="text" id="chatInput" placeholder="Type message...">
+<button onclick="sendMessage()">Send</button>
+</div>
+</div>
     </style>
 </head>
 <body>
@@ -529,6 +548,89 @@
     </script>
 </body>
 </html>
+.chat-toggle{
+position:fixed;
+bottom:30px;
+right:30px;
+background:#00f2fe;
+color:black;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+cursor:pointer;
+box-shadow:0 0 20px #00f2fe;
+z-index:999;
+}
+
+.chat-box{
+position:fixed;
+bottom:100px;
+right:30px;
+width:300px;
+background:#111;
+border-radius:15px;
+display:none;
+flex-direction:column;
+overflow:hidden;
+box-shadow:0 0 25px rgba(0,0,0,0.6);
+}
+
+.chat-header{
+background:#00f2fe;
+color:black;
+padding:10px;
+font-weight:bold;
+display:flex;
+justify-content:space-between;
+}
+
+.chat-body{
+height:250px;
+padding:10px;
+overflow-y:auto;
+font-size:14px;
+}
+
+.bot-msg{
+background:#222;
+padding:8px 12px;
+border-radius:10px;
+margin-bottom:8px;
+}
+
+.user-msg{
+background:#00f2fe;
+color:black;
+padding:8px 12px;
+border-radius:10px;
+margin-bottom:8px;
+text-align:right;
+}
+
+.chat-input{
+display:flex;
+border-top:1px solid #333;
+}
+
+.chat-input input{
+flex:1;
+border:none;
+padding:10px;
+background:#111;
+color:white;
+}
+
+.chat-input button{
+background:#00f2fe;
+border:none;
+padding:10px 15px;
+cursor:pointer;
+}
+
 
 
 
