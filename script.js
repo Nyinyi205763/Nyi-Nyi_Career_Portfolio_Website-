@@ -25,3 +25,42 @@ document.querySelectorAll('.portfolio-grid img').forEach(img => {
 });
 document.querySelector('.close-btn').onclick = () => { document.getElementById('lightbox').style.display = 'none'; };
 window.onclick = (e) => { if(e.target.className === 'lightbox-modal') document.getElementById('lightbox').style.display = 'none'; };
+// Chat ပွင့်/ပိတ် လုပ်ရန်
+function toggleChat() {
+    const chatBox = document.getElementById('chatBox');
+    chatBox.style.display = (chatBox.style.display === 'none') ? 'flex' : 'none';
+}
+
+// Enter ခေါက်ရင် စာပို့ရန်
+function handleKeyPress(event) {
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+}
+
+// စာပို့ခြင်း logic
+function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const body = document.getElementById('chatBody');
+    const message = input.value.trim();
+
+    if (message !== "") {
+        // User Message ပြရန်
+        const userDiv = document.createElement('div');
+        userDiv.className = 'user-msg';
+        userDiv.textContent = message;
+        body.appendChild(userDiv);
+        
+        input.value = ""; // Input ရှင်းပစ်ရန်
+        body.scrollTop = body.scrollHeight; // အောက်ဆုံးကို scroll ဆွဲရန်
+
+        // Bot က ပြန်ဖြေတဲ့ ပုံစံလေး (၂ စက္ကန့်အကြာမှာ ပေါ်လာမယ်)
+        setTimeout(() => {
+            const botDiv = document.createElement('div');
+            botDiv.className = 'bot-msg';
+            botDiv.textContent = "Thank you for your message! I will get back to you soon.";
+            body.appendChild(botDiv);
+            body.scrollTop = body.scrollHeight;
+        }, 1000);
+    }
+}
