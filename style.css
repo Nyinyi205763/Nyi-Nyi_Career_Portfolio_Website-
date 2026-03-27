@@ -1,4 +1,4 @@
- <style>
+
         :root {
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.1);
@@ -296,4 +296,4 @@ Chat with Nyi Nyi
 <button onclick="sendMessage()">Send</button>
 </div>
 </div>
-    </style>
+
