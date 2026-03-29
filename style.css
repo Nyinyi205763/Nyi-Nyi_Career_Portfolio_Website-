@@ -31,14 +31,16 @@ body {
     overflow: hidden;
 }
 
+/* style.css ထဲမှာ အစားထိုးရန် */
 .liquid-blob {
     position: absolute;
-    width: 600px; /* Size နည်းနည်း ထပ်ကြီးလိုက်မယ် */
-    height: 600px;
-    filter: blur(80px);
-    opacity: 0.15;
+    width: 800px;  /* Size ကို ပိုကြီးလိုက်မယ် */
+    height: 800px;
+    filter: blur(150px); /* Blur ကို ၁၅၀ အထိ တိုးလိုက်ရင် အလုံးလိုက် မပေါ်တော့ဘဲ ညက်သွားပါလိမ့်မယ် */
+    opacity: 0.2;  /* အရောင် အရမ်းတောက်နေရင် ၀.၁၅ အထိ လျှော့နိုင်ပါတယ် */
     border-radius: 50%;
     z-index: -1;
+    will-change: filter, transform; /* Performance ကောင်းအောင် ကူညီပေးတယ် */
 }
 
 /* နေရာတွေကို တစ်မျက်နှာလုံး ပြန့်အောင် ညှိမယ် */
@@ -398,6 +400,15 @@ footer { text-align: center; padding: 60px 0; color: rgba(255,255,255,0.2); font
     .chat-box {
         width: 280px;
         height: 400px;
+        /* PC screens ကြီးတွေအတွက် သီးသန့်ညှိတာ */
+@media (min-width: 1024px) {
+    .liquid-blob {
+        width: 1000px;
+        height: 1000px;
+        filter: blur(200px); /* Screen ကြီးလေ Blur ပိုများလေ Gradient ပိုလှလေပဲ */
+    }
+}
+        
         right: 20px;
     }
 }
