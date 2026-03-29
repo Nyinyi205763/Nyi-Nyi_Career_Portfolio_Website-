@@ -58,7 +58,7 @@ function sendMessage() {
         setTimeout(() => {
             const botDiv = document.createElement('div');
             botDiv.className = 'bot-msg';
-            botDiv.textContent = "Thank you for your message! I will get back to you soon.";
+            botDiv.textContent = "Please leave your phone number or email address. I will get back to you soon!";
             body.appendChild(botDiv);
             body.scrollTop = body.scrollHeight;
         }, 1000);
