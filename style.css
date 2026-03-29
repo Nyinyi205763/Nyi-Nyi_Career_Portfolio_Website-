@@ -34,7 +34,7 @@ body {
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    filter: blur(30px); 
+    filter: blur(100px); 
     opacity: 0.2;
     transition: transform 0.2s ease-out; /* Scroll လုပ်ရင် ငြိမ့်သွားအောင် */
     z-index: -1;
