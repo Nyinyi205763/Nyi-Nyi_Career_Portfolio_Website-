@@ -28,15 +28,21 @@ body {
     overflow: hidden;
 }
 
+/* --- 🌊 Scroll Animated Blobs --- */
 .liquid-blob {
     position: absolute;
-    width: 400px; height: 400px;
-    background: linear-gradient(45deg, var(--primary-blue), var(--primary-purple));
-    filter: blur(60px); /* Blur ကို လျှော့လိုက်ပါ */
+    width: 500px;
+    height: 500px;
     border-radius: 50%;
-    opacity: 0.1;
-    /* animation line ကို ဖြုတ်လိုက်ပါ သို့မဟုတ် comment ပိတ်ထားပါ */
+    filter: blur(60px); 
+    opacity: 0.2;
+    transition: transform 0.2s ease-out; /* Scroll လုပ်ရင် ငြိမ့်သွားအောင် */
+    z-index: -1;
 }
+
+.blob-1 { top: 10%; left: 10%; background: #00d2ff; }
+.blob-2 { top: 50%; right: 10%; background: #9d50bb; }
+.blob-3 { top: 80%; left: 20%; background: #ff0080; }
 
 .blob-1 { top: -10%; left: -10%; }
 .blob-2 { bottom: -10%; right: -10%; background: #ff0080; animation-delay: -5s; animation-duration: 30s; }
