@@ -1,4 +1,4 @@
-AOS.init({ duration: 1000, once: true });
+
 
 // --- Typewriter Effect ---
 const textElement = document.getElementById('typewriter');
