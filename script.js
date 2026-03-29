@@ -2,7 +2,7 @@ AOS.init({ duration: 1000, once: true });
 
 // --- Typewriter Effect ---
 const textElement = document.getElementById('typewriter');
-const phrases = ["Creative Marketer", "Graphic Designer", "Operations Specialist"];
+const phrases = ["Marketing Specialist","Visual Strategist"];
 let phraseIdx = 0, charIdx = 0, isDeleting = false;
 
 function type() {
