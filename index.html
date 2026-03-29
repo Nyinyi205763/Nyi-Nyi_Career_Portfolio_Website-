@@ -9,10 +9,11 @@
     <link rel="preload" href="style.css" as="style">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <style>
       /* Web စပွင့်ချင်း ချက်ချင်းပေါ်လာအောင် ကူညီပေးမယ့် style များ */
-      body { background: #030303; margin: 0; padding: 0; }
-      .liquid-wrapper { display: none; } 
+      body { background: #050505 !important; margin: 0; padding: 0; }
+      .liquid-wrapper { display: block; } 
       header { height: 100vh; display: flex; align-items: center; justify-content: center; }
     </style>
 
@@ -23,9 +24,15 @@
       gtag('js', new Date());
       gtag('config', 'G-TKVT5XE0Z5');
     </script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 </head>
 <body>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+    <script src="script.js" defer></script>
+</body>
+</html>
 
     <div class="liquid-wrapper">
         <div class="liquid-blob blob-1"></div>
