@@ -64,3 +64,18 @@ function sendMessage() {
         }, 1000);
     }
 }
+// ဖိုင်ရဲ့ အောက်ဆုံးမှာ ဒါလေးကို copy ယူထည့်ပါ
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    
+    // Blob တွေကို scroll speed မတူဘဲ ရွေ့ခိုင်းတာ
+    if(document.querySelector('.blob-1')) {
+        document.querySelector('.blob-1').style.transform = `translateY(${scrollY * 0.3}px)`;
+    }
+    if(document.querySelector('.blob-2')) {
+        document.querySelector('.blob-2').style.transform = `translateY(${scrollY * -0.2}px)`;
+    }
+    if(document.querySelector('.blob-3')) {
+        document.querySelector('.blob-3').style.transform = `translateY(${scrollY * 0.1}px)`;
+    }
+});
