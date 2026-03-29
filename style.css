@@ -31,23 +31,22 @@ body {
     overflow: hidden;
 }
 
-/* style.css ထဲမှာ ဒီအတိုင်း အစားထိုးလိုက်ပါ */
+/* Line 35 ကနေ 50 အထိကို ဒါလေးနဲ့ အစားထိုးပါ */
 .liquid-blob {
     position: absolute;
-    width: 1200px;  /* PC အတွက်ရော လှအောင် အကြီးကြီး ချဲ့လိုက်ပါမယ် */
+    width: 1200px;
     height: 1200px;
-    filter: blur(180px); /* ၁၈၀ အထိ တိုးလိုက်ရင် အလုံးလိုက် မပေါ်တော့ဘဲ Gradient လို ညက်သွားပါလိမ့်မယ် */
-    opacity: 0.15;  /* မျက်စိမအေးရင် ၀.၁ အထိ လျှော့နိုင်ပါတယ် */
+    filter: blur(200px); /* PC မှာ ညက်သွားအောင် ၂၀၀ ပေးထားပါတယ် */
+    opacity: 0.15;
     border-radius: 50%;
     z-index: -1;
 }
 
-/* နေရာတွေကို တစ်မျက်နှာလုံး ပြန့်သွားအောင် ပြန်ညှိမယ် */
+/* နေရာညှိတာတွေမှာ bracket မပိုအောင် သတိထားပါ */
 .blob-1 { top: -20%; left: -10%; background: var(--primary-blue); }
 .blob-2 { top: 20%; right: -10%; background: var(--primary-purple); }
 .blob-3 { top: 50%; left: -5%; background: var(--neon-blue); }
-.blob-4 { top: 80%; right: 0%; background: var(--primary-purple); }}
-
+.blob-4 { top: 80%; right: 0%; background: var(--primary-purple); }
 @keyframes move-liquid {
     0% { transform: translate(0, 0) scale(1) rotate(0deg); }
     33% { transform: translate(30vw, 20vh) scale(1.2) rotate(120deg); }
