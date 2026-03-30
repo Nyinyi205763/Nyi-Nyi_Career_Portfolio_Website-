@@ -391,7 +391,7 @@ footer { text-align: center; padding: 60px 0; color: rgba(255,255,255,0.2); font
     .liquid-blob {
         width: 600px;
         height: 600px;
-        filter: blur(80px); /* Mobile မှာ blur နည်းနည်းပဲ သုံးမှ အရောင်တောက်မှာပါ */
+        filter: blur(25px); /* Mobile မှာ blur နည်းနည်းပဲ သုံးမှ အရောင်တောက်မှာပါ */
         opacity: 0.45;      /* အရောင်ကို ပိုတောက်အောင် လုပ်လိုက်တာ */
     }
 }
