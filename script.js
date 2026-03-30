@@ -79,29 +79,26 @@ window.addEventListener('scroll', () => {
         document.querySelector('.blob-3').style.transform = `translateY(${scrollY * 0.1}px)`;
     }
 });
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
 
-Tawk_API.onLoad = function(){
-    // ဒါက widget ကို စတက်လာကတည်းက လုံးဝ ဖျောက်ထားခိုင်းတာပါ
+Tawk_API.onLoad = function() {
+    // Widget စတက်လာတာနဲ့ လုံးဝ ဖျောက်ထားမယ်
     Tawk_API.hideWidget();
 };
 
 function toggleTawk() {
-    // ညီညီ့ Button ကို နှိပ်မှ ပွင့်လာအောင် လုပ်တာပါ
-    if(Tawk_API.isChatMaximized()){
+    if (Tawk_API.isChatMaximized()) {
         Tawk_API.minimize();
     } else {
         Tawk_API.maximize();
     }
 }
 
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/69c95762e22b441c38b7583c/1jkt7qmob';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
+(function() {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/69c95762e22b441c38b7583c/1jkt7qmob';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
 })();
-</script>
