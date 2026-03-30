@@ -79,3 +79,6 @@ window.addEventListener('scroll', () => {
         document.querySelector('.blob-3').style.transform = `translateY(${scrollY * 0.1}px)`;
     }
 });
+function toggleTawk() {
+    Tawk_API.toggle();
+}
