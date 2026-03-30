@@ -43,3 +43,39 @@ function sendMessage() {
     const input = document.getElementById('chatInput');
     const body = document.getElementById('chatBody');
     const message = input.value.trim();
+
+    if (message !== "") {
+        // User Message ပြရန်
+        const userDiv = document.createElement('div');
+        userDiv.className = 'user-msg';
+        userDiv.textContent = message;
+        body.appendChild(userDiv);
+        
+        input.value = ""; // Input ရှင်းပစ်ရန်
+        body.scrollTop = body.scrollHeight; // အောက်ဆုံးကို scroll ဆွဲရန်
+
+        // Bot က ပြန်ဖြေတဲ့ ပုံစံလေး (၂ စက္ကန့်အကြာမှာ ပေါ်လာမယ်)
+        setTimeout(() => {
+            const botDiv = document.createElement('div');
+            botDiv.className = 'bot-msg';
+            botDiv.textContent = "Please leave your phone number or email address. I will get back to you soon!";
+            body.appendChild(botDiv);
+            body.scrollTop = body.scrollHeight;
+        }, 1000);
+    }
+}
+// ဖိုင်ရဲ့ အောက်ဆုံးမှာ ဒါလေးကို copy ယူထည့်ပါ
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    
+    // Blob တွေကို scroll speed မတူဘဲ ရွေ့ခိုင်းတာ
+    if(document.querySelector('.blob-1')) {
+        document.querySelector('.blob-1').style.transform = `translateY(${scrollY * 0.3}px)`;
+    }
+    if(document.querySelector('.blob-2')) {
+        document.querySelector('.blob-2').style.transform = `translateY(${scrollY * -0.2}px)`;
+    }
+    if(document.querySelector('.blob-3')) {
+        document.querySelector('.blob-3').style.transform = `translateY(${scrollY * 0.1}px)`;
+    }
+});
