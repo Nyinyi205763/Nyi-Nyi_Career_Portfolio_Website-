@@ -79,6 +79,14 @@ window.addEventListener('scroll', () => {
         document.querySelector('.blob-3').style.transform = `translateY(${scrollY * 0.1}px)`;
     }
 });
+var Tawk_API = Tawk_API || {};
+
+Tawk_API.onLoad = function(){
+    // Widget စတက်လာတာနဲ့ ဖျောက်မယ်
+    Tawk_API.hideWidget();
+};
+
 function toggleTawk() {
-    Tawk_API.toggle();
+    // ညီညီ့ Button ကို နှိပ်လိုက်ရင် Chat Box ပွင့်လာမယ်
+    Tawk_API.maximize();
 }
