@@ -180,8 +180,8 @@ h3 { margin: 30px 0 15px; color: #ccc; font-weight: 400; text-transform: upperca
 
 .glass-card { 
     background: var(--glass-bg);
-    backdrop-filter: blur(25px) saturate(180%);
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    backdrop-filter: blur(50px) saturate(180%);
+    -webkit-backdrop-filter: blur(50px) saturate(180%);
     border: 1px solid var(--glass-border);
     padding: 40px; border-radius: 30px; 
     margin-bottom: 30px;
