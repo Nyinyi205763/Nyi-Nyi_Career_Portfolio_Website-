@@ -402,50 +402,33 @@ footer { text-align: center; padding: 60px 0; color: rgba(255,255,255,0.2); font
         filter: blur(200px); /* Screen ကြီးလေ Blur ပိုများလေ Gradient ပိုလှလေပဲ */
     }
 }
-/* See Certification ခလုတ်ကို အလှဆင်ခြင်း */
-.cert-nav {
-    display: flex;
-    justify-content: center; /* အလယ်ပို့မယ် */
-    margin: 20px 0;
-}
-
-.glass-btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px; /* Round shape */
-    color: #00d2ff; /* Cyan color */
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+/* Navigation ထဲက Certification ခလုတ်ကို ထင်ရှားအောင်လုပ်ခြင်း */
+.nav-links li a.cert-link {
+    background: rgba(0, 210, 255, 0.1); /* Cyan အရောင်ဖျော့ဖျော့ */
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 210, 255, 0.3);
     transition: 0.3s all ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: #00d2ff !important; /* စာသားအရောင်ကို Cyan လေးပေးထားတယ် */
 }
 
-.glass-btn:hover {
+.nav-links li a.cert-link:hover {
     background: rgba(0, 210, 255, 0.2);
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+    transform: translateY(-2px);
 }
 
-/* Mobile အတွက် သီးသန့် ပြင်ဆင်ချက် */
+/* Mobile အတွက် ညှိပေးခြင်း */
 @media (max-width: 768px) {
-    .cert-nav {
-        position: relative; /* စာသားတွေအပေါ်မှာ ပေါ်နေအောင် */
-        margin-top: 30px;
+    .nav-links {
+        display: flex;
+        flex-direction: column; /* အောက်ကို စီသွားအောင် */
+        align-items: center;
+        gap: 15px;
     }
     
-    .glass-btn {
-        width: 80%; /* ဖုန်း screen ရဲ့ ၈၀ ရာခိုင်နှုန်းအကျယ် */
+    .nav-links li a.cert-link {
+        width: 150px; /* Mobile မှာ နည်းနည်းပိုကျယ်အောင် */
         text-align: center;
-        font-size: 14px;
-        padding: 15px;
-    }
-}
-        
-        right: 20px;
     }
 }
