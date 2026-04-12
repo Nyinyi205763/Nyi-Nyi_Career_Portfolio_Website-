@@ -43,10 +43,10 @@ body {
 }
 
 /* နေရာတွေကို Screen အလယ်နား ပိုရောက်အောင် စုပေးမယ် */
-.blob-1 { top: -10%; left: -10%; background: var(--primary-blue); }
-.blob-2 { top: 25%; right: -5%; background: var(--primary-purple); }
-.blob-3 { top: 55%; left: 0%; background: var(--neon-blue); }
-.blob-4 { top: 80%; right: -5%; background: var(--primary-purple); }
+.blob-1 { top: -10%; left: -10%; background: var(--primary-purple); } /* အပြာကနေ ခရမ်းပြောင်းလိုက်တယ် */
+.blob-2 { top: 25%; right: -5%; background: var(--primary-blue); }    /* ခရမ်းကနေ အပြာပြောင်းလိုက်တယ် */
+.blob-3 { top: 55%; left: 0%; background: var(--primary-purple); }   /* အပြာကနေ ခရမ်း ထပ်ပြောင်းတယ် */
+.blob-4 { top: 80%; right: -5%; background: var(--neon-blue); }      /* အောက်ခြေကို အပြာတောက်တောက်လေးထားမယ် */
 @keyframes move-liquid {
     0% { transform: translate(0, 0) scale(1) rotate(0deg); }
     33% { transform: translate(30vw, 20vh) scale(1.2) rotate(120deg); }
