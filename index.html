@@ -1,22 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="style.css"> </head>
-<body>
+<div class="cert-nav">
+    <button class="glass-btn" onclick="toggleModal('loginModal')">See Certification</button>
+</div>
 
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Sign In</button>
-        </form>
-        <p id="message"></p>
+<div id="loginModal" class="modal-overlay">
+    
+    <div class="glass-modal-content">
+        <span class="close-btn" onclick="toggleModal('loginModal')">&times;</span>
+        
+        <div id="loginSection">
+            <div class="login-header">
+                <div class="header-line"></div>
+                <h2>LOGIN</h2>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button class="signin-btn">Sign In</button>
+            <p class="switch-text">Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
+        </div>
+
+        <div id="registerSection" style="display: none;">
+            <div class="login-header">
+                <div class="header-line"></div>
+                <h2>REGISTER</h2>
+            </div>
+            <div class="input-group">
+                <input type="text" id="regName" placeholder="Name" required>
+                <input type="email" id="regEmail" placeholder="Email" required>
+                <input type="password" placeholder="Create Password" required>
+            </div>
+            <button class="signin-btn" onclick="completeRegistration()">Register & See Images</button>
+            <p class="switch-text">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+        </div>
     </div>
+</div>
 
+<div id="certModal" class="modal-overlay">
+    <div class="glass-modal-content cert-image-modal">
+        <span class="close-btn" onclick="toggleModal('certModal')">&times;</span>
+        <h2>Congratulations!</h2>
+        <div class="cert-image-container">
+            <img src="path/to/your/certificate1.jpg" alt="Certification 1" class="cert-photo">
+            <img src="path/to/your/certificate2.jpg" alt="Certification 2" class="cert-photo">
+        </div>
+    </div>
+</div>
     <script src="script.js"></script> </body>
 </html>
 <head>
