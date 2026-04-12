@@ -401,33 +401,27 @@ footer { text-align: center; padding: 60px 0; color: rgba(255,255,255,0.2); font
         height: 1000px;
         filter: blur(200px); /* Screen ကြီးလေ Blur ပိုများလေ Gradient ပိုလှလေပဲ */
     }
-}
-/* Navigation ထဲက Certification ခလုတ်ကို ထင်ရှားအောင်လုပ်ခြင်း */
+/* Navigation link style */
 .nav-links li a.cert-link {
-    background: rgba(0, 210, 255, 0.1); /* Cyan အရောင်ဖျော့ဖျော့ */
-    padding: 8px 15px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 210, 255, 0.3);
-    transition: 0.3s all ease;
-    color: #00d2ff !important; /* စာသားအရောင်ကို Cyan လေးပေးထားတယ် */
+    background: rgba(0, 210, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 50px; /* ပိုဝိုင်းသွားအောင် */
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    color: #00d2ff !important;
+    display: inline-block;
+    margin-top: 5px; /* အပေါ်ကစာသားတွေနဲ့ မကပ်အောင် */
 }
 
-.nav-links li a.cert-link:hover {
-    background: rgba(0, 210, 255, 0.2);
-    box-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
-    transform: translateY(-2px);
-}
-
-/* Mobile အတွက် ညှိပေးခြင်း */
+/* Mobile မှာ အလယ်တည့်တည့်ဖြစ်အောင် */
 @media (max-width: 768px) {
     .nav-links {
+        padding: 20px 0;
         display: flex;
-        flex-direction: column; /* အောက်ကို စီသွားအောင် */
+        flex-direction: column;
         align-items: center;
-        gap: 15px;
+        gap: 20px; /* စာသားတစ်ခုနဲ့တစ်ခုကြား ခြားပေးတာ */
     }
-    
-    .nav-links li a.cert-link {
+}
         width: 150px; /* Mobile မှာ နည်းနည်းပိုကျယ်အောင် */
         text-align: center;
     }
