@@ -79,3 +79,21 @@ window.addEventListener('scroll', () => {
         document.querySelector('.blob-3').style.transform = `translateY(${scrollY * 0.1}px)`;
     }
 });
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Page ကို Refresh မဖြစ်အောင် တားတာ
+
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+    const msg = document.getElementById('message');
+
+    // ဒီနေရာမှာ တကယ့် Database နဲ့ ချိတ်ရမှာဖြစ်ပေမဲ့ အခုတော့ အစမ်းစစ်မယ်
+    if (user === "admin" && pass === "1234") {
+        msg.style.color = "green";
+        msg.innerText = "Login Successful!";
+        // အောင်မြင်ရင် တခြား Page ကို လွှတ်ချင်ရင် အောက်က Code သုံးပါ
+        // window.location.href = "dashboard.html"; 
+    } else {
+        msg.style.color = "red";
+        msg.innerText = "Invalid Username or Password!";
+    }
+});
