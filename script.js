@@ -79,21 +79,37 @@ window.addEventListener('scroll', () => {
         document.querySelector('.blob-3').style.transform = `translateY(${scrollY * 0.1}px)`;
     }
 });
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Page ကို Refresh မဖြစ်အောင် တားတာ
-
-    const user = document.getElementById('username').value;
-    const pass = document.getElementById('password').value;
-    const msg = document.getElementById('message');
-
-    // ဒီနေရာမှာ တကယ့် Database နဲ့ ချိတ်ရမှာဖြစ်ပေမဲ့ အခုတော့ အစမ်းစစ်မယ်
-    if (user === "admin" && pass === "1234") {
-        msg.style.color = "green";
-        msg.innerText = "Login Successful!";
-        // အောင်မြင်ရင် တခြား Page ကို လွှတ်ချင်ရင် အောက်က Code သုံးပါ
-        // window.location.href = "dashboard.html"; 
+// Modal ဖွင့်/ပိတ် လုပ်တဲ့ function
+function toggleModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal.style.display === "flex") {
+        modal.style.display = "none";
     } else {
-        msg.style.color = "red";
-        msg.innerText = "Invalid Username or Password!";
+        modal.style.display = "flex";
     }
-});
+}
+
+// Register Form ပြဖို့
+function showRegister() {
+    document.getElementById('loginSection').style.display = 'none';
+    document.getElementById('registerSection').style.display = 'block';
+}
+
+// Login Form ပြဖို့
+function showLogin() {
+    document.getElementById('loginSection').style.display = 'block';
+    document.getElementById('registerSection').style.display = 'none';
+}
+
+// Register နှိပ်ရင် ပုံတွေပြမယ့် function
+function completeRegistration() {
+    const name = document.getElementById('regName').value;
+    const email = document.getElementById('regEmail').value;
+
+    if (name && email) {
+        document.getElementById('loginModal').style.display = 'none';
+        document.getElementById('certModal').style.display = 'flex';
+    } else {
+        alert("Please fill name and email!");
+    }
+}
