@@ -79,37 +79,3 @@ window.addEventListener('scroll', () => {
         document.querySelector('.blob-3').style.transform = `translateY(${scrollY * 0.1}px)`;
     }
 });
-// Modal ဖွင့်/ပိတ် လုပ်တဲ့ function
-function toggleModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal.style.display === "flex") {
-        modal.style.display = "none";
-    } else {
-        modal.style.display = "flex";
-    }
-}
-
-// Register Form ပြဖို့
-function showRegister() {
-    document.getElementById('loginSection').style.display = 'none';
-    document.getElementById('registerSection').style.display = 'block';
-}
-
-// Login Form ပြဖို့
-function showLogin() {
-    document.getElementById('loginSection').style.display = 'block';
-    document.getElementById('registerSection').style.display = 'none';
-}
-
-// Register နှိပ်ရင် ပုံတွေပြမယ့် function
-function completeRegistration() {
-    const name = document.getElementById('regName').value;
-    const email = document.getElementById('regEmail').value;
-
-    if (name && email) {
-        document.getElementById('loginModal').style.display = 'none';
-        document.getElementById('certModal').style.display = 'flex';
-    } else {
-        alert("Please fill name and email!");
-    }
-}
