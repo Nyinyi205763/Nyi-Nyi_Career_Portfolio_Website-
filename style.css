@@ -1,55 +1,114 @@
 :root {
+
     --glass-bg: rgba(255, 255, 255, 0.05);
+
     --glass-border: rgba(255, 255, 255, 0.1);
+
     --primary-blue: #00d2ff;
+
     --primary-purple: #9d50bb;
+
     --neon-blue: #00f2fe;
+
     --text-white: #ffffff;
+
     --glow-blue: rgba(0, 210, 255, 0.3);
+
 }
+
+
 
 html { scroll-behavior: smooth; }
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+
+
 body { 
+
     background: #030303;
+
     color: var(--text-white); 
+
     font-family: 'Segoe UI', Roboto, sans-serif; 
+
     overflow-x: hidden;
+
     line-height: 1.6;
+
 }
 
-/* --- 🌌 Liquid Background (အရောင်ညှိပြီးသား) --- */
+
+
+/* style.css ထဲမှာ အစားထိုးရန် */
+
 .liquid-wrapper {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100vh;
+
+    position: fixed; /* absolute အစား fixed သုံးလိုက်ရင် scroll ဆွဲလဲ လိုက်ပါလာမယ် */
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100vh; /* Screen အပြည့်ယူထားမယ် */
+
     z-index: -1;
+
     background: #050505;
+
     overflow: hidden;
+
 }
+
+
+
+/* Line 35 ကနေ 50 အထိကို ဒါလေးနဲ့ အစားထိုးပါ */
 
 .liquid-blob {
+
     position: absolute;
-    width: 800px;
-    height: 800px;
-    filter: blur(120px);
-    opacity: 0.3;
+
+    width: 1000px;
+
+    height: 1000px;
+
+    filter: blur(120px); /* Blur အရမ်းများရင် အရောင်ပျောက်တတ်လို့ ၁၂၀ အထိ ပြန်လျှော့လိုက်မယ် */
+
+    opacity: 0.35;       /* Opacity ကို ၀.၁၅ ကနေ ၀.၃၅ အထိ မြှင့်လိုက်ပါ (ဒါဆို Mobile မှာ အရောင်ပေါ်လာမယ်) */
+
     border-radius: 50%;
+
     z-index: -1;
-    animation: move-liquid 20s infinite alternate;
+
 }
 
-/* အရောင်ကို ညီညီလေးဖြစ်အောင် ခရမ်း နဲ့ အပြာ မျှထားတယ် */
-.blob-1 { top: -10%; left: -10%; background: var(--primary-purple); }
-.blob-2 { top: 20%; right: -10%; background: var(--primary-blue); }
-.blob-3 { top: 50%; left: -5%; background: var(--primary-purple); }
-.blob-4 { top: 80%; right: 0%; background: var(--neon-blue); }
+
+
+/* နေရာတွေကို Screen အလယ်နား ပိုရောက်အောင် စုပေးမယ် */
+
+.blob-1 { top: -10%; left: -10%; background: var(--primary-purple); } /* အပြာကနေ ခရမ်းပြောင်းလိုက်တယ် */
+
+.blob-2 { top: 25%; right: -5%; background: var(--primary-blue); }    /* ခရမ်းကနေ အပြာပြောင်းလိုက်တယ် */
+
+.blob-3 { top: 55%; left: 0%; background: var(--primary-purple); }   /* အပြာကနေ ခရမ်း ထပ်ပြောင်းတယ် */
+
+.blob-4 { top: 80%; right: -5%; background: var(--neon-blue); }      /* အောက်ခြေကို အပြာတောက်တောက်လေးထားမယ် */
 
 @keyframes move-liquid {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(10vw, 10vh) scale(1.1); }
+
+    0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+
+    33% { transform: translate(30vw, 20vh) scale(1.2) rotate(120deg); }
+
+    66% { transform: translate(-10vw, 50vh) scale(0.8) rotate(240deg); }
+
+    100% { transform: translate(10vw, -10vh) scale(1.1) rotate(360deg); }
+
 }
+
+
 
 /* --- 📱 Glass Floating Navigation (Mobile ရော PC ရော အဆင်ပြေအောင် ညှိထားတယ်) --- */
 nav {
@@ -84,81 +143,414 @@ nav {
 
 .nav-links a:hover { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
 
-/* Certification ကို တခြား menu တွေနဲ့ ပုံစံတူဖြစ်အောင် ညှိတာ */
-.nav-links li a.cert-link {
-    background: none;
-    border: none;
-    color: white !important;
+/* --- 🚀 Hero Section --- */
+
+header {
+
+    height: 100vh;
+
+    display: flex; flex-direction: column;
+
+    justify-content: center; align-items: center;
+
+    padding: 0 20px;
+
+    position: relative;
+
 }
 
-/* --- 🚀 Hero Section (PC/Mobile Alignment ညှိထားတယ်) --- */
-header {
-    min-height: 100vh;
-    display: flex; justify-content: center; align-items: center;
-    padding: 80px 20px 40px;
-}
+
 
 .header-main-content {
-    display: flex; align-items: center; justify-content: center;
-    gap: 50px; width: 100%; max-width: 1100px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 50px;
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    z-index: 10;
+
 }
+
+
+
+.header-text-block {
+
+    text-align: right;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    flex: 1;
+
+}
+
+
 
 header h1 { 
-    font-size: clamp(2.5em, 8vw, 5em); 
-    letter-spacing: 5px; font-weight: 900;
+
+    font-size: clamp(3.5em, 8vw, 6em); 
+
+    letter-spacing: 12px; font-weight: 900;
+
     background: linear-gradient(to bottom, #fff, #888);
+
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    text-align: center;
+
+    filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.3));
+
+    margin-bottom: 5px;
+
 }
 
-/* --- 📱 Mobile Responsive (လွဲနေတဲ့ Position တွေအကုန် ဒီမှာပြင်ထားတယ်) --- */
+
+
+.subtitle { font-size: 1.1em; color: var(--neon-blue); font-weight: bold; letter-spacing: 4px; min-height: 1.5em; text-transform: uppercase; }
+
+
+
+.hero-socials { 
+
+    margin-top: 25px; 
+
+    display: flex; 
+
+    gap: 20px; 
+
+    justify-content: center; 
+
+    align-items: center; 
+
+}
+
+.hero-socials a { 
+
+    color: var(--neon-blue); 
+
+    font-size: 1.6em; 
+
+    transition: 0.4s; 
+
+    text-shadow: 0 0 10px var(--neon-blue);
+
+}
+
+.hero-socials a:hover { transform: translateY(-5px); }
+
+
+
+.header-profile-block {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex: 0 0 35%;
+
+}
+
+
+
+.header-profile-frame {
+
+    width: 100%;
+
+    max-width: 300px;
+
+    aspect-ratio: 1/1;
+
+    border-radius: 20px;
+
+    border: 2px solid var(--neon-blue);
+
+    box-shadow: 0 0 20px var(--glow-blue);
+
+    background: rgba(0, 0, 0, 0.5);
+
+    overflow: hidden;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    transition: 0.3s ease;
+
+}
+
+.header-profile-frame:hover {
+
+    border-color: #fff;
+
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+
+    transform: scale(1.02);
+
+}
+
+
+
+.header-profile-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    background: url('profile.PNG') center/cover no-repeat;
+
+    filter: brightness(0.9);
+
+    border-radius: 18px;
+
+}
+
+
+
+/* --- 🧊 Glass Container Styles --- */
+
+.container { max-width: 1000px; margin: auto; padding: 0 25px; }
+
+.main-content { position: relative; z-index: 1; padding-bottom: 100px; }
+
+
+
+h2 { font-size: 2.2em; margin: 80px 0 35px; color: var(--neon-blue); text-transform: uppercase; border-left: 6px solid var(--primary-blue); padding-left: 20px; }
+
+h3 { margin: 30px 0 15px; color: #ccc; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; }
+
+
+
+.glass-card { 
+
+    background: var(--glass-bg);
+
+    backdrop-filter: blur(25px) saturate(180%);
+
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+
+    border: 1px solid var(--glass-border);
+
+    padding: 40px; border-radius: 30px; 
+
+    margin-bottom: 30px;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+
+}
+
+
+
+/* --- 📅 Timeline & Experience --- */
+
+.timeline-item { position: relative; padding-left: 30px; margin-bottom: 25px; border-left: 1px solid rgba(255,255,255,0.1); }
+
+.timeline-item::before { content: ""; position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; background: var(--neon-blue); border-radius: 50%; box-shadow: 0 0 15px var(--neon-blue); }
+
+
+
+.exp-item {
+
+    margin-bottom: 35px;
+
+    padding-left: 20px;
+
+    border-left: 2px solid var(--glass-border);
+
+    transition: 0.3s;
+
+}
+
+.exp-item:hover {
+
+    border-left-color: var(--neon-blue);
+
+    background: rgba(255, 255, 255, 0.02);
+
+}
+
+
+
+.job-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+
+.job-title { color: var(--neon-blue); font-weight: 700; font-size: 1.15em; }
+
+.company-info { color: #fff; font-size: 1em; margin: 5px 0; opacity: 0.9; }
+
+.work-tag { font-size: 0.75em; background: rgba(0, 242, 254, 0.15); color: var(--neon-blue); padding: 3px 12px; border-radius: 20px; font-weight: bold; }
+
+.exp-location { font-size: 0.85em; color: #888; display: block; margin-top: 4px; }
+
+
+
+/* --- ⚡ Skills Grid --- */
+
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 20px; }
+
+.skill-box { 
+
+    background: var(--glass-bg); 
+
+    backdrop-filter: blur(15px);
+
+    -webkit-backdrop-filter: blur(15px);
+
+    padding: 35px; border-radius: 25px; text-align: center;
+
+    border: 1px solid var(--glass-border); transition: 0.4s;
+
+}
+
+.skill-box:hover { transform: translateY(-10px); border-color: var(--neon-blue); background: rgba(255,255,255,0.08); }
+
+.skill-box i { font-size: 3em; color: var(--primary-blue); margin-bottom: 20px; }
+
+
+
+/* --- 🖼️ Portfolio Grid --- */
+
+.portfolio-grid { display: grid; gap: 20px; margin-bottom: 50px; }
+
+.grid-sq { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+.grid-flyer { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+
+
+.portfolio-grid img { 
+
+    width: 100%; border-radius: 20px; border: 1px solid var(--glass-border);
+
+    transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1); cursor: pointer; filter: grayscale(40%);
+
+}
+
+.portfolio-grid img:hover { transform: scale(1.05); filter: grayscale(0%); border-color: var(--neon-blue); box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
+
+.img-sq { aspect-ratio: 1/1; object-fit: cover; }
+
+.img-flyer { aspect-ratio: 1/1.414; object-fit: cover; }
+
+
+
+/* --- ✉️ Contact Area --- */
+
+.contact-area { 
+
+    background: linear-gradient(135deg, rgba(0, 210, 255, 0.05), rgba(157, 80, 187, 0.05));
+
+    backdrop-filter: blur(20px);
+
+    padding: 80px 20px; text-align: center; border-radius: 40px; 
+
+    margin: 100px 0; border: 1px solid var(--glass-border);
+
+}
+
+.contact-btn { 
+
+    display: inline-block; background: var(--primary-blue); color: white; 
+
+    padding: 18px 40px; margin: 12px; text-decoration: none; 
+
+    border-radius: 60px; font-weight: bold; transition: 0.3s;
+
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+
+}
+
+.contact-btn:hover { background: white; color: black; transform: scale(1.1); box-shadow: 0 0 30px white; }
+
+
+
+
+
+/* Mobile အတွက် သီးသန့် */
+
 @media (max-width: 768px) {
-    .header-main-content {
-        flex-direction: column-reverse; /* ပုံကို အပေါ်ပို့ပြီး စာကို အောက်ပို့မယ် */
-        gap: 30px;
-        text-align: center;
-    }
-
-    .header-text-block {
-        align-items: center;
-        text-align: center;
-    }
-
-    .nav-links {
-        gap: 5px; /* Mobile မှာ နေရာကျဉ်းလို့ gap လျှော့လိုက်တယ် */
-    }
-
-    .nav-links a {
-        font-size: 9px; /* စာလုံးနည်းနည်းသေးမှ တစ်တန်းတည်း ဆံ့မှာပါ */
-        padding: 5px;
-    }
 
     .liquid-blob {
-        width: 400px; height: 400px; /* Mobile မှာ အရောင်ကွက် မကြီးလွန်းအောင် */
-        opacity: 0.4;
+
+        width: 600px;
+
+        height: 600px;
+
+        filter: blur(80px); /* Mobile မှာ blur နည်းနည်းပဲ သုံးမှ အရောင်တောက်မှာပါ */
+
+        opacity: 0.45;      /* အရောင်ကို ပိုတောက်အောင် လုပ်လိုက်တာ */
+
     }
+
 }
 
-/* --- 🧊 Glass Card & Grid Styles (တခြား အပိုင်းတွေအတွက်) --- */
-.container { max-width: 1000px; margin: auto; padding: 0 25px; }
-.glass-card { 
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    padding: 30px; border-radius: 25px; 
-    margin-bottom: 30px;
-}
+@media (min-width: 1024px) {
 
-.portfolio-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 20px; 
-}
+    .liquid-blob {
 
-.portfolio-grid img { width: 100%; border-radius: 15px; transition: 0.4s; }
-.portfolio-grid img:hover { transform: scale(1.03); border-color: var(--neon-blue); }
-    .nav-links li a.cert-link {
-        padding: 5px 10px; /* Certification ခလုတ်လေးကိုလည်း လိုက်ညှိတာ */
+        width: 1000px;
+
+        height: 1000px;
+
+        filter: blur(200px); /* Screen ကြီးလေ Blur ပိုများလေ Gradient ပိုလှလေပဲ */
+
     }
+
+/* Navigation link style - Certification ကို ပုံမှန်ပြန်ပြောင်းခြင်း */
+
+.nav-links li a.cert-link {
+
+    background: none; /* နောက်ခံအရောင်ဖြုတ်မယ် */
+
+    border: none;     /* ဘောင်ဖြုတ်မယ် */
+
+    padding: 10px 15px; /* တခြား link တွေနဲ့ padding တူအောင်ညှိမယ် */
+
+    color: white !important; /* တခြားစာသားတွေလို အဖြူရောင်ပြောင်းမယ် */
+
 }
+
+
+
+/* Mobile မှာလည်း PC မှာလို ဘေးတိုက်တန်းစီဖို့ */
+
+@media (max-width: 768px) {
+
+    .nav-links {
+
+        display: flex;
+
+        flex-direction: row; /* အောက်ကိုမကျဘဲ ဘေးတိုက်ဖြစ်အောင် */
+
+        justify-content: center;
+
+        align-items: center;
+
+        gap: 10px; /* တစ်ခုနဲ့တစ်ခုကြား အကွာအဝေး */
+
+        padding: 10px;
+
+        flex-wrap: wrap; /* Screen အရမ်းသေးရင် စာသားတွေ ဆံ့အောင် */
+
+    }
+
+
+
+    .nav-links li a {
+
+        font-size: 11px; /* Mobile မှာ စာလုံးတွေ တစ်တန်းတည်းဆံ့အောင် နည်းနည်းသေးလိုက်တာ */
+
+        padding: 5px 8px;
+
+    }
