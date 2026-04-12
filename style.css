@@ -412,17 +412,24 @@ footer { text-align: center; padding: 60px 0; color: rgba(255,255,255,0.2); font
     margin-top: 5px; /* အပေါ်ကစာသားတွေနဲ့ မကပ်အောင် */
 }
 
-/* Mobile မှာ အလယ်တည့်တည့်ဖြစ်အောင် */
+/* Mobile မှာလည်း PC မှာလို ဘေးတိုက်တန်းစီဖို့ */
 @media (max-width: 768px) {
     .nav-links {
-        padding: 20px 0;
         display: flex;
-        flex-direction: column;
+        flex-direction: row; /* အောက်ကိုမကျဘဲ ဘေးတိုက်ဖြစ်အောင် */
+        justify-content: center;
         align-items: center;
-        gap: 20px; /* စာသားတစ်ခုနဲ့တစ်ခုကြား ခြားပေးတာ */
+        gap: 10px; /* တစ်ခုနဲ့တစ်ခုကြား အကွာအဝေး */
+        padding: 10px;
+        flex-wrap: wrap; /* Screen အရမ်းသေးရင် စာသားတွေ ဆံ့အောင် */
     }
-}
-        width: 150px; /* Mobile မှာ နည်းနည်းပိုကျယ်အောင် */
-        text-align: center;
+
+    .nav-links li a {
+        font-size: 11px; /* Mobile မှာ စာလုံးတွေ တစ်တန်းတည်းဆံ့အောင် နည်းနည်းသေးလိုက်တာ */
+        padding: 5px 8px;
+    }
+
+    .nav-links li a.cert-link {
+        padding: 5px 10px; /* Certification ခလုတ်လေးကိုလည်း လိုက်ညှိတာ */
     }
 }
