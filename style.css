@@ -261,9 +261,9 @@ h3 { margin: 30px 0 15px; color: #ccc; font-weight: 400; text-transform: upperca
 }
 @media (min-width: 1024px) {
     .liquid-blob {
-        width: 2000px;
-        height: 2000px;
-        filter: blur(300px); /* Screen ကြီးလေ Blur ပိုများလေ Gradient ပိုလှလေပဲ */
+        width: 1000px;
+        height: 1000px;
+        filter: blur(200px); /* Screen ကြီးလေ Blur ပိုများလေ Gradient ပိုလှလေပဲ */
     }
 /* Navigation link style - Certification ကို ပုံမှန်ပြန်ပြောင်းခြင်း */
 .nav-links li a.cert-link {
