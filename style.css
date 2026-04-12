@@ -143,182 +143,121 @@ nav {
 
 .nav-links a:hover { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
 
-/* --- 🚀 Hero Section --- */
-
+/* --- 🚀 Hero Section (PC/Mobile Optimized) --- */
 header {
-
-    height: 100vh;
-
-    display: flex; flex-direction: role;
-
-    justify-content: center; align-items: center;
-
-    padding: 0 20px;
-
+    min-height: 100vh;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    padding: 100px 20px 50px;
     position: relative;
-
 }
-
-
 
 .header-main-content {
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
-    gap: 50px;
-
+    gap: 60px;
     width: 100%;
-
     max-width: 1100px;
-
     z-index: 10;
-
 }
 
-
-
+/* စာသားအပိုင်း */
 .header-text-block {
-
-    text-align: right;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-end;
-
     flex: 1;
-
+    text-align: right; /* PC မှာ ညာကပ်ထားမယ် */
+    display: flex;
+    flex-direction: column;
 }
-
-
 
 header h1 { 
-
-    font-size: clamp(3.5em, 8vw, 6em); 
-
-    letter-spacing: 12px; font-weight: 900;
-
+    font-size: clamp(3em, 8vw, 6em); 
+    letter-spacing: 10px; 
+    font-weight: 900;
     background: linear-gradient(to bottom, #fff, #888);
-
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-
-    filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.3));
-
-    margin-bottom: 5px;
-
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
 }
 
-
-
-.subtitle { font-size: 1.1em; color: var(--neon-blue); font-weight: bold; letter-spacing: 4px; min-height: 1.5em; text-transform: uppercase; }
-
-
-
+/* Social Links */
 .hero-socials { 
-
-    margin-top: 25px; 
-
     display: flex; 
-
-    gap: 20px; 
-
-    justify-content: center; 
-
-    align-items: center; 
-
+    gap: 25px; 
+    justify-content: flex-end; /* PC မှာ ညာကပ်မယ် */
+    margin-top: 15px;
 }
-
 .hero-socials a { 
-
     color: var(--neon-blue); 
-
-    font-size: 1.6em; 
-
+    font-size: 1.8em; 
     transition: 0.4s; 
-
     text-shadow: 0 0 10px var(--neon-blue);
-
 }
+.hero-socials a:hover { transform: translateY(-5px); color: white; }
 
-.hero-socials a:hover { transform: translateY(-5px); }
-
-
-
-.header-profile-block {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    flex: 0 0 35%;
-
+/* ပုံအပိုင်း */
+.header-profile-block { 
+    flex: 0 0 40%; 
+    display: flex; 
+    justify-content: center; 
 }
-
-
 
 .header-profile-frame {
-
-    width: 100%;
-
-    max-width: 300px;
-
-    aspect-ratio: 1/1;
-
-    border-radius: 20px;
-
+    width: 300px; 
+    height: 300px;
+    border-radius: 30px; 
     border: 2px solid var(--neon-blue);
-
-    box-shadow: 0 0 20px var(--glow-blue);
-
-    background: rgba(0, 0, 0, 0.5);
-
+    box-shadow: 0 0 25px var(--glow-blue);
     overflow: hidden;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    transition: 0.3s ease;
-
+    transition: 0.3s;
 }
-
-.header-profile-frame:hover {
-
-    border-color: #fff;
-
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-
-    transform: scale(1.02);
-
-}
-
-
 
 .header-profile-image {
-
-    width: 100%;
-
+    width: 100%; 
     height: 100%;
-
     background: url('profile.PNG') center/cover no-repeat;
-
-    filter: brightness(0.9);
-
-    border-radius: 18px;
-
 }
 
+/* --- 📱 Mobile Responsive (Name -> Media -> Photo) --- */
+@media (max-width: 768px) {
+    header { padding-top: 120px; }
 
+    .header-main-content {
+        flex-direction: column; /* အပေါ်အောက် စီမယ် */
+        gap: 30px;
+        text-align: center;
+    }
 
+    /* 1. Name */
+    .header-text-block {
+        order: 1;
+        text-align: center;
+        align-items: center;
+    }
+
+    header h1 {
+        font-size: 3.5em;
+        letter-spacing: 5px;
+    }
+
+    /* 2. Media Links */
+    .hero-socials {
+        order: 2;
+        justify-content: center;
+        margin: 10px 0 20px 0;
+    }
+
+    /* 3. Photo */
+    .header-profile-block {
+        order: 3;
+        width: 100%;
+    }
+
+    .header-profile-frame {
+        width: 220px;
+        height: 220px;
+        border-radius: 20px
 /* --- 🧊 Glass Container Styles --- */
 
 .container { max-width: 1000px; margin: auto; padding: 0 25px; }
