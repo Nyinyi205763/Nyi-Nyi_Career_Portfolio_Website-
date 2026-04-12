@@ -402,6 +402,49 @@ footer { text-align: center; padding: 60px 0; color: rgba(255,255,255,0.2); font
         filter: blur(200px); /* Screen ကြီးလေ Blur ပိုများလေ Gradient ပိုလှလေပဲ */
     }
 }
+/* See Certification ခလုတ်ကို အလှဆင်ခြင်း */
+.cert-nav {
+    display: flex;
+    justify-content: center; /* အလယ်ပို့မယ် */
+    margin: 20px 0;
+}
+
+.glass-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px; /* Round shape */
+    color: #00d2ff; /* Cyan color */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s all ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.glass-btn:hover {
+    background: rgba(0, 210, 255, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+}
+
+/* Mobile အတွက် သီးသန့် ပြင်ဆင်ချက် */
+@media (max-width: 768px) {
+    .cert-nav {
+        position: relative; /* စာသားတွေအပေါ်မှာ ပေါ်နေအောင် */
+        margin-top: 30px;
+    }
+    
+    .glass-btn {
+        width: 80%; /* ဖုန်း screen ရဲ့ ၈၀ ရာခိုင်နှုန်းအကျယ် */
+        text-align: center;
+        font-size: 14px;
+        padding: 15px;
+    }
+}
         
         right: 20px;
     }
