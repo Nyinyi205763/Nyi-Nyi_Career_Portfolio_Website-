@@ -33,3 +33,54 @@ h1, .subtitle, h2 {
     0% { transform: translateY(0); }
     100% { transform: translateY(110vh); }
 }
+/* --- သင်္ကြန် ပုံရိပ်များ (Decorations) --- */
+
+/* ၁။ Profile Frame ပေါ်တွင် ပိတောက်ပန်းတင်ခြင်း */
+.header-profile-frame {
+    position: relative; /* ပန်းပွင့်နေရာချရန် */
+    overflow: visible !important; /* ပန်းပွင့်ဘောင်အပြင်ထွက်အောင် */
+}
+
+.header-profile-frame::before {
+    content: "";
+    position: absolute;
+    top: -20px; /* အပေါ်ဘက် */
+    right: -15px; /* ညာဘက် */
+    width: 60px; /* ပန်းပွင့်အရွယ်အစား */
+    height: 60px;
+    background-image: url('padauk.png'); /* ပိတောက်ပန်းပုံ (PNG) */
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7)); /* ရွှေရောင် Glow */
+}
+
+/* ၂။ နေရာလွတ်များတွင် ရေဖလားပုံ ထည့်ခြင်း */
+header::before {
+    content: "";
+    position: absolute;
+    bottom: 50px; /* အောက်ခြေမှ */
+    left: 80px; /* ဘယ်ဘက်မှ */
+    width: 100px; /* ရေဖလားအရွယ်အစား */
+    height: 100px;
+    background-image: url('silver-bowl.png'); /* ငွေဖလားပုံ (PNG) */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.5)); /* ရေပြာရောင် Glow */
+}
+
+/* ၃။ ညာဘက်အောက်ခြေတွင် ပိတောက်ပန်းခက် ထည့်ခြင်း */
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 30px; /* အောက်ခြေမှ */
+    right: 50px; /* ညာဘက်မှ */
+    width: 120px; /* ပန်းခက်အရွယ်အစား */
+    height: 120px;
+    background-image: url('padauk-branch.png'); /* ပိတောက်ပန်းခက်ပုံ (PNG) */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+}
