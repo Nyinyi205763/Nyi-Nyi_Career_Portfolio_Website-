@@ -187,46 +187,64 @@ h3 { margin: 30px 0 15px; color: #ccc; font-weight: 400; text-transform: upperca
     margin-bottom: 30px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.4);
 }
-/* Line 189 ရဲ့အောက်မှာ ဒါလေးကို ထည့်ပါ */
-
+/* --- Education Layout Fix --- */
 .education-list {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 35px; /* တစ်ခုနဲ့တစ်ခု အကွာအဝေးကို ပိုချဲ့လိုက်ပါ */
     margin-top: 20px;
 }
 
 .edu-item {
     position: relative;
-    padding-left: 30px;
+    padding-left: 35px;
+    display: flex;
+    flex-direction: column;
 }
 
+/* ၁။ အစက် (Dot) နေရာကို စာသားနဲ့ အလယ်တည့်တည့်ဖြစ်အောင် ညှိခြင်း */
 .edu-item::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 8px;
-    width: 10px;
-    height: 10px;
+    top: 6px; /* အစက်ကို နဲနဲ ထပ်ချလိုက်တာပါ */
+    width: 12px;
+    height: 12px;
     background: var(--neon-blue);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--neon-blue);
+    box-shadow: 0 0 15px var(--neon-blue);
+    z-index: 2;
+}
+
+/* ၂။ ဒေါင်လိုက်မျဉ်းကြောင်း (Timeline Line) တစ်ခုနဲ့တစ်ခု ထိအောင် ဆွဲခြင်း */
+.edu-item::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 18px;
+    bottom: -35px; /* အောက်က item အထိ ရောက်အောင် အနုတ် value သုံးရပါတယ် */
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+/* နောက်ဆုံးတစ်ခုမှာ မျဉ်းကြောင်းကို ဖျောက်ထားမယ် */
+.edu-item:last-child::after {
+    display: none;
 }
 
 .edu-title {
-    font-size: 1.1em;
+    font-size: 1.15em;
     font-weight: 700;
     color: #fff;
-    display: block;
+    line-height: 1.2; /* Line height ကို လျှော့ပြီး အစက်နဲ့ ညှိတာပါ */
 }
 
 .edu-university {
-    font-size: 0.9em;
+    font-size: 0.95em;
     color: #aaa;
-    display: block;
+    margin-top: 4px;
 }
-
-/* ပြီးရင်တော့ Line 191 က Timeline အပိုင်းအတိုင်း ဆက်ရှိနေပါစေ */
 /* --- 📅 Timeline & Experience --- */
 .timeline-item { position: relative; padding-left: 30px; margin-bottom: 25px; border-left: 1px solid rgba(255,255,255,0.1); }
 .timeline-item::before { content: ""; position: absolute; left: -6px; top: 8px; width: 10px; height: 10px; background: var(--neon-blue); border-radius: 50%; box-shadow: 0 0 15px var(--neon-blue); }
