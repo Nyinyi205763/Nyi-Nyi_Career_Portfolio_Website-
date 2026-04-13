@@ -1,86 +1,82 @@
-/* Thingyan Seasonal Overlay */
+/* --- Thingyan Seasonal Overlay (Mobile Optimized) --- */
 :root {
-    --thingyan-gold: #FFD700; /* သင်္ကြန်အဝါရောင် */
-    --thingyan-water: #00f2fe;
+    --thingyan-gold: #FFD600; /* ပိတောက်ဝါရောင် */
 }
 
-/* ၁။ စာသားအရောင်များကို သင်္ကြန်အဝါရောင်ပြောင်းခြင်း */
-h1, .subtitle, h2 {
+/* ၁။ Header Size ကို နည်းနည်းပြန်သေးစေရန် (PC/Mobile) */
+header {
+    min-height: 80vh !important; /* Screen အပြည့်ထက် နည်းနည်းလျော့မယ် */
+    padding-top: 80px !important; /* Nav နဲ့ မလွတ်အောင် */
+}
+
+/* ၂။ Name ကို Overlay Color မလုပ်တော့ဘဲ မူလအတိုင်းထားရန် */
+header h1 {
+    color: var(--text-white) !important;
+    background: linear-gradient(to bottom, #fff, #888) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Subtitle ကိုတော့ သင်္ကြန် Feel ရအောင် ရွှေရောင် glow ပေးမယ် */
+.subtitle {
     color: var(--thingyan-gold) !important;
-    text-shadow: 0 0 15px rgba(255, 214, 0, 0.5) !important;
+    text-shadow: 0 0 10px rgba(255, 214, 0, 0.5) !important;
 }
 
-/* ၂။ Profile Frame ကို အဝါရောင် Neon ပြောင်းခြင်း */
+/* ၃။ Profile Photo ပေါ်က ပိတောက်ပန်းလေး */
 .header-profile-frame {
+    position: relative;
+    overflow: visible !important;
     border-color: var(--thingyan-gold) !important;
-    box-shadow: 0 0 25px rgba(255, 214, 0, 0.4) !important;
+    box-shadow: 0 0 25px rgba(255, 214, 0, 0.3) !important;
 }
 
-/* ၃။ ရေစက်ကလေးများ ကျနေသည့် Effect (Animation) */
-.water-drop {
-    position: fixed;
-    top: -15px;
-    width: 2px;
-    height: 20px;
-    background: linear-gradient(to bottom, transparent, var(--thingyan-water));
-    opacity: 0.7;
-    z-index: 9999;
-    pointer-events: none;
-    animation: thingyan-rain linear infinite;
-}
-
-@keyframes thingyan-rain {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(110vh); }
-}
-/* --- သင်္ကြန် ပုံရိပ်များ (Decorations) --- */
-
-/* ၁။ Profile Frame ပေါ်တွင် ပိတောက်ပန်းတင်ခြင်း */
-.header-profile-frame {
-    position: relative; /* ပန်းပွင့်နေရာချရန် */
-    overflow: visible !important; /* ပန်းပွင့်ဘောင်အပြင်ထွက်အောင် */
-}
-
-.header-profile-frame::before {
+.header-profile-frame::after {
     content: "";
     position: absolute;
-    top: -20px; /* အပေါ်ဘက် */
-    right: -15px; /* ညာဘက် */
-    width: 60px; /* ပန်းပွင့်အရွယ်အစား */
-    height: 60px;
-    background-image: url('padauk.png'); /* ပိတောက်ပန်းပုံ (PNG) */
-    background-size: contain;
-    background-repeat: no-repeat;
+    top: -15px; right: -10px;
+    width: 60px; height: 60px;
+    background: url('padauk.png') no-repeat center/contain; /* Transparent PNG */
     z-index: 10;
-    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7)); /* ရွှေရောင် Glow */
 }
 
-/* ၂။ နေရာလွတ်များတွင် ရေဖလားပုံ ထည့်ခြင်း */
+/* ၄။ နေရာလွတ်က ပန်းအိုးပုံရိပ်များ (Mobile မှာ အရမ်းမကြီးအောင် ချိန်ညှိ) */
 header::before {
     content: "";
     position: absolute;
-    bottom: 50px; /* အောက်ခြေမှ */
-    left: 80px; /* ဘယ်ဘက်မှ */
-    width: 100px; /* ရေဖလားအရွယ်အစား */
-    height: 100px;
-    background-image: url('silver-bowl.png'); /* ငွေဖလားပုံ (PNG) */
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.8;
-    filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.5)); /* ရေပြာရောင် Glow */
+    bottom: 5%; left: 5%;
+    width: 80px; height: 80px;
+    background: url('silver-bowl.png') no-repeat center/contain;
+    opacity: 0.7;
 }
 
-/* ၃။ ညာဘက်အောက်ခြေတွင် ပိတောက်ပန်းခက် ထည့်ခြင်း */
 header::after {
     content: "";
     position: absolute;
-    bottom: 30px; /* အောက်ခြေမှ */
-    right: 50px; /* ညာဘက်မှ */
-    width: 120px; /* ပန်းခက်အရွယ်အစား */
-    height: 120px;
-    background-image: url('padauk-branch.png'); /* ပိတောက်ပန်းခက်ပုံ (PNG) */
+    bottom: 3%; right: 5%;
+    width: 100px; height: 100px;
+    background: url('padauk-branch.png') no-repeat center/contain;
+}
+
+/* ၅။ ပိတောက်ပွင့်ဖက်နှင့် အရွက်လေးများ ကျနေသည့် Effect (Animation) */
+.petal-leaf {
+    position: fixed;
+    top: -20px;
+    z-index: 9999;
+    pointer-events: none;
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.9;
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+    animation: petal-fall linear infinite;
+}
+
+/* Mobile မှာ အရမ်းမများအောင် */
+@media (max-width: 768px) {
+    .petal-leaf { opacity: 0.6; }
+}
+
+@keyframes petal-fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0.1; }
 }
