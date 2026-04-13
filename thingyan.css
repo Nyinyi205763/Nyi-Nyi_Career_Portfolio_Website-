@@ -9,7 +9,7 @@
     animation: petal-fall linear infinite;
 }
 
-/* ၂။ PC Layout */
+/* ၂။ PC Layout (1024px အထက်) */
 @media (min-width: 1024px) {
     header::before, header::after {
         content: "";
@@ -24,60 +24,87 @@
     header::after { right: 20px; }
 }
 
-/* ၃။ Mobile Layout (အပေါ်အောက်စီရန် - အဓိကအပိုင်း) */
+/* ၃။ Mobile Layout (၇၆၈px အောက် - အပေါ်အောက်စီရန်) */
 @media (max-width: 768px) {
-    /* Header ကို အပေါ်အောက် အစီအစဉ်အတိုင်း အတင်းပြောင်းခြင်း */
+    /* Header Container ကို အလယ်ပို့ခြင်း */
     header {
         height: auto !important;
         min-height: 100vh !important;
-        display: block !important; /* Flex ကို ခေတ္တပိတ်ပြီး Block သုံးမယ် */
-        padding: 120px 20px 150px !important;
-        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding: 100px 20px 150px !important;
     }
 
-    /* Profile ပုံကို အပေါ်ဆုံးမှာ အလယ်တည့်တည့် ထားခြင်း */
+    /* အဓိက Content အစုအဝေး */
+    header > div:first-of-type,
+    .header-main-content {
+        display: flex !important;
+        flex-direction: column !important; /* အပေါ်အောက် အတင်းစီခိုင်းခြင်း */
+        align-items: center !important;
+        width: 100% !important;
+        position: relative !important;
+        transform: none !important;
+        left: 0 !important;
+        top: 0 !important;
+    }
+
+    /* Profile ပုံ (အပေါ်ဆုံး) */
     .header-profile-frame, 
     .header-profile-block,
-    header img[class*="profile"] {
+    header img[class*="profile"],
+    header div[class*="profile"] {
+        order: -2 !important; /* အပေါ်ဆုံးသို့ ပို့ရန် */
         display: block !important;
-        margin: 0 auto 30px auto !important; /* အောက်ကစာသားနဲ့ ဝေးအောင် space ပေးမယ် */
+        margin: 0 auto 20px auto !important;
         width: 180px !important;
         height: 180px !important;
-        position: static !important; /* ဘေးကပ်နေတာတွေကို ဖျက်မယ် */
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
     }
 
-    /* နာမည် (NYI NYI) ကို အလယ်ပို့ခြင်း */
-    header h1 {
+    /* နာမည် (NYI NYI) (အလယ်) */
+    header h1, 
+    .header-text-block {
+        order: -1 !important;
         display: block !important;
         width: 100% !important;
-        margin: 20px 0 !important;
-        font-size: 3em !important;
-        position: static !important;
         text-align: center !important;
+        margin: 10px 0 !important;
+        position: relative !important;
+        left: auto !important;
+        transform: none !important;
     }
 
-    /* Social Icons များကို အလယ်ပို့ခြင်း */
+    /* Social Icons (အောက်ဆုံး) */
     .hero-socials, 
     header div[class*="social"] {
+        order: 0 !important;
         display: flex !important;
         justify-content: center !important;
         gap: 20px !important;
-        margin: 30px 0 !important;
-        position: static !important;
+        margin: 20px 0 !important;
+        position: relative !important;
+        width: 100% !important;
+        left: auto !important;
     }
 
     /* ငွေဖလား ၂ ခု */
     header::before, header::after {
         content: "";
         position: absolute;
-        bottom: 15px;
+        bottom: 10px;
         width: 130px !important;
         height: 130px !important;
         background: url('silver-bowl.png') no-repeat center/contain;
         z-index: 10;
     }
-    header::before { left: 5px; }
-    header::after { right: 5px; }
+    header::before { left: 5px !important; right: auto !important; }
+    header::after { right: 5px !important; left: auto !important; }
 }
 
 @keyframes petal-fall {
