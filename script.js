@@ -79,24 +79,38 @@ window.addEventListener('scroll', () => {
         document.querySelector('.blob-3').style.transform = `translateY(${scrollY * 0.1}px)`;
     }
 });
-/* --- သင်္ကြန် ရေစက် Effect (Original JS ထဲတွင် ပေါင်းထည့်ခြင်း) --- */
+/* --- Thingyan Petal/Leaf Effect (Optimized) --- */
 function startThingyanEffect() {
-    // thingyan.css ချိတ်ထားခြင်း ရှိ/မရှိ အရင်စစ်ဆေးပါမယ်
-    const isThingyanActive = Array.from(document.styleSheets).some(s => s.href && s.href.includes('thingyan.css'));
+    const isThingyanCSS = Array.from(document.styleSheets).some(s => s.href && s.href.includes('thingyan.css'));
     
-    if (isThingyanActive) {
+    if (isThingyanCSS) {
+        // ပုံ Link များ - Transparent PNG ဖြစ်ရပါမယ်
+        const images = ['petal1.png', 'petal2.png', 'leaf1.png'];
+        const isMobile = window.innerWidth <= 768;
+        const intervalTime = isMobile ? 300 : 150; // Mobile မှာ အရမ်းမများအောင် လျှော့ကျွေးမယ်
+
         setInterval(() => {
-            const drop = document.createElement('div');
-            drop.classList.add('water-drop');
-            drop.style.left = Math.random() * 100 + "vw";
-            drop.style.animationDuration = Math.random() * 1 + 0.5 + "s";
-            document.body.appendChild(drop);
+            const decor = document.createElement('div');
+            decor.classList.add('petal-leaf');
             
-            // ၁.၅ စက္ကန့်ပြည့်ရင် ရေစက်ကို ပြန်ဖျက်ထုတ်ပါ (Browser မလေးအောင်လို့ပါ)
-            setTimeout(() => { drop.remove(); }, 1500);
-        }, 100); // ရေစက်အကျဲအစိပ်ကို ဒီနေရာမှာ ချိန်လို့ရပါတယ်
+            // random ပုံ ရွေးချယ်ခြင်း
+            const randomImg = images[Math.floor(Math.random() * images.length)];
+            decor.style.backgroundImage = `url(${randomImg})`;
+            
+            // random နေရာ၊ အရွယ်အစားနှင့် အမြန်နှုန်း
+            const size = isMobile ? (Math.random() * 10 + 10) : (Math.random() * 15 + 15); // PC: 15-30px, Mobile: 10-20px
+            decor.style.width = size + "px";
+            decor.style.height = size + "px";
+            decor.style.left = Math.random() * 100 + "vw";
+            decor.style.animationDuration = Math.random() * 2 + 3 + "s"; // 3-5 စက္ကန့်အတွင်းကျမယ်
+            decor.style.animationDelay = Math.random() * 2 + "s"; // random delay
+            
+            document.body.appendChild(decor);
+            
+            // Performance အတွက် ၅ စက္ကန့်ပြည့်ရင် ပြန်ဖျက်မယ်
+            setTimeout(() => { decor.remove(); }, 5000);
+        }, intervalTime);
     }
 }
 
-// Page load ဖြစ်တာနဲ့ အလုပ်လုပ်အောင် ခေါ်ပေးထားပါမယ်
 window.addEventListener('load', startThingyanEffect);
