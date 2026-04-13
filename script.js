@@ -98,7 +98,8 @@ function startThingyanEffect() {
             decor.style.backgroundImage = `url(${randomImg})`;
             
             // random နေရာ၊ အရွယ်အစားနှင့် အမြန်နှုန်း
-            const size = isMobile ? (Math.random() * 10 + 10) : (Math.random() * 15 + 15); // PC: 15-30px, Mobile: 10-20px
+          const size = isMobile ? (Math.random() * 15 + 20) : (Math.random() * 20 + 30); 
+// PC မှာ 30px-50px အထိ ရှိလာမှာမို့လို့ ဘာကျနေလဲဆိုတာ သေချာမြင်ရပါလိမ့်မယ်
             decor.style.width = size + "px";
             decor.style.height = size + "px";
             decor.style.left = Math.random() * 100 + "vw";
