@@ -1,82 +1,84 @@
-/* --- Thingyan Seasonal Overlay (Mobile Optimized) --- */
-:root {
-    --thingyan-gold: #FFD600; /* ပိတောက်ဝါရောင် */
-}
+/* --- Thingyan Seasonal (Final Optimized) --- */
 
-/* ၁။ Header Size ကို နည်းနည်းပြန်သေးစေရန် (PC/Mobile) */
-header {
-    min-height: 80vh !important; /* Screen အပြည့်ထက် နည်းနည်းလျော့မယ် */
-    padding-top: 80px !important; /* Nav နဲ့ မလွတ်အောင် */
-}
-
-/* ၂။ Name ကို Overlay Color မလုပ်တော့ဘဲ မူလအတိုင်းထားရန် */
-header h1 {
-    color: var(--text-white) !important;
-    background: linear-gradient(to bottom, #fff, #888) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4) !important;
-}
-
-/* Subtitle ကိုတော့ သင်္ကြန် Feel ရအောင် ရွှေရောင် glow ပေးမယ် */
-.subtitle {
-    color: var(--thingyan-gold) !important;
-    text-shadow: 0 0 10px rgba(255, 214, 0, 0.5) !important;
-}
-
-/* ၃။ Profile Photo ပေါ်က ပိတောက်ပန်းလေး */
-.header-profile-frame {
-    position: relative;
-    overflow: visible !important;
-    border-color: var(--thingyan-gold) !important;
-    box-shadow: 0 0 25px rgba(255, 214, 0, 0.3) !important;
-}
-
-.header-profile-frame::after {
-    content: "";
-    position: absolute;
-    top: -15px; right: -10px;
-    width: 60px; height: 60px;
-    background: url('padauk.png') no-repeat center/contain; /* Transparent PNG */
-    z-index: 10;
-}
-
-/* ၄။ နေရာလွတ်က ပန်းအိုးပုံရိပ်များ (Mobile မှာ အရမ်းမကြီးအောင် ချိန်ညှိ) */
-header::before {
-    content: "";
-    position: absolute;
-    bottom: 5%; left: 5%;
-    width: 80px; height: 80px;
-    background: url('silver-bowl.png') no-repeat center/contain;
-    opacity: 0.7;
-}
-
-header::after {
-    content: "";
-    position: absolute;
-    bottom: 3%; right: 5%;
-    width: 100px; height: 100px;
-    background: url('padauk-branch.png') no-repeat center/contain;
-}
-
-/* ၅။ ပိတောက်ပွင့်ဖက်နှင့် အရွက်လေးများ ကျနေသည့် Effect (Animation) */
+/* ၁။ ပြုတ်ကျနေတဲ့ ပွင့်ဖက်/အရွက်တွေကို ပိုကြီးစေရန် */
 .petal-leaf {
     position: fixed;
-    top: -20px;
+    top: -50px;
     z-index: 9999;
     pointer-events: none;
     background-size: contain;
     background-repeat: no-repeat;
+    /* အရွယ်အစားကို ပိုကြီးလိုက်ပါတယ် */
+    width: 40px !important;
+    height: 40px !important;
     animation: petal-fall linear infinite;
 }
 
-/* Mobile မှာ အရမ်းမများအောင် */
+/* ၂။ PC မှာ ပိတောက်ပန်းအိုး/ရေဖလားကို ဘေးဒေါင့်တွေမှာ ကြီးကြီးလေးထားမယ် */
+@media (min-width: 1024px) {
+    header::before {
+        content: "";
+        position: absolute;
+        bottom: 20px; left: 20px;
+        width: 180px !important; /* ပိုကြီးလိုက်တယ် */
+        height: 180px !important;
+        background: url('silver-bowl.png') no-repeat center/contain;
+        z-index: 5;
+    }
+    header::after {
+        content: "";
+        position: absolute;
+        bottom: 20px; right: 20px;
+        width: 220px !important; /* ပိုကြီးလိုက်တယ် */
+        height: 220px !important;
+        background: url('padauk-branch.png') no-repeat center/contain;
+        z-index: 5;
+    }
+}
+
+/* ၃။ Mobile Layout (Profile -> Name -> Social) အပေါ်အောက် စီခြင်း */
 @media (max-width: 768px) {
-    .petal-leaf { opacity: 0.6; }
+    .header-main-content {
+        flex-direction: column-reverse !important; /* Profile ကို အပေါ်တင်မယ် */
+        gap: 30px !important;
+        padding-top: 50px;
+    }
+
+    .header-text-block {
+        text-align: center !important;
+        align-items: center !important;
+    }
+
+    header h1 {
+        letter-spacing: 5px !important;
+        margin-top: 10px;
+    }
+
+    /* Mobile ဒေါင့်တွေမှာ ပန်းအိုး/ရေဖလား ထည့်ခြင်း */
+    header::before {
+        content: "";
+        position: absolute;
+        bottom: 10px; left: 10px;
+        width: 80px; height: 80px;
+        background: url('silver-bowl.png') no-repeat center/contain;
+    }
+    header::after {
+        content: "";
+        position: absolute;
+        bottom: 10px; right: 10px;
+        width: 90px; height: 90px;
+        background: url('padauk-branch.png') no-repeat center/contain;
+    }
+    
+    /* Mobile မှာ ပွင့်ဖက်တွေကို နည်းနည်းပြန်သေးပေးမယ် (Screen နဲ့ မျှအောင်) */
+    .petal-leaf {
+        width: 25px !important;
+        height: 25px !important;
+    }
 }
 
 @keyframes petal-fall {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
-    100% { transform: translateY(110vh) rotate(360deg); opacity: 0.1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
 }
