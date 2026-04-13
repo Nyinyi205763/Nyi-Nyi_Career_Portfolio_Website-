@@ -38,72 +38,79 @@ header::after {
 }
 }
 
-/* ၃။ Mobile Layout (Profile -> Name -> Social) */
 @media (max-width: 768px) {
-    /* Header ကို Mobile မှာ နေရာပိုချပေးခြင်း */
+    /* ၁။ Header ကို Mobile မှာ အစီအစဉ်တကျဖြစ်အောင် ညှိခြင်း */
     header {
         height: auto !important;
         min-height: 100vh !important;
-        padding: 100px 20px 80px !important;
+        padding: 120px 20px 100px !important; /* အပေါ်အောက် space ပိုပေးမယ် */
         display: flex !important;
         flex-direction: column !important;
-        justify-content: flex-start !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
 
-    /* Profile ပုံ ပေါ်လာစေရန် နှင့် အပေါ်ဆုံးသို့ ပို့ရန် */
+    /* ၂။ Layout အစီအစဉ် (Profile -> Name -> Icon) */
     .header-main-content {
-        flex-direction: column-reverse !important; 
-        display: flex !important;
-        gap: 20px !important;
+        flex-direction: column !important; /* အပေါ်အောက် အစီလိုက်ဖြစ်စေရန် */
+        gap: 40px !important;
         width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
     }
 
+    /* Profile Frame အရွယ်အစား နှင့် နေရာ */
     .header-profile-block {
+        order: 1 !important; /* အပေါ်ဆုံးမှာ ထားမယ် */
+        flex: none !important;
+        width: 100% !important;
         display: flex !important;
         justify-content: center !important;
-        width: 100% !important;
-        flex: none !important;
     }
 
     .header-profile-frame {
-        width: 180px !important; /* Mobile မှာ အရွယ်အစား ပြန်ညှိခြင်း */
-        height: 180px !important;
+        width: 200px !important; /* Profile ပုံကို နည်းနည်း ထပ်ကြီးလိုက်တယ် */
+        height: 200px !important;
         margin: 0 auto !important;
-        display: block !important; /* Force display */
     }
 
     /* Name နှင့် Social Icons */
     .header-text-block {
+        order: 2 !important; /* Profile အောက်မှာ ထားမယ် */
         text-align: center !important;
         align-items: center !important;
-        flex: none !important;
+        width: 100% !important;
     }
 
     header h1 {
-        font-size: 3.5em !important;
-        letter-spacing: 4px !important;
-        margin: 10px 0 !important;
+        font-size: 3.2em !important;
+        margin-bottom: 15px !important;
     }
 
-    /* Mobile ဒေါင့်နှစ်ဖက်တွင် ငွေဖလားများ */
+    .hero-socials {
+        margin-top: 20px !important;
+    }
+
+    /* ၃။ ငွေဖလားကို ၂ ဆ ကြီးပြီး ဘေးကပ်ထားခြင်း */
     header::before {
         content: "";
         position: absolute;
-        bottom: 15px; left: 15px;
-        width: 70px; height: 70px;
+        bottom: 20px; left: -10px; /
+        width: 150px !important; /
+        height: 150px !important;
         background: url('silver-bowl.png') no-repeat center/contain;
         z-index: 5;
     }
     header::after {
         content: "";
         position: absolute;
-        bottom: 15px; right: 15px;
-        width: 70px; height: 70px;
+        bottom: 20px; right: -10px; /* ဘေးကို နည်းနည်း ထပ်ထုတ်မယ် */
+        width: 150px !important; /
+        height: 150px !important;
         background: url('silver-bowl.png') no-repeat center/contain;
         z-index: 5;
     }
 }
-
 @keyframes petal-fall {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
