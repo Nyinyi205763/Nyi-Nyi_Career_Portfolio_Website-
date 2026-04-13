@@ -14,23 +14,28 @@
 }
 
 /* ၂။ PC မှာ ငွေဖလား နှစ်ခုလုံး တူတူသုံးခြင်း */
-@media (min-width: 1024px) {
-    header::before {
-        content: "";
-        position: absolute;
-        bottom: 20px; left: 30px;
-        width: 180px; height: 180px;
-        background: url('silver-bowl.png') no-repeat center/contain;
-        z-index: 5;
-    }
-    header::after {
-        content: "";
-        position: absolute;
-        bottom: 20px; right: 30px;
-        width: 180px; height: 180px;
-        background: url('silver-bowl.png') no-repeat center/contain; /* ဒီမှာလည်း ငွေဖလားပဲ သုံးထားပါတယ် */
-        z-index: 5;
-    }
+
+header::before {
+    content: "";
+    position: absolute;
+    bottom: 20px; /* နေရာ နည်းနည်းပြန်ညှိတယ် */
+    left: 10px;
+    width: 140px !important;  /* အရင်က 70px ကို 140px (၂ ဆ) ပြောင်းလိုက်တာပါ */
+    height: 140px !important;
+    background: url('silver-bowl.png') no-repeat center/contain;
+    z-index: 5;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    width: 140px !important; /* အရင်က 70px ကို 140px (၂ ဆ) ပြောင်းလိုက်တာပါ */
+    height: 140px !important;
+    background: url('silver-bowl.png') no-repeat center/contain;
+    z-index: 5;
+}
 }
 
 /* ၃။ Mobile Layout (Profile -> Name -> Social) */
