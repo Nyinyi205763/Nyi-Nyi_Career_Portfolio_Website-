@@ -1,6 +1,6 @@
-/* --- Thingyan Seasonal (Final Optimized) --- */
+/* --- Thingyan Final Setup --- */
 
-/* ၁။ ပြုတ်ကျနေတဲ့ ပွင့်ဖက်/အရွက်တွေကို ပိုကြီးစေရန် */
+/* ၁။ ပြုတ်ကျနေတဲ့ ပွင့်ဖက်တွေကို ပိုကြီးစေရန် */
 .petal-leaf {
     position: fixed;
     top: -50px;
@@ -8,72 +8,94 @@
     pointer-events: none;
     background-size: contain;
     background-repeat: no-repeat;
-    /* အရွယ်အစားကို ပိုကြီးလိုက်ပါတယ် */
-    width: 40px !important;
-    height: 40px !important;
+    width: 45px !important; /* ပိုကြီးလိုက်တယ် */
+    height: 45px !important;
     animation: petal-fall linear infinite;
 }
 
-/* ၂။ PC မှာ ပိတောက်ပန်းအိုး/ရေဖလားကို ဘေးဒေါင့်တွေမှာ ကြီးကြီးလေးထားမယ် */
+/* ၂။ PC မှာ ငွေဖလား နှစ်ခုလုံး တူတူသုံးခြင်း */
 @media (min-width: 1024px) {
     header::before {
         content: "";
         position: absolute;
-        bottom: 20px; left: 20px;
-        width: 180px !important; /* ပိုကြီးလိုက်တယ် */
-        height: 180px !important;
+        bottom: 20px; left: 30px;
+        width: 180px; height: 180px;
         background: url('silver-bowl.png') no-repeat center/contain;
         z-index: 5;
     }
     header::after {
         content: "";
         position: absolute;
-        bottom: 20px; right: 20px;
-        width: 220px !important; /* ပိုကြီးလိုက်တယ် */
-        height: 220px !important;
-        background: url('padauk-branch.png') no-repeat center/contain;
+        bottom: 20px; right: 30px;
+        width: 180px; height: 180px;
+        background: url('silver-bowl.png') no-repeat center/contain; /* ဒီမှာလည်း ငွေဖလားပဲ သုံးထားပါတယ် */
         z-index: 5;
     }
 }
 
-/* ၃။ Mobile Layout (Profile -> Name -> Social) အပေါ်အောက် စီခြင်း */
+/* ၃။ Mobile Layout (Profile -> Name -> Social) */
 @media (max-width: 768px) {
-    .header-main-content {
-        flex-direction: column-reverse !important; /* Profile ကို အပေါ်တင်မယ် */
-        gap: 30px !important;
-        padding-top: 50px;
+    /* Header ကို Mobile မှာ နေရာပိုချပေးခြင်း */
+    header {
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 100px 20px 80px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
     }
 
+    /* Profile ပုံ ပေါ်လာစေရန် နှင့် အပေါ်ဆုံးသို့ ပို့ရန် */
+    .header-main-content {
+        flex-direction: column-reverse !important; 
+        display: flex !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    .header-profile-block {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    .header-profile-frame {
+        width: 180px !important; /* Mobile မှာ အရွယ်အစား ပြန်ညှိခြင်း */
+        height: 180px !important;
+        margin: 0 auto !important;
+        display: block !important; /* Force display */
+    }
+
+    /* Name နှင့် Social Icons */
     .header-text-block {
         text-align: center !important;
         align-items: center !important;
+        flex: none !important;
     }
 
     header h1 {
-        letter-spacing: 5px !important;
-        margin-top: 10px;
+        font-size: 3.5em !important;
+        letter-spacing: 4px !important;
+        margin: 10px 0 !important;
     }
 
-    /* Mobile ဒေါင့်တွေမှာ ပန်းအိုး/ရေဖလား ထည့်ခြင်း */
+    /* Mobile ဒေါင့်နှစ်ဖက်တွင် ငွေဖလားများ */
     header::before {
         content: "";
         position: absolute;
-        bottom: 10px; left: 10px;
-        width: 80px; height: 80px;
+        bottom: 15px; left: 15px;
+        width: 70px; height: 70px;
         background: url('silver-bowl.png') no-repeat center/contain;
+        z-index: 5;
     }
     header::after {
         content: "";
         position: absolute;
-        bottom: 10px; right: 10px;
-        width: 90px; height: 90px;
-        background: url('padauk-branch.png') no-repeat center/contain;
-    }
-    
-    /* Mobile မှာ ပွင့်ဖက်တွေကို နည်းနည်းပြန်သေးပေးမယ် (Screen နဲ့ မျှအောင်) */
-    .petal-leaf {
-        width: 25px !important;
-        height: 25px !important;
+        bottom: 15px; right: 15px;
+        width: 70px; height: 70px;
+        background: url('silver-bowl.png') no-repeat center/contain;
+        z-index: 5;
     }
 }
 
