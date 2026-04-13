@@ -104,3 +104,17 @@
     10% { opacity: 1; }
     100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
 }
+@media (min-width: 1024px) {
+    /* ဘယ်ဘက်အပေါ်ဒေါင့်ကပ် ပိတောက်ပန်းခက် */
+    header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 400px;
+        height: 400px;
+        background: url('padauk-corner.png') no-repeat top left/contain;
+        z-index: 5;
+        pointer-events: none;
+    }
+}
