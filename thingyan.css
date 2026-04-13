@@ -1,11 +1,11 @@
-/* ၁။ ပွင့်ဖက်များ (Animation အလုပ်လုပ်စေရန်) */
+/* ၁။ ပွင့်ဖက်များ */
 .petal-leaf {
-    position: fixed; /* Screen တစ်ခုလုံးမှာ ကျနေစေရန် */
+    position: fixed;
     top: -50px;
     z-index: 9999;
     pointer-events: none;
-    width: 45px !important;
-    height: 45px !important;
+    width: 40px !important;
+    height: 40px !important;
     background-size: contain;
     background-repeat: no-repeat;
     animation: petal-fall linear infinite;
@@ -13,7 +13,6 @@
 
 /* ၂။ PC Layout */
 @media (min-width: 1024px) {
-    header { position: relative !important; }
     header::before, header::after {
         content: "";
         position: absolute;
@@ -23,67 +22,83 @@
         background: url('silver-bowl.png') no-repeat center/contain;
         z-index: 5;
     }
-    header::before { left: 20px; }
-    header::after { right: 20px; }
+    header::before { left: 30px; }
+    header::after { right: 30px; }
 }
 
-/* ၃။ Mobile Layout (၇၆၈ pixels အောက်) */
+/* ၃။ Mobile Layout (Profile -> Name -> Social) အစီလိုက်ဖြစ်စေရန် */
 @media (max-width: 768px) {
     header {
         height: auto !important;
         min-height: 100vh !important;
-        display: block !important; 
-        padding: 120px 20px 150px !important;
-        text-align: center !important;
-        position: relative !important; /* ဒါရှိမှ ပန်းအိုးတွေ ကပ်နေမှာပါ */
-        overflow: hidden !important; /* ပန်းတွေ ဘေးထွက်မသွားစေရန် */
+        display: flex !important;
+        flex-direction: column !important; /* အပေါ်အောက် အစီလိုက်ဖြစ်စေရန် */
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 80px 20px !important;
+        gap: 20px !important;
+        position: relative !important;
     }
 
-    /* Profile Frame */
-    .header-profile-frame, 
-    .header-profile-block,
-    header img[class*="profile"] {
-        display: block !important;
-        margin: 0 auto 30px auto !important;
+    /* Profile Block ကို အပေါ်ဆုံးပို့ခြင်း */
+    .header-main-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .header-profile-block {
+        order: 1 !important; /* အစီအစဉ် ၁ */
+        margin-bottom: 20px !important;
+    }
+
+    .header-profile-frame {
         width: 180px !important;
         height: 180px !important;
+        margin: 0 auto !important;
         position: static !important;
     }
 
-    /* နာမည် (NYI NYI) */
+    /* Text Block (Name) ကို အလယ်ပို့ခြင်း */
+    .header-text-block {
+        order: 2 !important; /* အစီအစဉ် ၂ */
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
     header h1 {
-        display: block !important;
-        width: 100% !important;
-        margin: 20px 0 !important;
-        font-size: 3em !important;
+        font-size: 2.8em !important;
+        letter-spacing: 3px !important;
+        margin: 10px 0 !important;
         position: static !important;
     }
 
     /* Social Icons */
-    .hero-socials, 
-    header div[class*="social"] {
+    .hero-socials {
+        order: 3 !important; /* အစီအစဉ် ၃ */
         display: flex !important;
         justify-content: center !important;
-        gap: 20px !important;
-        margin: 30px 0 !important;
-        position: static !important;
+        gap: 15px !important;
+        margin-top: 10px !important;
     }
 
     /* Mobile ငွေဖလား ၂ ခု */
     header::before, header::after {
         content: "";
         position: absolute;
-        bottom: 15px;
-        width: 140px !important; /* ကိုနီနီ လိုချင်တဲ့ size ကြီးကြီး */
-        height: 140px !important;
+        bottom: 10px;
+        width: 120px !important;
+        height: 120px !important;
         background: url('silver-bowl.png') no-repeat center/contain;
         z-index: 10;
     }
-    header::before { left: -10px; }
-    header::after { right: -10px; }
+    header::before { left: 0px; }
+    header::after { right: 0px; }
 }
 
-/* ၄။ ကျဆင်းနေသည့် Animation */
 @keyframes petal-fall {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
