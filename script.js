@@ -79,3 +79,24 @@ window.addEventListener('scroll', () => {
         document.querySelector('.blob-3').style.transform = `translateY(${scrollY * 0.1}px)`;
     }
 });
+/* --- သင်္ကြန် ရေစက် Effect (Original JS ထဲတွင် ပေါင်းထည့်ခြင်း) --- */
+function startThingyanEffect() {
+    // thingyan.css ချိတ်ထားခြင်း ရှိ/မရှိ အရင်စစ်ဆေးပါမယ်
+    const isThingyanActive = Array.from(document.styleSheets).some(s => s.href && s.href.includes('thingyan.css'));
+    
+    if (isThingyanActive) {
+        setInterval(() => {
+            const drop = document.createElement('div');
+            drop.classList.add('water-drop');
+            drop.style.left = Math.random() * 100 + "vw";
+            drop.style.animationDuration = Math.random() * 1 + 0.5 + "s";
+            document.body.appendChild(drop);
+            
+            // ၁.၅ စက္ကန့်ပြည့်ရင် ရေစက်ကို ပြန်ဖျက်ထုတ်ပါ (Browser မလေးအောင်လို့ပါ)
+            setTimeout(() => { drop.remove(); }, 1500);
+        }, 100); // ရေစက်အကျဲအစိပ်ကို ဒီနေရာမှာ ချိန်လို့ရပါတယ်
+    }
+}
+
+// Page load ဖြစ်တာနဲ့ အလုပ်လုပ်အောင် ခေါ်ပေးထားပါမယ်
+window.addEventListener('load', startThingyanEffect);
